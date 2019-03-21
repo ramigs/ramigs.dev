@@ -1,0 +1,17 @@
+{
+  "name": "ramigs",
+  "version": "1.0.0",
+  "description": "Rami Shashati's personal website",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ramigs",
+    "eleventy",
+    "netlify",
+    "gulp",
+    "webpack"
+  ],
+  "author": "Rami Shashati <ramigs@gmail.com>",
+  "license": "MIT"
+}

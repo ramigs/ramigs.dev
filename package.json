@@ -2,7 +2,14 @@
   "name": "ramigs",
   "version": "1.0.0",
   "description": "Rami Shashati's personal website",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ramigs/ramigs"
+  },
   "scripts": {
+    "dev": "gulp dev",
+    "build": "gulp build",
+    "clean": "rm -rf dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -13,5 +20,9 @@
     "webpack"
   ],
   "author": "Rami Shashati <ramigs@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.7.1",
+    "gulp": "^4.0.0"
+  }
 }

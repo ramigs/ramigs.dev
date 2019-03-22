@@ -4,7 +4,7 @@ module.exports = function (eleventyConfig) {
         templateFormats : ["njk", "md"],
         passthroughFileCopy: true,
         dir: {
-            input: "src",
+            input: "src/site",
             output: "dist"
         }
     };

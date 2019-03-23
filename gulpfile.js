@@ -3,11 +3,13 @@ const gulp = require("gulp");
 const server = require("./gulp-tasks/browsersync.js");
 
 // Import Tasks
+const css = require("./gulp-tasks/styles.js");
 const clean = require("./gulp-tasks/clean.js");
 const eleventy = require("./gulp-tasks/eleventy.js");
 
 // Watch files
 function watchFiles() {
+    gulp.watch("./src/assets/scss/**/*", css.build);
     gulp.watch(
         [
             "./.eleventy.js",
@@ -28,7 +30,7 @@ const watch = gulp.parallel(watchFiles, server.init);
 // Let's build
 const build = gulp.series(
     clean.dist,
-    gulp.parallel(eleventy.build)
+    gulp.parallel(css.build, eleventy.build)
 );
 
 // Build and watch during dev

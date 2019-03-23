@@ -12,13 +12,12 @@ function watchFiles() {
         [
             "./.eleventy.js",
             "./.eleventyignore",
-            "./src/*",
-            "./src/_data/**/*",
-            "./src/_includes/**/*",
-            "./src/_includes/**/*",
-            "./src/blogposts/**/*",
-            "./src/pages/**/*",
-            "./src/projects/**/*"
+            "./src/site/*",
+            "./src/site/_data/**/*",
+            "./src/site/_includes/**/*",
+            "./src/site/posts/**/*",
+            "./src/site/projects/**/*",
+            "./src/site/pages/**/*"            
         ],
         eleventy.build
     );

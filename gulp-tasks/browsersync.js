@@ -13,7 +13,8 @@ function init(done) {
       "./dist/**/*.{html, xml}"
     ],
     port: 3000,
-    open: false
+    open: true,
+    browser: "google chrome"
   });
   done();
 }

@@ -13,9 +13,25 @@
         <link rel="stylesheet" href="/css/main.css">
 
     </head>
-    <body>
-
-        {% block content %}{% endblock %}
-
-    </body>
-</html>
+    <body class="{{ bodyClass }}">
+        <div class="container">
+            <header>
+                <ul class="nav">
+                    <li>
+                        <a href="/">home<small>where the heart is</small>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/about">about<small>all about this</small>
+                        </a>
+                    </li>
+                </ul>
+                <h1>{{ title }}</h1>
+                {%- if subtitle %}
+                    <p class="subtitle">{{ subtitle }}</p>
+                {% endif %}
+            </header>
+            {{ content | safe }}
+            {% include "partials/footer.njk" %}
+        </div>
+    </html>

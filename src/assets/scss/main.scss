@@ -28,7 +28,7 @@ body {
   font-size: 16px;
   line-height: 1.8;
   min-height: 100vh;
-  background-image: url('/images/bg-grid.png');
+  background-image: url('/img/bg-grid.png');
   @include bp(mid) {
     font-size: 18px;
   }

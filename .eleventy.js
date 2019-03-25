@@ -5,6 +5,11 @@ module.exports = function (eleventyConfig) {
     // Layout aliases can make templates more portable
     eleventyConfig.addLayoutAlias('default', 'layouts/base.njk');
 
+    // blogpost collection
+    eleventyConfig.addCollection("posts", function (collection) {
+        return collection.getFilteredByGlob("./src/site/posts/*.md");
+    });
+
     // Add some utiliuty filters
     //eleventyConfig.addFilter("squash", require("./src/filters/squash.js"));
     eleventyConfig.addFilter("dateDisplay", (dateObj, format = "LLL d, y") => {

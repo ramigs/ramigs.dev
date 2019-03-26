@@ -1,5 +1,3 @@
-{% set metaUrl = site.url ~ page.url %}
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,25 +11,12 @@
         <link rel="stylesheet" href="/css/main.min.css">
 
     </head>
-    <body class="{{ bodyClass }}">
+    <body>
         <div class="container">
-            <header>
-                <ul class="nav">
-                    <li>
-                        <a href="/">home<small>where the heart is</small>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/about">about<small>all about this</small>
-                        </a>
-                    </li>
-                </ul>
-                <h1>{{ title }}</h1>
-                {%- if subtitle %}
-                    <p class="subtitle">{{ subtitle }}</p>
-                {% endif %}
-            </header>
+            {% include "partials/header.njk" %}
             {{ content | safe }}
             {% include "partials/footer.njk" %}
         </div>
+        <script src="/js/main.bundle.js"></script>
+    </body>
     </html>

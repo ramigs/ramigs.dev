@@ -3,8 +3,9 @@ const gulp = require("gulp");
 const server = require("./gulp-tasks/browsersync.js");
 
 // **** Import Tasks ****
-const img = require("./gulp-tasks/images.js");
 const css = require("./gulp-tasks/styles.js");
+const js = require("./gulp-tasks/scripts.js");
+const img = require("./gulp-tasks/images.js");
 const clean = require("./gulp-tasks/clean.js");
 const eleventy = require("./gulp-tasks/eleventy.js");
 
@@ -12,6 +13,7 @@ const eleventy = require("./gulp-tasks/eleventy.js");
 function watchFiles() {
     gulp.watch("./src/assets/scss/**/*", css.build);
     gulp.watch("./src/assets/img/**/*", images);
+    gulp.watch("./src/assets/js/**/*", scripts);
     gulp.watch(
         [
             "./.eleventy.js",
@@ -23,14 +25,14 @@ function watchFiles() {
 }
 
 // **** Define Tasks ****
-
 const watch = gulp.parallel(watchFiles, server.init);
 const images = gulp.series(img.copy);
+const scripts = gulp.series(js.lint, js.build);
 
 // Let's build
 const build = gulp.series(
     clean.dist,
-    gulp.parallel(css.build, eleventy.build, images)
+    gulp.parallel(css.build, images, eleventy.build, scripts)
 );
 
 // Build and watch during dev

@@ -1,14 +1,21 @@
 ---
 permalink: index.html
+layout: default
 ---
 
-{% extends "layouts/base.njk" %}
-
 {% set metaTitle = "Home" %}
-{% set metaDescription = "" %}
+{% set metaDescription = "Full-stack developer from sunny Lisbon, Portugal." %}
+
+{% set title = "Hi, I'm Rami." %}
+{% set subtitle = "I'm a full-stack developer from sunny Lisbon, Portugal. 
+                I created this site to write about the cool stuff I learn, 
+                and share it with the world. 
+                My site is free and has no ads, affiliate links, 
+                or sponsored posts." %}
 
 {% block content %}
 
-<h1>Test4</h1>
+<h1>{{ title }}</h1>
+<p class="subtitle">{{ subtitle }}</p>
 
 {% endblock %}

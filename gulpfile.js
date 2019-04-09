@@ -6,6 +6,7 @@ const server = require("./gulp-tasks/browsersync.js");
 const css = require("./gulp-tasks/styles.js");
 const js = require("./gulp-tasks/scripts.js");
 const img = require("./gulp-tasks/images.js");
+const icns = require("./gulp-tasks/icons.js");
 const clean = require("./gulp-tasks/clean.js");
 const eleventy = require("./gulp-tasks/eleventy.js");
 
@@ -27,12 +28,13 @@ function watchFiles() {
 // **** Define Tasks ****
 const watch = gulp.parallel(watchFiles, server.init);
 const images = gulp.series(img.copy);
+const icons= gulp.series(icns.icons);
 const scripts = gulp.series(js.lint, js.build);
 
 // Let's build
 const build = gulp.series(
     clean.dist,
-    gulp.parallel(css.build, images, eleventy.build, scripts)
+    gulp.parallel(css.build, images, icons, eleventy.build, scripts)
 );
 
 // Build and watch during dev

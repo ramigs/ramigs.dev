@@ -1,0 +1,9 @@
+---
+layout: default
+---
+
+<h1>{{ title }}</h1>
+<p class="with-separator"><time datetime="{{ date | dateDisplay }}">Published {{ date|dateDisplay }}</time></p>
+<article class="my-article">
+  {{ content | safe }}
+</article>

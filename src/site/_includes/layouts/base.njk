@@ -4,8 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>{{ metaTitle }}
-            - ramigs</title>
+        <title>{{ metaTitle }} - ramigs</title>
         <meta name="description" content="{{ metaDescription }}">
         <meta name="author" content="Rami Shashati">
 
@@ -13,11 +12,11 @@
 
     </head>
     <body>
-        <div class="container">
+        <main class="container">
             {% include "partials/header.njk" %}
             {{ content | safe }}
             {% include "partials/footer.njk" %}
-        </div>
+        </main>
         <script src="/js/main.bundle.js"></script>
     </body>
     </html>

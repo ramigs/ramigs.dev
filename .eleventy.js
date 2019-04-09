@@ -7,12 +7,12 @@ module.exports = function (eleventyConfig) {
 
     // blogpost collection
     eleventyConfig.addCollection("posts", function (collection) {
-        return collection.getFilteredByGlob("./src/site/posts/*.md");
+        return collection.getFilteredByGlob("./src/site/posts/*.md").reverse();
     });
 
-    // Add some utiliuty filters
+    // Add some utility filters
     //eleventyConfig.addFilter("squash", require("./src/filters/squash.js"));
-    eleventyConfig.addFilter("dateDisplay", (dateObj, format = "LLL d, y") => {
+    eleventyConfig.addFilter("dateDisplay", (dateObj, format = "LLLL d, y") => {
         return DateTime.fromJSDate(dateObj, {
             zone: "utc"
         }).toFormat(format);
@@ -23,7 +23,7 @@ module.exports = function (eleventyConfig) {
 
 
     // pass some assets right through
-    //eleventyConfig.addPassthroughCopy("./src/site/images");
+    // eleventyConfig.addPassthroughCopy("./src/assets/img");
 
     return {
         templateFormats: ["njk", "md"],

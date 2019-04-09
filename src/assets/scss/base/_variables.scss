@@ -6,22 +6,24 @@
 
 /* Containers */
 
-$x-small: 600px;
+$x-small: 720px;
 $small: 800px;
-$medium: 1000px;
-$large: 1200px;
+$medium: 1200px;
+$large: 1300px;
 
 /* Breakpoints */
 
-$mobile: $x-small;
+$mobile: 850px;
 $tablet: $small;
 $desktop: $medium;
 
 /* Colors */
 
+$page-color: #f0f0f0;
+
 $background: white; 
-$primary-color: #0366EE;
-$secondary-color: #29de7d; 
+$primary-color: #f4645f;
+$secondary-color: #4fc08d; 
 $accent-color: #cdcdcd;
 $alternate-background: #fafafa;
 $alternate-color: #404040;

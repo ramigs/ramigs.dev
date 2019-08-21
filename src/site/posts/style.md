@@ -2,7 +2,8 @@
 title: Style Post
 date: 2019-04-03
 layout: layouts/post.njk
-permalink: style/index.html
+permalink: blog/{{ mySlug }}/index.html
+mySlug: style
 metaTitle: Style Demo
 metaDescription: Full-stack developer from Lisbon, Portugal.
 ---

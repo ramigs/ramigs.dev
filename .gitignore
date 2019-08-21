@@ -4,4 +4,7 @@ node_modules/
 # Build files
 dist/
 
-src/site/.DS_Store
+# macOS files
+**/.DS_Store
+
+src/site/posts/style.md

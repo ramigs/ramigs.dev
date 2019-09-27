@@ -7,7 +7,11 @@ module.exports = function (eleventyConfig) {
 
     // blogpost collection
     eleventyConfig.addCollection("posts", function (collection) {
-        return collection.getFilteredByGlob("./src/site/posts/*.md").reverse();
+        return collection.
+                    getFilteredByGlob("./src/site/posts/*.md")
+                    .filter((item) => {
+                        return 'date' in item.data;
+        });
     });
 
     // Add some utility filters

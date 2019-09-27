@@ -1,6 +1,4 @@
 {
     "layout" : "layouts/post.njk",
-    "tags" : "post",
-    "templateEngineOverride": "njk,md"
-    
-  }
+    "permalink" : "blog/{{ page.fileSlug }}/index.html"
+}

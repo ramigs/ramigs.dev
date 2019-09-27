@@ -1,24 +1,25 @@
 ---
 permalink: index.html
 layout: default
-metaTitle: Home
-metaDescription: JavaScript developer from Lisbon, Portugal.
+title: ramigs
+description: JavaScript developer from Lisbon, Portugal.
 ---
 
 {% block content %}
 
 <h1>
 Hi, I'm Rami. 
-I'm a JavaScript <strong>developer</strong> and
- <strong>technical writer</strong> from 
-sunny Lisbon, Portugal.
 </h1>
+<h2>
+I'm a JavaScript <strong>developer</strong> and <strong>technical
+writer</strong> from sunny Lisbon, Portugal.
+</h2>
 
 <p>
 Welcome to my corner on the web, where I write about the cool stuff I 
 learn and share it with the world.
 Besides coding <em>per se</em>, I also like to keep track of what's going on
-in the DevOps world.
+continuous integration and dev workflow optimization.
 </p>
 
 <div class="social-icons">
@@ -36,7 +37,7 @@ in the DevOps world.
 <h2 class="with-separator">Latest Articles</h2>
 
 <ul class="article-listing">
-{%- for page in collections.post.slice(0,5) | reverse -%}
+{%- for page in collections.posts.slice(0,5) | reverse -%}
   <li>
     <a href="{{ page.url }}">{{ page.data.title }}</a>
   </li>

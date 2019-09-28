@@ -27,7 +27,7 @@ $secondary-color: #f8c013;
 $accent-color: #cdcdcd;
 $alternate-background: #fafafa;
 $alternate-color: #404040;
-$link-color: $primary-color;
+$link-color: $secondary-color;
 $link-hover-color: darken($link-color, 15%);
 $highlight: #ffeea8;
 $error: #D33C40;
@@ -46,7 +46,7 @@ $font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Aria
 $line-height: 1.6;
 
 // Headings
-$heading-font-color: #404040;
+$heading-font-color: $primary-color;
 $heading-font-weight: 600;
 $heading-font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Arial, sans-serif;
 $heading-line-height: 1.2;

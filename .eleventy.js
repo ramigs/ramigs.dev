@@ -25,7 +25,6 @@ module.exports = function (eleventyConfig) {
     // minify the html output
     //eleventyConfig.addTransform("htmlmin", require("./src/utils/minify-html.js"));
 
-
     // pass some assets right through
     // eleventyConfig.addPassthroughCopy("./src/assets/img");
 

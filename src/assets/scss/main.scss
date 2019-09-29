@@ -31,10 +31,10 @@
 // Vendors
 @import "vendors/vendors.prism-xonokai.scss";
 
-// Customizations
+// My Customizations
 ::selection {
-    background-color: $secondary-color;
-    color: $font-color;
+  background-color: $secondary-color;
+  color: $font-color;
 }
 
 html {
@@ -43,18 +43,34 @@ html {
 }
 
 body {
-  //border-top: solid 8px mix($font-color, $primary-color, 10%);
   border-left: solid 8px mix($font-color, $primary-color, 10%);
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 .container {
+    @include small-breakpoint {
+      width: 500px;
+    }
     @include medium-breakpoint {
         width: 600px;
     }
     @include large-breakpoint {
         width: 700px;
     }
-    min-height: 100vh;
+}
+
+nav {
+  padding-top: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 4rem;
 }
 
 .nav {
@@ -63,11 +79,15 @@ body {
   
   li {
     display: inline;
+    margin-left: 4rem;
   }
   
   a {
-    display: inline-block;
-    text-align: left;
+    color: rgba(0,0,0,.45);
+    font-size: 1.1em;
+    text-align: right;
+    line-height: 1.2;
+    font-weight: 500;
     text-decoration: none;
   }
   
@@ -79,7 +99,7 @@ body {
   small {
     display: block;
     font-size: 0.8em;
-    color: mix($font-color,$page-color, 60%);
+    color: mix($font-color,$alternate-color, 60%);
   }
 }
 
@@ -89,16 +109,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-size: 1em;
-  color: $font-color;
   font-family: "Lucida Grande";
-  font-weight: 700;
-  line-height: 1.3;
+  font-weight: 600;
+  line-height: 1.4;
   strong {
-    font-weight: 600;
     color: $secondary-color;
   }
-  //text-transform: uppercase;
 }
 
 h1 {
@@ -115,7 +131,7 @@ h3 {
 
 a {
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
 
 }
   
@@ -129,7 +145,7 @@ a:focus {
   display: inline-block;
   width: 3.5rem;
   color: $link-color !important;
-  border-bottom: solid 2px mix($primary-color,$page-color, 60%);
+  border-bottom: solid 2px mix($primary-color,$alternate-color, 60%);
   text-align: center;
   font-size: 1.5rem;
   line-height: 3.5rem;
@@ -172,9 +188,9 @@ footer {
   margin-top: 6em;
   padding-top: 1em;
   padding-bottom: 2em;
-  border-top: solid 1px mix($font-color, #385780, 10%);
-  font-size: 0.7em;
-  color: mix($font-color, #385780, 40%);
+  border-top: solid 1px mix($font-color, $primary-color, 10%);
+  font-size: 0.8em;
+  color: mix($font-color, $alternate-color, 40%);
 }
 
 // Post style

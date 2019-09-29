@@ -9,7 +9,6 @@ description: Full-stack developer from Lisbon, Portugal.
 
 <h1 class="with-separator">Articles</h1>
 
-<div>
 {% for page in collections.posts %}
   {% if loop.first %}<ul class="article-listing">{% endif %}
   <li>
@@ -20,6 +19,5 @@ description: Full-stack developer from Lisbon, Portugal.
   </li>
   {% if loop.last %}</ul>{% endif %}
 {% endfor %}
-</div>
 
 {% endblock %}

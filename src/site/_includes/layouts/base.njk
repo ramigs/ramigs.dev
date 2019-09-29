@@ -12,11 +12,16 @@
 
     </head>
     <body>
-        <main class="container">
+        <div class="container">
             {% include "partials/header.njk" %}
+        </div>    
+        <main class="container">
+            
             {{ content | safe }}
-            {% include "partials/footer.njk" %}
         </main>
+        <div class="container">
+            {% include "partials/footer.njk" %}
+        </div>   
         <script src="/js/main.bundle.js"></script>
     </body>
     </html>

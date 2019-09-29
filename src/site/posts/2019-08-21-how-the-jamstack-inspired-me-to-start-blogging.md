@@ -326,8 +326,8 @@ Monolithic applications can undermine our ability to integrate with third-party
 technology and limit changes that could benefit our development workflows.
 
 >"Monolithic applications, by definition, are a single unit. This means that
->deploying a monolith to production is an all or nothing proposition." - [Jeremy
->Daly](https://www.jeremydaly.com/an-introduction-to-serverless-microservices/)
+>deploying a monolith to production is an all or nothing proposition." - *[Jeremy
+>Daly](https://www.jeremydaly.com/an-introduction-to-serverless-microservices/)*
 
 A poor development experience can be devastating for a project. It can impede
 progress and bring uncertainty. Undesired side-effects and maintenance

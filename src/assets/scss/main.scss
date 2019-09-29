@@ -43,21 +43,44 @@ html {
 }
 
 body {
-  border-top: solid 8px mix($font-color, $secondary-color, 10%);
-  border-left: solid 8px mix($font-color, $secondary-color, 10%);
+  //border-top: solid 8px mix($font-color, $primary-color, 10%);
+  border-left: solid 8px mix($font-color, $primary-color, 10%);
 }
 
 .container {
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-    text-align: left;
     @include medium-breakpoint {
         width: 600px;
     }
     @include large-breakpoint {
         width: 700px;
     }
+    min-height: 100vh;
+}
+
+.nav {
+  //padding-top: 3em;
+  padding-left: 0;
+  
+  li {
+    display: inline;
+  }
+  
+  a {
+    display: inline-block;
+    text-align: left;
+    text-decoration: none;
+  }
+  
+  a:hover,
+  a:focus {
+    color: $font-color;
+  }
+  
+  small {
+    display: block;
+    font-size: 0.8em;
+    color: mix($font-color,$page-color, 60%);
+  }
 }
 
 h1,
@@ -122,38 +145,6 @@ a:focus {
   color: $font-color !important;
 }
 
-.nav {
-  padding-top: 3em;
-  padding-left: 0;
-  
-  li {
-    display: inline;
-  }
-  
-  a:link,
-  a:visited {
-    display: inline-block;
-    padding-top: 0.8em;
-    padding-bottom: 2em;
-    margin-left: 0;
-    margin-right: 0.7em;
-    width: 8em;
-    text-align: left;
-    text-decoration: none;
-  }
-  
-  a:hover,
-  a:focus {
-    color: $font-color;
-  }
-  
-  small {
-    display: block;
-    font-size: 0.7em;
-    color: mix($font-color,$page-color, 60%);
-  }
-}
-
 .article-listing {
   list-style-type:none;
   font-size: 20px;
@@ -171,21 +162,6 @@ a:focus {
 .with-separator-top {
   border-top: 4px solid #f5f5f5;
   padding-top: .5rem;
-}
-
-.dev-icons {
-  padding: 0;
-  list-style: none;
-  font-size: 3em;
-  li {
-    display:inline;
-  }
-}
-
-.img-logo {
-  height: 30px;
-  width: auto;
-  margin-right: 0em;
 }
 
 p.article-date {

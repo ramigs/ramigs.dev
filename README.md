@@ -13,6 +13,8 @@ npm install
 
 ## TODO
 
+- SEO
+- Google Analytics
 - Responsive Navbar: make logo smaller, add margin to nav links
 - Accessibility: the link texts fail contrast check, I would choose a different way to highlight "JavaScript developer" and "technical writer" as they currently look like links. Also, the yellow on white is not accessible. Check it here: https://contrastchecker.com/
 - you should say where you are located at

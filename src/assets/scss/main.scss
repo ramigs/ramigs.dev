@@ -19,7 +19,7 @@
 @import "components/buttons";
 @import "components/forms";
 @import "components/tables";
-@import "components/navigation"; 
+@import "components/navigation";
 @import "components/layout";
 
 // Fort Awesome
@@ -33,74 +33,74 @@
 
 // My Customizations
 ::selection {
-  background-color: $secondary-color;
-  color: $font-color;
+	background-color: $secondary-color;
+	color: $font-color;
 }
 
 html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  border-left: solid 8px mix($font-color, $primary-color, 10%);
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+	border-left: solid 8px mix($font-color, $primary-color, 10%);
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
 }
 
 main {
-  flex: 1;
+	flex: 1;
 }
 
 .container {
-    @include small-breakpoint {
-      width: 500px;
-    }
-    @include medium-breakpoint {
-        width: 600px;
-    }
-    @include large-breakpoint {
-        width: 700px;
-    }
+	@include small-breakpoint {
+		width: 500px;
+	}
+	@include medium-breakpoint {
+		width: 600px;
+	}
+	@include large-breakpoint {
+		width: 700px;
+	}
 }
 
 nav {
-  padding-top: 2em;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 4rem;
+	padding-top: 2em;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin-bottom: 4rem;
 }
 
 .nav {
-  //padding-top: 3em;
-  padding-left: 0;
-  
-  li {
-    display: inline;
-    margin-left: 4rem;
-  }
-  
-  a {
-    color: rgba(0,0,0,.45);
-    font-size: 1.1em;
-    text-align: right;
-    line-height: 1.2;
-    font-weight: 500;
-    text-decoration: none;
-  }
-  
-  a:hover,
-  a:focus {
-    color: $font-color;
-  }
-  
-  small {
-    display: block;
-    font-size: 0.8em;
-    color: mix($font-color,$alternate-color, 60%);
-  }
+	//padding-top: 3em;
+	padding-left: 0;
+
+	li {
+		display: inline;
+		margin-left: 4rem;
+	}
+
+	a {
+		color: rgba(0, 0, 0, .45);
+		font-size: 1.1em;
+		text-align: right;
+		line-height: 1.2;
+		font-weight: 500;
+		text-decoration: none;
+	}
+
+	a:hover,
+	a:focus {
+		color: $font-color;
+	}
+
+	small {
+		display: block;
+		font-size: 0.8em;
+		color: mix($font-color, $alternate-color, 60%);
+	}
 }
 
 h1,
@@ -109,117 +109,121 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Lucida Grande";
-  font-weight: 600;
-  line-height: 1.4;
-  strong {
-    color: $secondary-color;
-  }
+	font-family: "Lucida Grande";
+	font-weight: 600;
+	line-height: 1.4;
+	strong {
+		color: $secondary-color;
+	}
 }
 
 h1 {
-  font-size: 1.6rem;
+	font-size: 1.6rem;
 }
 
 h2 {
-  font-size: 1.4rem;
+	font-size: 1.4rem;
 }
 
 h3 {
-  font-size: 1rem;
+	font-size: 1rem;
 }
 
 a {
-  text-decoration: none;
-  font-weight: 500;
-
+	text-decoration: none;
+	font-weight: 500;
 }
-  
+
 a:hover,
 a:focus {
-  color: $font-color;
-  text-decoration: none;
+	color: $font-color;
+	text-decoration: none;
 }
 
 .social-icons a {
-  display: inline-block;
-  width: 3.5rem;
-  color: $link-color !important;
-  border-bottom: solid 2px mix($primary-color,$alternate-color, 60%);
-  text-align: center;
-  font-size: 1.5rem;
-  line-height: 3.5rem;
-  margin-right: 1rem;
+	display: inline-block;
+	width: 3.5rem;
+	color: $link-color !important;
+	border-bottom: solid 2px mix($primary-color, $alternate-color, 60%);
+	text-align: center;
+	font-size: 1.5rem;
+	line-height: 3.5rem;
+	margin-right: 1rem;
 }
 
 .social-icons a:last-child {
-  margin-right: 0;
+	margin-right: 0;
 }
 
 .social-icons a:hover {
-  border-bottom: solid 1px $accent-color;
-  color: $font-color !important;
+	border-bottom: solid 1px $accent-color;
+	color: $font-color !important;
 }
 
 .article-listing {
-  list-style-type:none;
-  font-size: 20px;
-  padding-left: 0;
-  li {
-    padding-bottom: .4rem;
-  }
+	list-style-type: none;
+	font-size: 20px;
+	padding-left: 0;
+	li {
+		padding-bottom: .4rem;
+	}
 }
 
 .with-separator {
-  border-bottom: 4px solid #f5f5f5;
-  padding-bottom: .5rem;
+	border-bottom: 4px solid #f5f5f5;
+	padding-bottom: .5rem;
 }
 
 .with-separator-top {
-  border-top: 4px solid #f5f5f5;
-  padding-top: .5rem;
+	border-top: 4px solid #f5f5f5;
+	padding-top: .5rem;
 }
 
 p.article-date {
-  font-size: .6em;
+	font-size: .6em;
 }
 
 footer {
-  margin-top: 6em;
-  padding-top: 1em;
-  padding-bottom: 2em;
-  border-top: solid 1px mix($font-color, $primary-color, 10%);
-  font-size: 0.8em;
-  color: mix($font-color, $alternate-color, 40%);
+	margin-top: 6em;
+	padding-top: 1em;
+	padding-bottom: 2em;
+	border-top: solid 1px mix($font-color, $primary-color, 10%);
+	font-size: 0.8em;
+	color: mix($font-color, $alternate-color, 40%);
 }
 
 // Post style
 .my-article {
-  ul {
-    list-style: none; /* Remove default bullets */
-  }
-  
-  ul li::before {
-    content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
-    color: $secondary-color; /* Change the color */
-    //font-weight: bold; /* If you want it to be bold */
-    display: inline-block; /* Needed to add space between the bullet and the text */
-    width: 1em; /* Also needed for space (tweak if needed) */
-    margin-left: -1em; /* Also needed for space (tweak if needed) */
-  }
+	ul {
+		list-style: none; /* Remove default bullets */
+	}
+
+	ul li::before {
+		content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+		color: $secondary-color; /* Change the color */
+		//font-weight: bold; /* If you want it to be bold */
+		display: inline-block; /* Needed to add space between the bullet and the text */
+		width: 1em; /* Also needed for space (tweak if needed) */
+		margin-left: -1em; /* Also needed for space (tweak if needed) */
+	}
 }
 
 .normal-listing {
-  ul {
-    list-style: none; /* Remove default bullets */
-  }
-  
-  ul li::before {
-    content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
-    color: $secondary-color; /* Change the color */
-    //font-weight: bold; /* If you want it to be bold */
-    display: inline-block; /* Needed to add space between the bullet and the text */
-    width: 1em; /* Also needed for space (tweak if needed) */
-    margin-left: -1em; /* Also needed for space (tweak if needed) */
-  }
+	ul {
+		list-style: none; /* Remove default bullets */
+	}
+
+	ul li::before {
+		content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+		color: $secondary-color; /* Change the color */
+		//font-weight: bold; /* If you want it to be bold */
+		display: inline-block; /* Needed to add space between the bullet and the text */
+		width: 1em; /* Also needed for space (tweak if needed) */
+		margin-left: -1em; /* Also needed for space (tweak if needed) */
+	}
+}
+
+.my-article img {
+	max-width: 100%;
+	max-height: 100%;
 }

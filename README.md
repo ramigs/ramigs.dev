@@ -4,10 +4,9 @@ Personal website built with Eleventy and Gulp. Deployed and hosted on Netlify.
 
 ## Installation
 
-```bash
+```console
 git clone https://github.com/ramigs/ramigs
 cd ramigs
-npm
 npm install
 ```
 
@@ -24,6 +23,9 @@ npm install
 - the yellow "JavaScript developer" and "technical writer" on the landing page aren't linked to anything, while all the other yellow text does link to something. Just caught me off guard as a user a little
 - I'd consider spelling out CI/CD like you did with FAsS.
 - Also, on your **About page**, maybe remove the non-exhaustive list of things I enjoy and keep the same format where you have the heading followed by the text same as you did with **Who am I** and **Background**
+- Fixed Navbar & change Navbar style on scroll
+- Add favicon
+- Test with Lighthouse Chrome
 
 
 ## License

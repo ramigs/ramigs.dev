@@ -71,6 +71,10 @@ nav {
 	justify-content: space-between;
 	align-items: flex-start;
 	margin-bottom: 4rem;
+
+	.logo {
+		height: 80px;
+	}
 }
 
 .nav {
@@ -132,6 +136,7 @@ h3 {
 a {
 	text-decoration: none;
 	font-weight: 500;
+	transition: all .2s ease-out;
 }
 
 a:hover,

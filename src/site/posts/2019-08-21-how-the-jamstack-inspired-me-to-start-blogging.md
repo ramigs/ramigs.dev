@@ -293,8 +293,7 @@ impatient and eager for immediacy. We expect sites to load very fast, and
 quickly dismiss slow pages. 
 
 We also know that, for at least the last ten years, search engines have been
-implementing [site
-speed](https://webmasters.googleblog.com/2010/04/using-site-speed-in-web-search-ranking.html)
+implementing [site speed](https://webmasters.googleblog.com/2010/04/using-site-speed-in-web-search-ranking.html)
 factors in their ranking algorithms.
 
 With monolithic architectures and server-side rendering, all layers of the stack
@@ -402,6 +401,6 @@ Before ending my _official_ first blog post ever, I want to give a shout-out to:
 
 - [Tania Rascia](https://www.taniarascia.com), for the inspiration in terms of
   writing and presentation style.
-- [Webstoemp](https://www.webstoemp.com/), for the amazing [Gulp
+- [Webstoemp](https://www.webstoemp.com/), for the [Gulp
   workflow](https://www.webstoemp.com/blog/switching-to-gulp4/) that I've used
   as a boilerplate for the build pipeline of this site.

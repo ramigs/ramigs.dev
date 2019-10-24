@@ -2,14 +2,6 @@
 
 Personal website built with Eleventy and Gulp. Deployed and hosted on Netlify.
 
-## Installation
-
-```console
-git clone https://github.com/ramigs/ramigs
-cd ramigs
-npm install
-```
-
 ## TODO
 
 - SEO

@@ -15,7 +15,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "browserslist": [
-    "last 2 versions"
+    "> 1%",
+    "ie >= 8",
+    "edge >= 15",
+    "ie_mob >= 10",
+    "ff >= 45",
+    "chrome >= 45",
+    "safari >= 7",
+    "opera >= 23",
+    "ios >= 6",
+    "android >= 4",
+    "bb >= 10"
   ],
   "keywords": [
     "ramigs",

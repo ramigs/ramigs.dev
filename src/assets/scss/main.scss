@@ -34,7 +34,7 @@
 // My Customizations
 ::selection {
 	background-color: $secondary-color;
-	color: $font-color;
+	color: $primary-color;
 }
 
 html {
@@ -47,6 +47,7 @@ body {
 	display: flex;
 	min-height: 100vh;
 	flex-direction: column;
+	margin: auto;
 }
 
 main {
@@ -54,6 +55,7 @@ main {
 }
 
 .container {
+	width: 400px;
 	@include small-breakpoint {
 		width: 500px;
 	}
@@ -73,13 +75,27 @@ nav {
 	margin-bottom: 4rem;
 
 	.logo {
-		height: 80px;
+		height: 60px;
+		@include medium-breakpoint {
+			height: 80px;
+		}
+		@include large-breakpoint {
+			height: 100px;
+		}
 	}
 }
 
-.nav {
-	//padding-top: 3em;
+.nav-links {
+	display: flex;
+	padding-top: 4em;
 	padding-left: 0;
+	flex-direction: column;
+	@include medium-breakpoint {
+		flex-direction: column;
+	}
+	@include large-breakpoint {
+		flex-direction: row;
+	}
 
 	li {
 		display: inline;
@@ -87,12 +103,14 @@ nav {
 	}
 
 	a {
-		color: rgba(0, 0, 0, .45);
-		font-size: 1.1em;
+		font-size: 1em;
 		text-align: right;
 		line-height: 1.2;
 		font-weight: 500;
 		text-decoration: none;
+		@include small-breakpoint {
+			font-size: 1.2em;
+		}
 	}
 
 	a:hover,
@@ -116,6 +134,7 @@ h6 {
 	font-family: "Lucida Grande";
 	font-weight: 600;
 	line-height: 1.4;
+	color: $primary-color;
 	strong {
 		color: $secondary-color;
 	}
@@ -134,9 +153,10 @@ h3 {
 }
 
 a {
+	color: rgba(0, 0, 0, .45);
 	text-decoration: none;
 	font-weight: 500;
-	transition: all .2s ease-out;
+	transition: all .1s ease-in-out;
 }
 
 a:hover,
@@ -148,12 +168,12 @@ a:focus {
 .social-icons a {
 	display: inline-block;
 	width: 3.5rem;
-	color: $link-color !important;
-	border-bottom: solid 2px mix($primary-color, $alternate-color, 60%);
+	border-bottom: solid 2px $secondary-color;
 	text-align: center;
 	font-size: 1.5rem;
 	line-height: 3.5rem;
 	margin-right: 1rem;
+	margin-bottom: 1rem;
 }
 
 .social-icons a:last-child {
@@ -161,7 +181,7 @@ a:focus {
 }
 
 .social-icons a:hover {
-	border-bottom: solid 1px $accent-color;
+	border-bottom: solid 1px $primary-color;
 	color: $font-color !important;
 }
 
@@ -195,6 +215,15 @@ footer {
 	border-top: solid 1px mix($font-color, $primary-color, 10%);
 	font-size: 0.8em;
 	color: mix($font-color, $alternate-color, 40%);
+}
+
+footer a {
+	border-bottom: 2px solid $secondary-color;
+	font-weight: 600;
+}
+
+footer a:hover {
+	border-bottom: solid 1px $primary-color;
 }
 
 // Post style
@@ -231,4 +260,13 @@ footer {
 .my-article img {
 	max-width: 100%;
 	max-height: 100%;
+}
+
+.my-article a {
+	border-bottom: 2px solid $secondary-color;
+	font-weight: 600;
+}
+
+.my-article a:hover {
+	border-bottom: solid 1px $primary-color;
 }

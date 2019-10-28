@@ -270,3 +270,16 @@ footer a:hover {
 .my-article a:hover {
 	border-bottom: solid 1px $primary-color;
 }
+
+// About Me
+.profile-img-circle {
+	width: 150px;
+	height: 150px;
+	background: url(../img/cropped.png) center;
+	filter: brightness(110%);
+	border-radius: 50%;
+	float: right;
+	shape-outside: circle();
+	margin: 10px 0 30px 30px;
+	
+}

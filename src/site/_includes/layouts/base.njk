@@ -1,8 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-150916583-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-150916583-1');
+        </script>
+
         <meta charset="UTF-8">
-        
+
         <!-- Favicon stuff -->
         <link rel="apple-touch-icon" sizes="180x180" href="/img/logos/favicon/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/img/logos/favicon/favicon-32x32.png">
@@ -15,7 +27,8 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>ramigsDev | {{ title }}</title>
+        <title>ramigsDev |
+            {{ title }}</title>
         <meta name="description" content="{{ description }}">
         <meta name="author" content="Rami Shashati">
 
@@ -25,14 +38,14 @@
     <body>
         <div class="container">
             {% include "partials/header.njk" %}
-        </div>    
+        </div>
         <main class="container">
-            
+
             {{ content | safe }}
         </main>
         <div class="container">
             {% include "partials/footer.njk" %}
-        </div>   
+        </div>
         <script src="/js/main.bundle.js"></script>
     </body>
-    </html>
+</html>

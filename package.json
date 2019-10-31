@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ramigs/ramigs"
+    "url": "https://github.com/ramigs/ramigs.dev"
   },
   "scripts": {
     "dev": "gulp dev",

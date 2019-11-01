@@ -113,11 +113,6 @@ nav {
 		}
 	}
 
-	a:hover,
-	a:focus {
-		color: $font-color;
-	}
-
 	small {
 		display: block;
 		font-size: 0.8em;
@@ -281,5 +276,4 @@ footer a:hover {
 	float: right;
 	shape-outside: circle();
 	margin: 10px 0 30px 30px;
-	
 }

@@ -12,11 +12,11 @@ Pull requests allow you to let others know about features and fixes that you'd
 like to add to a [GitHub](https://github.com/) project repository.
 
 Once you open a pull request, you'll be able to discuss and review your proposed
-changes with other collaborators, and add more commits, before your changes are
-merged into the base branch.
+changes with other collaborators, adding more commits if necessary, before your
+changes are merged into the base branch.
 
-With a pull request, your changes are proposed in a new branch, which
-ensures that the master branch only contains finished and approved work.
+With a pull request, your changes are proposed in a new branch, which ensures
+that the master branch only contains finished and approved work.
 
 In this short guide, I'll describe the basic process of submitting a pull
 request on GitHub.
@@ -30,18 +30,17 @@ request on GitHub.
 ## Fork the repository
 
 Sign-in to your GitHub account and fork the repository of the project you'd like
-to contribute to.
+to contribute to:
 
 ![Fork the repository](/img/articles/2019-11-01-fork_repo.png)
 
-This creates a new repository copy, separate from the original codebase. This
-copy is owned by you and you can modify it as you please, it will not
-interfere with the original project.
+This creates a new repository copy, separate from the original codebase, owned
+by you. Modify it as you please, it will not interfere with the original
+project.
 
 ## Clone the repository
 
-Download a local version of the project, by cloning the repository you've
-forked.
+Download a local project codebase, by cloning the repository you've forked:
 
 ```bash
 git clone https://github.com/ramigs/JavaScript30-1.git
@@ -62,7 +61,7 @@ cd JavaScript30-1/
 A git branch is simply a divergent line of development, a pointer to a different
 version of the codebase.
 
-Create a new branch where you´ll add your changes. Give it a suggestive name,
+Create a new branch where you´ll make your changes. Give it a suggestive name,
 related to what the pull request intends to fix:
 
 ```bash
@@ -71,12 +70,13 @@ git checkout -b fix-challenge-12-cornify-https
 
 ## Add your changes
 
-Go ahead and implement locally your fix or new feature .
+Go ahead and implement your fix or new feature locally.
 
 ## Confirm build, tests and docs
 
 Make sure the changes you've made, still keep the build process running
-correctly. Run tests, if there any, and regenerate the documentation if necessary.
+correctly. Run tests, if there are any, and update/regenerate the documentation,
+if necessary.
 
 Most importantly, follow the contributing guidelines of the project.
 
@@ -112,10 +112,10 @@ git commit -m "Replacing http by https in cornify.js import, to avoid insecure m
 git push origin fix-challenge-12-cornify-https
 ```
 
-When the push executes, go to your forked repo on GitHub, where GitHub will
+When the push executes, browse to your forked repo on GitHub, where GitHub will
 recognize the branch you've just pulled.
 
-Go ahead and click:
+Go ahead and click **Compare & Pull Request**:
 
 ![Push your branch to GitHub](/img/articles/2019-11-01-compare_and_pull_request.png)
 
@@ -128,8 +128,8 @@ your message, and you're ready to open your pull request:
 
 Congratulations! You've just submitted your pull request.
 
-A notification was sent to the owner of the repository, requesting to **merge**
-the changes you've made.
+A notification was sent to the owner of the repository, with a request to
+**merge** the changes you've made.
 
-Now, the owner of the repository will validate your changes, and if everything
+Now, the owner of the repository will review your changes, and if everything
 goes well, merge them with the main branch of the project.

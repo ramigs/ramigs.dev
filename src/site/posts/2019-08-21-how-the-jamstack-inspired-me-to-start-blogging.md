@@ -77,7 +77,7 @@ to non-technical authors.
 
 Around 2008 or 2009, I remember trying to set up a blog. I wanted to learn how
  to host it myself. I had this noisy old computer in my room, running
- [Ubuntu](https://ubuntu.com/), where I did some experiments with
+ [Ubuntu](https://ubuntu.com/), where I started to do some experiments with
  [Joomla](https://www.joomla.org/). 
  
  Let me pause for a moment and try to recall the steps I had to take:
@@ -95,19 +95,20 @@ Nothing seemed to fit with what I was looking for. When I tried to change or
 customize something, somehow I always ended with a broken site.
 
 Mind you, I have to admit I was very inexperienced as a developer at the time.
-Nevertheless, it didn't feel as if setting up a blog should be so difficult.
+Nevertheless, it didn't feel as if setting up a blog should be that difficult.
 
 Throughout my professional journey I've encountered numerous Wordpress sites.
 I've seen and been involved in projects where it was being used for diverse use
 cases. In many, it seemed like Wordpress was being selected without much
-consideration - besides market popularity - to what the project actually needed.
+consideration - besides market popularity - in terms of what the project
+actually needed.
 
 > "Regardless of how much experience you have, while designing a system, your
 > priority should be meeting all the requirements with the least complexity." -
 > *[Zlatin Stanimirovv](https://simpleprogrammer.com/modern-software-design/)*
 
 For some of the projects, which simply served as brochure sites, Wordpress's
-complexity and extended functionality, was a clear overkill.
+complexity and extended functionality was a clear overkill.
 
 ### Drawbacks of having content stored in a database
 
@@ -118,7 +119,7 @@ database. The database introduces an additional layer of complexity.
 
 For each and every request a client makes to the CMS, content has to be
 retrieved from the database. Then, through the template engine, it's rendered
-into HTML. Lastly, the response is sent across the network to the browser that
+into HTML. Finally, the response is sent across the network to the browser that
 requested it.
 
 To lighten the overhead, many web architectures end up resorting to caching
@@ -126,15 +127,15 @@ mechanisms, so that the load on the database can be reduced. Well implemented
 caching schemes require complex setups. Improvement in performance comes at the
 cost of added **complexity to the development process**. Also, if for whatever
 reason you decide to migrate to a new CMS, you'd have to take into account the
-**technical costs** involved in exporting, transforming and importing the data
+**technical cost** of exporting, transforming and importing the data
 to the new CMS.
 
-With this type of architectures, web/application servers repeatedly need to
+With this type of architectures, web/application servers **repeatedly** need to
 consult the database and build the page for each request. But, what if the
 **content didn't even change**? Should we really be taking all these steps to
 produce the resulting HTML every time? In a CMS, for example, posts are not
 expected to change that much. Is there any way to improve **performance**, by
-avoiding the repetition of these steps when not required?
+avoiding the repetition of these steps when it's not required?
 
 ### Dealing with infrastructure
 
@@ -145,9 +146,9 @@ All of those things take away a lot of time that should be put into crafting and
 delivering great websites and applications, not on server setup and
 administration.
 
-Unless we find ways to delegate/outsource such tasks to the experts, automating
-and streamlining our development workflows for better productivity will be
-much more complicated.
+Unless we find ways to delegate/outsource such tasks and *stand on the shoulders
+of giants*, automating and streamlining our development workflows for better
+productivity will be much more complicated.
 
 Fortunately, JAMstack architectures integrate wonderfully with the rising PaaS
 (Platform as a Service) and IaaS (Infrastructure as a Service) ecosystems.
@@ -158,10 +159,11 @@ JAMstack is a modern web development architecture that delivers better
 performance, higher security, and lower cost of scaling. 
 
 It's not defined by specific technologies or standards - although it encourages
-us to leverage the progressing capabilities of client-side JavaScript. It's more
-like a movement towards an architectural pattern, a set of best practices and
-development workflows that combine well together and improve the experience
-for both users and developers.
+us to leverage the progressing capabilities of client-side JavaScript. 
+
+The JAMstack is more like a movement towards an architectural pattern, a set of
+best practices and development workflows that combine well together and improve
+the experience for both users and developers.
 
 JAMstack stands for:
 
@@ -175,7 +177,7 @@ steps of a typical JAMstack workflow:
 1. The source is hosted in a repository that stores **content and code
    together** as editable text files.
 1. Whenever a change is pushed to the repository, a build process is triggered,
-   pre‐rendering the site, creating the final HTML from layouts and content.
+   the site is pre-rendered, and the final HTML is created from layouts and content.
 1. The pre-built site and prepared assets are published globally on a
    [CDN](https://en.wikipedia.org/wiki/Content_delivery_network) (Content
    Delivery Network), putting them as close to end users as physically possible.
@@ -183,9 +185,9 @@ steps of a typical JAMstack workflow:
 ### Content Delivery Network
 
 A CDN consists of a series of servers distributed all around the globe, linked
-together. In order to improve response and request speed - reducing latency - a
-CDN distributes website assets (HTML, JavaScript, CSS, and media) so that they
-are reasonably near physically - to every user that might want to access the
+together. In order to improve response speed - reducing latency - a CDN
+distributes website assets (HTML, JavaScript, CSS, and media) so that they are
+reasonably physically near - to every user that might want to access the
 website.
 
 ### Static Site Generators
@@ -193,8 +195,8 @@ website.
 Typically, the build process of a JAMstack website will be executed by a SSG
 (Static Site Generator).
 
-A SSG retrieves (1) frontend code (CSS/JavaScript assets) and (2) content from
-regular text files (in some structured format, such as
+A SSG retrieves both (1) frontend code (CSS/JavaScript assets) and (2) content
+from regular text files (in some structured format, such as
 [Nunjucks](https://mozilla.github.io/nunjucks/) or
 [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)),
 and builds a _static_ site.
@@ -202,10 +204,10 @@ and builds a _static_ site.
 It's important to not misunderstand the meaning of _static_ in this context. It
 should not be interpreted as in _static_ vs _dynamic_ user interfaces, but more
 as in straight HTML/CSS/JavaScript, that doesn't need any application server or
-database to run properly. A simple web server is enough.
+database, in order to run properly. A simple web server is enough.
 
 With the disassembling of monolithic architectures and the separation of build,
-deploy, and runtime - SSGs started to gain prominence mainly through
+deploy, and runtime - SSGs started to gain prominence, mainly through
 [Jekyll](https://jekyllrb.com/), [Hugo](https://gohugo.io/),
 [11ty](https://www.11ty.io/), [Gatsby](https://www.gatsbyjs.org/), and
 [others](https://www.staticgen.com).
@@ -221,27 +223,27 @@ deliver to the client.
 
 One solution is to proxy these requests through **microservices**. Microservice
 architectures allow developers to build applications out of modular, smaller
-components and integrate them with third-party services.
+components and integrate with third-party services.
 
 Frontend JavaScript acts as the glue, orchestrating microservices together, and
 giving us the ability to enrich our applications with additional functionality,
 that was generally provided through plugin ecosystems, inside monolithic CMSs.
 
-By separating different services into smaller microservices with well-defined
+By separating different services into smaller microservices, with well-defined
 purposes, we can better comprehend the system globally, instead of having to
 understand the inner complexities of each individual service.
 
 Need image processing added to your workflow? Search functionality? E-commerce?
-The pervasiveness of service APIs allows us to _outsource_ and delegate these
+The pervasiveness of service APIs allows us to outsource and delegate these
 responsibilities to expert [service
-providers](https://serverless.css-tricks.com/services/major/) instead of having
+providers](https://serverless.css-tricks.com/services/major/), instead of having
 to write our own implementations.
 
 ### Headless CMSs as editor-friendly UIs
 
 While it's easy to picture developers editing text files locally and pushing
-them to GitHub via command-line, what about content editors who aren’t
-developers and might not be familiar with Git and Markdown? For a non-technical
+them to GitHub through the command-line, what about content editors who aren’t
+developers and might not be familiar with Git and Markdown? For non-technical
 users, such workflows may not be the best solution at all.
 
 The JAMstack has fathered a new generation of content editing
@@ -250,7 +252,7 @@ function like traditional CMSs, but actually push changes into version control
 repositories.
 
 In this way, everyone can participate in the same workflow, enjoying the
-benefits of modern version control software — even if unaware that's what's
+benefits of modern version control software — even if unaware about what's
 happening behind the scenes.
 
 ## Benefits of using a JAMstack architecture
@@ -272,7 +274,7 @@ significantly diminished. The runtime technology cost simply becomes the cost of
 serving static HTML/CSS/JavaScript files.
 
 This surely doesn't mean that applications and services are now suddenly running
-on the ether, instead of physical servers. You're probably familiar with the
+on the ether, and not on physical servers. You're probably familiar with the
 running joke about how the cloud is just "someone else's computer".
 
 >"Now we have an architectural pattern that utilizes a compute model that
@@ -283,8 +285,8 @@ running joke about how the cloud is just "someone else's computer".
 
 The important aspect, in my opinion, is that we can now delegate infrastructure
 management as on-demand services (network, operating systems, storage, security,
-and scaling). This way, we can focus only on solving the business requirements
-of our projects, and significantly improve effort allocation for dev teams.
+and scaling). This way, we are able to focus only on solving the business requirements
+of our projects, and significantly improve effort allocation of dev teams.
 
 ### Performance
 
@@ -293,7 +295,7 @@ impatient and eager for immediacy. We expect sites to load very fast, and
 quickly dismiss slow pages. 
 
 We also know that, for at least the last ten years, search engines have been
-implementing [site speed](https://webmasters.googleblog.com/2010/04/using-site-speed-in-web-search-ranking.html)
+incorporating [site speed](https://webmasters.googleblog.com/2010/04/using-site-speed-in-web-search-ranking.html)
 factors in their ranking algorithms.
 
 With monolithic architectures and server-side rendering, all layers of the stack
@@ -303,18 +305,18 @@ So, instead of having each HTTP request build the entire page on the fly, we can
 instead deliver it directly to the client. This is a great way to minimize our
 **time to first byte**.
 
-With the help of the **asynchronous capabilities of JavaScript**, we can start
+Through the **asynchronous capabilities of JavaScript**, we can start
 to think in a more modular way, having greater control over the data flow of our
 applications.
 
 ### Security
 
 Securing a traditional monolithic CMS involves continuous monitoring and effort.
-The server/infrastructure needs to be managed and kept up to date. Security
+The server/infrastructure needs to be managed and kept up-to-date. Security
 patches need to be applied to Wordpress sites, each time a new security issue is
 announced.
 
-JAMstack applications benefit from a smaller and simpler stack when compared to
+JAMstack applications benefit from a smaller and simpler stack, when compared to
 traditional architectures - with their various servers and databases. By
 minimizing the number of layers, we also narrow down the attack surface area. If
 _there is no_ backend, there is much less that can go wrong.
@@ -322,7 +324,7 @@ _there is no_ backend, there is much less that can go wrong.
 ### Workflow flexibility
 
 Monolithic applications can undermine our ability to integrate with third-party
-technology and limit changes that could benefit our development workflows.
+technology, and impede changes that could benefit our development workflows.
 
 >"Monolithic applications, by definition, are a single unit. This means that
 >deploying a monolith to production is an all or nothing proposition." - *[Jeremy
@@ -344,20 +346,20 @@ Decoupling frontend from server functionality allows for better productivity, as
 different teams can focus on different parts of the project.
 
 Decoupling build, deploy, and runtime offers a clear separation between the
-workflow processes - making it much easier to develop and maintain the project.
+workflow processes - making it much easier to develop and maintain.
 
 What I like the most about these type of workflows:
 
 - **Easy local dev environment**. Simply consists of cloning the repository,
   installing the dependencies, and running a local web server.
 - Integration with **continuous deployment tools**, HTTPS and domain
-  configuration all in the **same workflow**.
-- **Working with text files**. Markdown allows full control over content.
+  configuration, all in the **same workflow**.
+- **Working with text files**, which allows full control over content.
 - **Atomic deploys**. The new version only goes live when everything is ready
-  and all the assets can be served. No more FTP uploads. Trivial to roll back to
-  any state, at any time. Complex staging environments are no longer needed, as
-  previewing and testing changes can be done using Git's branching system and
-  Netlify's workflow.
+  and all the assets can be served. No more error-prone FTP uploads. Trivial to
+  roll back to any state, at any time. Complex staging environments are no
+  longer needed, as previewing and testing changes can be done through Git's
+  branching system and Netlify's workflow.
 
 ### Netlify and workflow automation
 
@@ -365,14 +367,14 @@ What I like the most about these type of workflows:
 exploring lately. It lets me automate the entire workflow for my frontend web
 projects. 
 
-In a nutshell, a Netlify site is connected to a Git repository, and every time a
-change is pushed, a build tool (such as Gulp) is triggered. A new version of the
-website is generated and Netlify automatically deploys and publishes it through
-a CDN.
+In a nutshell, a Netlify site is connected to a Git repository. Every time a
+change is pushed, a build tool (such as `npm` or `gulp`) is triggered. A new
+version of the website is generated, and Netlify automatically deploys and
+publishes it through a CDN.
 
-Apply it to your workflow and no more wrestling with hosting, deployment
-rollbacks, securing, and scaling. A simple push to Git and the deploy just takes
-care of itself. Really cool!
+Add Netlify to your workflow and no more wrestling with hosting, deploy
+rollbacks, securing, and scaling. A simple push to Git and it just takes care of
+itself. Really cool!
 
 ## Wrapping up
 
@@ -380,7 +382,7 @@ The JAMstack contributes to a better developer experience, which leads to higher
 productivity, happier teams, and a more stable ground for innovation at all
 dimensions of a project.
 
-As a developer, I chose to go with the JAMstack approach, which allows total
+As a developer, I chose to go with the JAMstack approach, which gives me total
 workflow flexibility and ownership over my content. 
 
 At the end of the day, striving for better content creation is easier when we
@@ -388,7 +390,7 @@ have full control. The JAMstack makes this possible - and as a bonus, it also
 contributes to a faster, more stable and secure web experience for both users
 and developers.
 
-If you're interested to know more about the JAMstack, I recommend a great book
+If you're interested to learn more about the JAMstack, I recommend a great book
 called [Modern Web Development on the
 JAMstack](https://www.netlify.com/oreilly-JAMstack/), by [Mathias
 Biilmann](https://github.com/biilmann) & [Phil
@@ -401,6 +403,6 @@ Before ending my _official_ first blog post ever, I want to give a shout-out to:
 
 - [Tania Rascia](https://www.taniarascia.com), for the inspiration in terms of
   writing and presentation style.
-- [Webstoemp](https://www.webstoemp.com/), for the [Gulp
-  workflow](https://www.webstoemp.com/blog/switching-to-gulp4/) that I've used
-  as a boilerplate for the build pipeline of this site.
+- [Webstoemp](https://www.webstoemp.com/), for the amazing [Gulp
+  pipeline](https://www.webstoemp.com/blog/switching-to-gulp4/), which I'm using
+  as a boilerplate for building this site.

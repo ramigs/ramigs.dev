@@ -9,7 +9,7 @@ description: Full Stack Developer from Lisbon, Portugal.
 
 <h1 class="with-separator">Articles</h1>
 
-{% for page in collections.posts %}
+{% for page in collections.posts | reverse %}
   {% if loop.first %}<ul class="article-listing">{% endif %}
   <li>
     <article>

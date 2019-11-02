@@ -1,7 +1,7 @@
 ---
 date: 2019-11-01
 title: Creating a Pull Request on GitHub
-description: Step-by-step guide on how to submit a Pull Request on GitHub
+description: Step-by-step guide on how to open a Pull Request on GitHub
 slug: creating-a-pull-request-on-github
 tags:
     - github
@@ -126,10 +126,10 @@ your message, and you're ready to open your pull request:
 
 ![Create Pull Request](/img/articles/2019-11-01-create_pull_request.png)
 
-Congratulations! You've just submitted your pull request.
+Congratulations 🎉! You've just submitted your pull request.
 
 A notification was sent to the owner of the repository, with a request to
-**merge** the changes you've made.
+**merge** the changes.
 
 Now, the owner of the repository will review your changes, and if everything
 goes well, merge them with the main branch of the project.

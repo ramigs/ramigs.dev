@@ -399,7 +399,7 @@ JAMstack.
 
 ## Acknowledgements
 
-Before ending my _official_ first blog post ever, I want to give a shout-out to:
+Before ending my _official_ first blog post ever 🚀, I want to give a shout-out 📣 to:
 
 - [Tania Rascia](https://www.taniarascia.com), for the inspiration in terms of
   writing and presentation style.

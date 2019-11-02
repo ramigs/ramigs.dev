@@ -106,7 +106,7 @@ git add .
 git commit -m "Replacing http by https in cornify.js import, to avoid insecure mixed content issues in some hosting providers"
 ```
 
-### Push your branch to GitHub
+## Push your branch to GitHub
 
 ```bash
 git push origin fix-challenge-12-cornify-https
@@ -119,7 +119,7 @@ Go ahead and click **Compare & Pull Request**:
 
 ![Push your branch to GitHub](/img/articles/2019-11-01-compare_and_pull_request.png)
 
-### Open pull request
+## Open pull request
 
 One last confirmation to the changes you're adding, to the subject and body of
 your message, and you're ready to open your pull request:

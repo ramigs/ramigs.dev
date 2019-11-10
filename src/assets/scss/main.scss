@@ -156,6 +156,7 @@ a {
 
 a:hover,
 a:focus {
+	outline: none;
 	color: $font-color;
 	text-decoration: none;
 }

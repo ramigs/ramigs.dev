@@ -154,11 +154,16 @@ a {
 	transition: all .1s ease-in-out;
 }
 
-a:hover,
-a:focus {
-	outline: none;
+a:hover {
 	color: $font-color;
 	text-decoration: none;
+}
+
+a:focus {
+	outline: 2px solid $primary-color;
+	outline-offset: 4px;
+	text-decoration: none;
+	border: 0;
 }
 
 .social-icons a {
@@ -179,6 +184,10 @@ a:focus {
 .social-icons a:hover {
 	border-bottom: solid 1px $primary-color;
 	color: $font-color !important;
+}
+
+.social-icons a:focus {
+	border: 0;
 }
 
 .article-listing {

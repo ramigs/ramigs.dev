@@ -276,6 +276,10 @@ footer a:hover {
 	border-bottom: solid 1px $primary-color;
 }
 
+.my-article a:focus {
+	border: 0;
+}
+
 // About Me
 .profile-img-circle {
 	width: 150px;

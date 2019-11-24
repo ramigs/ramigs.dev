@@ -84,7 +84,7 @@ Important notes about this solution, which became now, clearer to me:
 - the use of method `Object.prototype.hasOwnProperty()` to check whether the
   object already has the specified element as property.
 - the function that's passed to `reduce()` has to return the accumulator.
-- the second parameter of `Array.prototype.reduce()`, an empty object `{}`, as
+- the second parameter of `reduce()`, an empty object `{}`, as
   the initial value that is assigned to the accumulator.
 
 During my research for this article, I've

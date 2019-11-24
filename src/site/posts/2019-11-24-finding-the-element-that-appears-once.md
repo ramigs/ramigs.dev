@@ -54,11 +54,11 @@ I immediately remembered doing something similar before, so I knew
 `Array.prototype.reduce()` was the way to go.
 
 As I started to implement, I took a bit too much time to figure up the function
-I needed to pass to `Array.prototype.reduce()` and I didn't get the chance to
+I needed to pass to `reduce()` and I didn't get the chance to
 finish.
 
 So, here I am to complete this challenge and improve my understanding on how
-`Array.prototype.reduce()` operates 😉.
+`reduce()` operates 😉.
 
 This solution has time complexity O(n) and consists of using a hash map to store
 the count of each element. Then, it iterates through the keys and returns the

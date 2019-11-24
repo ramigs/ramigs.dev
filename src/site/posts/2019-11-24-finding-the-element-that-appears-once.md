@@ -26,7 +26,7 @@ Exercise 2 was a bit trickier for me.
 
 The most obvious, brute force solution, consists of two nested loops, where each
 element in the array is compared with all the other elements, in order to find
-which element is not repeated. Time complexity of this solution is O(n^2).
+which element is not repeated. **Time complexity** of this solution is O(n^2).
 
 I wanted to avoid an answer with such time complexity - also didn't want to
 write two nested `for` loops. So, my first instinct was to look for a higher
@@ -92,8 +92,8 @@ During my research for this article, I've
 that this challenge can also be solved efficiently, with time complexity O(n),
 using the operator XOR.
 
-In fact, it can even be considered more efficient, since in terms of space
-complexity it has O(1), whilst the hashing solution has O(n).
+In fact, it can even be considered more efficient, since in terms of **space
+complexity** it has O(1), whilst the hashing solution has O(n).
 
 ```js
 function findElementOnce(arr) {

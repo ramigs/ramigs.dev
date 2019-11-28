@@ -4,6 +4,7 @@ Website and tech-blog built with Eleventy and Gulp. Deployed and hosted on Netli
 
 ## TODO
 
+- Review responsive behaviour (content size, margins, etc.)
 - SEO best-practices: learn and implement
 - Add JAMstack comment engine
 https://github.com/philhawksworth/jamstack-comments-engine

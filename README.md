@@ -4,6 +4,7 @@ Website and tech-blog built with Eleventy and Gulp. Deployed and hosted on Netli
 
 ## TODO
 
+- Add Strapi Talk somewhere
 - Review responsive behaviour (content size, margins, etc.)
 - SEO best-practices: learn and implement
 - Add JAMstack comment engine

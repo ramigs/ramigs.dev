@@ -4,8 +4,9 @@ Website and tech-blog built with Eleventy and Gulp. Deployed and hosted on Netli
 
 ## TODO
 
-- Add Strapi Talk somewhere
+- Add Strapi Talk somewhere && 11ty sites
   https://www.sarasoueidan.com/speaking/
+- Add "Edit on GitHub" and "Discuss/Share on Twitter" links to blog posts
 - Fix mobile navbar links
 - Add SVG tech logos
   https://worldvectorlogo.com/search/javascript

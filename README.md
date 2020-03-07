@@ -7,6 +7,7 @@ Website and tech-blog built with Eleventy and Gulp. Deployed and hosted on Netli
 - Add Strapi Talk somewhere && 11ty sites
   https://www.sarasoueidan.com/speaking/
 - Add "Edit on GitHub" and "Discuss/Share on Twitter" links to blog posts
+- Add "TIL" (Today I learned). Idea from @mmatuzo
 - Fix mobile navbar links
 - Add SVG tech logos
   https://worldvectorlogo.com/search/javascript

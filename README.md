@@ -9,6 +9,7 @@ Website and tech-blog built with Eleventy and Gulp. Deployed and hosted on Netli
 - Add "Edit on GitHub" and "Discuss/Share on Twitter" links to blog posts
 - Add "TIL" (Today I learned). Idea from @mmatuzo
 - Fix mobile navbar links
+- Confirm if Google Analytics filter to exclude localhost is working
 - Add SVG tech logos
   https://worldvectorlogo.com/search/javascript
 - Review responsive behaviour (content size, margins, etc.)
@@ -22,6 +23,8 @@ Website and tech-blog built with Eleventy and Gulp. Deployed and hosted on Netli
 - Navbar/logo style: update on scroll
   https://growfox.co.uk/
 - Test with Lighthouse Chrome
+- Packaging (headline, images; leading image; formatting, platform)
+  https://www.youtube.com/watch?v=YODPgBadj80
 
 ## License
 

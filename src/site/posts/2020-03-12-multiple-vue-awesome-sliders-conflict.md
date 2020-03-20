@@ -1,5 +1,4 @@
 ---
-date: 2020-03-11
 title: Multiple instances of vue-awesome-swiper in Nuxt.js
 description: Fixing conflicts between multiple vue-awesome-swiper instances in Nuxt.js
 slug: multiple-vue-awesome-sliders-conflict

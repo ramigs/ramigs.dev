@@ -1,5 +1,4 @@
 ---
-date: 2020-03-11
 title: Configuring a JavaScript
 description: JavaScript solution to Finding the element that appears once in an array problem
 slug: finding-the-element-that-appears-once

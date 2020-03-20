@@ -1,5 +1,4 @@
 ---
-date: 2020-03-07
 title: Three months of Nuxt.js - A Retrospective
 description: Reviewing Nuxt.js for production
 slug: nuxt-review

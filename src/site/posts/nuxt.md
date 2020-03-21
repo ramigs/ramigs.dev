@@ -1,6 +1,6 @@
 ---
-title: Three months of Nuxt.js - A Retrospective
-description: Reviewing Nuxt.js for production
+title: Three months of Nuxt.js in Production - A Restrospective
+description: Reviewing Nuxt.js after the first three months in a production setting
 slug: nuxt-review
 tags:
   - nuxtjs

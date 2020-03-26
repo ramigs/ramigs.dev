@@ -26,6 +26,8 @@ Website and tech-blog built with Eleventy and Gulp. Deployed and hosted on Netli
 - Test with Lighthouse Chrome
 - Packaging (headline, images; leading image; formatting, platform)
   https://www.youtube.com/watch?v=YODPgBadj80
+- Add Open Graph
+  https://www.freecodecamp.org/news/what-is-open-graph-and-how-can-i-use-it-for-my-website/
 
 ## License
 

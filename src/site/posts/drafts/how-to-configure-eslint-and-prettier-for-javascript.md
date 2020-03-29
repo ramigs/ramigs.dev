@@ -40,6 +40,13 @@ tags:
   Estas têm precedência sobre as configurações globais dos editores, de modo a garantir
   que trabalhamos todos sobre a mesma base.
 
+https://prettier.io/docs/en/integrating-with-linters.html#eslint
+https://blog.theodo.com/2019/08/why-you-should-use-eslint-prettier-and-editorconfig-together/
+https://medium.com/javascript-scene/streamline-code-reviews-with-eslint-prettier-6fb817a6b51d
+https://dev.to/fridanyvall/nuxt-js-with-eslint-in-vs-code-1ne2
+https://medium.com/the-node-js-collection/why-and-how-to-use-eslint-in-your-project-742d0bc61ed7
+https://medium.com/@gogl.alex/how-to-properly-set-up-eslint-with-prettier-for-vue-or-nuxt-in-vscode-e42532099a9c
+
 Setting up automated lint and code style for JavaScript projects
 set up some tools to help maintain consistency in a codebase used by multiple developers
 

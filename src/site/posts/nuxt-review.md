@@ -1,7 +1,7 @@
 ---
 date: 2020-03-21
 title: Three months of Nuxt.js in Production - A Restrospective
-description: Reviewing Nuxt.js after the first three months using it in a production setting
+description: Reviewing Nuxt.js after the first three months working with it in a production setting
 slug: nuxt-review
 tags:
   - nuxtjs

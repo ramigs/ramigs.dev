@@ -9,252 +9,360 @@ tags:
   - javascript
 ---
 
-In this article, I want to reflect and share my experience on working with
-[Nuxt.js](https://nuxtjs.org/), pretty much on a daily basis, in a continuous
-delivery production project/setting, over the past three months.
+In this article, I want to reflect and share my experience working with
+[Nuxt.js](https://nuxtjs.org/), over the past three months, pretty much on a
+daily basis, in a continuous delivery production setting.
 
-Hopefully, I'll also be able to reignite my writing habit back on track, as I've
-haven't had much opportunity to do so lately. been fully focused on
+Now that the project is approaching the finish line, it's time to pause and
+review its centerpiece tool and how it contributed to its successful completion.
 
-Now that the project is approaching the finish line, It's time to reflect on
-this period and the massive evolution. collect and review my thoughts
+This won't be a Nuxt.js technical tutorial. There are lot of excellent resources
+around. I’m not going to examine it in depths, I just want to focus on my
+journey as a developer, experimenting with the framework for the first time and
+using it right away in a _real-world_ project.
 
-This won't be a Nuxt.js tutorial. There are lot of excellent resources around.
-I’m not going to review it in depths, I just want to focus on my experience
-using the framework, from the perspective of a developer trying it out for the
-first steps exploring the ecosystem time and using it for a real-world project
-with advanced requirements. and share some cool plugins I've discovered along
-the way.
+Hopefully, I'll also be able to reignite my writing habit and get back on track,
+as I haven't had much opportunity to do so lately.
 
 ## What led me to Nuxt.js
 
-In December 2019, I began working with a client, in a project where I was
-responsible for choosing the tech-stack for frontend with extremely tight
-deadlines.
+Three months ago, I began working with a new client, where I was asked to choose
+the frontend stack for a project that was about to begin.
 
-Fortunately, by the same time, I started to participate in a project at the
-amazing [freecodecamp Lisbon](https://freecodecamplisbon.org/) community, where
-I was introduced to Nuxt.js. It couldn't have come at a better time.
+My client's end-client is a media platform, and the goal was to revamp their
+website, giving it a more modern/responsive look and feel. The project had two
+top-level requirements. One, was to allow them to showcase their huge media
+catalogue. The other, was to feature a new area, something very similar to a
+classical TV guide, scheduling the airing of their programmes.
 
-I have to admit I was a bit apprehensive to see how it handled a real project to
-fully explore how it handles the complexity.
+At the time, I had been reading and learning about the concept of
+[JAMstack](https://ramigs.dev/blog/how-the-jamstack-inspired-me-to-start-blogging/).
+I had built a couple of personal projects - such as this website, just to test
+the waters. Maybe this could be the opportunity to apply it professionally for
+the first time.
 
-So I started to read more about it and go through some tutorials, As I didn't
-have a lot time, I had to make a decision.
+The media catalogue seemed an appropriate use case for a static site. The
+content would probably not change that much over time. Could we pass on the
+heavy lifting to the build process and serve a blazing fast static site from a
+CDN?
 
-The project is now getting close to being finished, so this is a good time to
-pause, and see how the experience has been.
+What about the TV guide feature? We'd certainly have to call some API for that.
+But what if the data changes too often? We wouldn't want to keep re-building the
+website all the time. This was the exploration phase, and besides top-level
+requirements, almost everything else was unclear. There were a lot of questions
+and not so many answers. I knew we should obviously decouple frontend and
+backend, but not much more than that.
 
-## Project Requirements
+Although the end-client did not mention it initially, I was already starting to
+anticipate that **web analytics** and **SEO** (Search Engine Optimization)
+would be very important, so at that point I was already leaning towards a static
+or SSR approach.
 
-Although I can't share too specific details about the project, I'll try to give
-an overview of the scope and top level requirements.
+By happy chance, in the meanwhile, I also started to participate in a project
+alongside the amazing [freecodecamp Lisbon](https://freecodecamplisbon.org/)
+community, where I was introduced to Nuxt.js. It couldn't have come at a better
+time!
 
-Media channel showcase their catalogue and a TV Listing
-would be frequently updated fetch this info from an API
+I started to learn more about Nuxt, going through some tutorials, and asking
+for help and tips. I was from the get-go very impressed with how fast I was
+prototyping and building.
 
-launch something really fast
+I have to admit I was a bit apprehensive to see how it would handle the
+complexities of a _real project_. I didn't have the time to fully explore it,
+and I had to make a decision. I also didn't have all the answers I needed to
+fully commit to a static solution.
 
-Por exemplo, para o catálogo de filmes/séries e respetivos detalhes, faz sentido
-fazermos um request à API + consulta da BD a cada request?
-API externa, separada do frontend. Consumo da API possível tanto durante o
-build, como on-the-fly pelo frontend (mais adequado em cenários onde os dados
-mudam com muita frequência).
-
-SEO requirements
-"SEO generally favors server rendered content."
-SEO/Analytics
-
-At this point, it started to become clear that we needed a SSR approach.
-
-and Nuxt seemed to be my best option "and we decided to take a risk with a new
-technology on a new project. And so we took Nuxt as a framework for."
+Well, Nuxt could do that and could also do the _safer_ SSR approach. And so,
+Nuxt it was.
 
 ## What is Nuxt.js? Quick Overview
 
-Coined as "The Progressive Vue.js Framework", Nuxt.js is a free and open source
-web application framework based on Vue.js.
+Nuxt.js is an MIT-licensed, open-source web application framework built on top
+of Vue.js.
 
-Some of Nuxt.js's main features:
+Vue.js is a JavaScript library for building web interfaces. Even though Vue's
+main tagline is "The Progressive JavaScript Framework", its official
+[website](https://vuejs.org/) also describes it as "An incrementally adoptable
+ecosystem that scales between a library and a full-featured framework".
 
-- Automatic transpilation and bundling
-- Hot module replacement
-- Server-side rendering OR Single Page App OR Static Generated
-- Centralized configuration
-- Layout-based
-- Powerful Routing System with Asynchronous Data
-- Middleware
-- Code splitting for every pages
+Without getting further into the discussion of whether Vue's correct
+categorization should be [library or
+framework](https://www.freecodecamp.org/news/the-difference-between-a-framework-and-a-library-bd133054023f/),
+for the remainder of this article I'll be referring to it as in its core library
+facet.
 
-The way I see it The core Nuxt.js benefit is to make use Vue.js powered with one
-of the main critics of Vue.js is its SEO capabilities. Server-side rendering
-solves this
+Frontend JavaScript libraries are supercool! They brought SPAs (Single Page
+Applications), and with them a whole new level of dynamism and user
+interactivity to the web.
+
+In order to stay lightweight and performant, libraries need to make firm
+decisions in terms of their core functionality. They also need to be flexible
+and not enforce too much conventions, that would make them unusable or not
+easily integrated into existing projects. This is why the core Vue library does
+not include routing or global state management. To handle those, you'll have to
+install and configure other Vue libraries.
+
+Nuxt, contrarily, is a framework. In this regard, it can more freely abstract,
+manage and provide tools for common everyday tasks and configurations associated
+with web development - thus, allowing developers to focus on the logic of
+the app they're building.
+
+> "There's always this routine when starting a new Vue project that Nuxt helps
+> alleviate while also applying some tried-and-true best practices to your
+> project _free of charge_." -
+> _[Patrick Hanford](https://dev.to/codespent/building-a-sidebar-with-nuxt-vuex-239j)_
+
+Client-side security and unfitness for SEO are perhaps two of the most common
+[criticisms of
+SPAs](https://adamsilver.io/articles/the-disadvantages-of-single-page-applications/).
+
+Although there are some strategies to mitigate security concerns and make SPAs
+more SEO-friendly, their intrinsic nature wouldn't make them the most immediate
+choice for such requirements. For such requirements, developers will generally
+lean more to a server-side rendering approach.
+
+Nuxt comes to fill in this gap, powering our Vue.js apps with server-side
+capabilities. It's important to note however, that SSR is not the only
+difference between Nuxt and Vue CLI apps. Nonetheless, this difference may
+typically be the main decision factor when choosing between one and the other.
 
 ### Understanding Server-Side Rendering
 
-"If you're pre-rendering or SSR your code, search engines can more
-effectively crawl the content. If you're spinning up a straight Vue app with the
-CLI, this is a lot more difficult, especially if you're AJAX-ing in content
-after page load."
-SSR is the , where upon a request the server delivers the pre-rendered HTML
-page to the client.
+Contrary to more modern **SPA** solutions, where JavaScript is responsible for
+generating HTML on the client's browser, **SSR** (Server-side Rendering) is the
+more _traditional_ method of rendering a web page. When the client requests a
+page, the origin server is responsible for executing the code (possibly fetching
+data from a database or API, in between), running the retrieved data against a
+template and returning the resulting HTML to the client.
 
-Generally speaking, "Applications rendered on the server side are SEO-friendly by
-default. HTML content needed to index and rank your pages.
+One of the most argued disadvantages of SPAs is their inadequacy for efficient
+SEO. Search engines need to fetch the content of a
+page in order to index and rank it. Since SPAs fetch their data asynchronously,
+after page load, search engines have more trouble crawling the content, and thus
+end up not favouring SPA websites as much.
 
-[comparison between SSR and CSR](https://medium.com/@benjburkholder/javascript-seo-server-side-rendering-vs-client-side-rendering-bc06b8ca2383)
+Generally speaking, server-side rendered websites are SEO-friendly by default.
+When the page is delivered to the client (be it a browser or a search engine
+crawler), all the content is already _there_.
 
-However, with some of the JS frameworks and CSR of today, all of a sudden the
-source code for a webpage is practically blank and the content exclusively
-rendered by JS execution on the client side.
+In terms of **performance**, a SSR website will typically be perceived as
+faster. Once the HTML is delivered to the client, the user will already start to
+see, get familiarized and interact with the DOM, even before the download of
+JavaScript and other assets is completed.
 
-### Vue CLI vs. Nuxt.js
+Of course, all this is very subjective and dependent on the specificities of
+each project. For example, if there's data to be retrieved, a SSR website will
+only deliver the page after fetching it asynchronously. So, if the database
+takes long to respond, this will also have impact.
 
-- SSR/universal mode SEO; Vue.js apps are not suited for SEO (main advantadge!)
+A SPA website, on the other hand, may have a slower first-initial load, as the
+whole JavaScript bundle has to be downloaded and the page rendered before the
+user can interact with it. However, from there on, navigating between routes is
+typically noticeably faster, offering a more fluid experience to the user.
 
-"The point of Nuxt is that you can render your Vue code before the user sees it,
-whether that's on the server or simply prerendering a static site. Then, you can
-still keep all of the interactive nature of Vue, because it "hydrates" the app
-once it's loaded.
+In terms of **memory management**, normally with a SSR website you won't have to
+worry as much as with a SPA. A SSR website has the unfair advantage of each
+route access translating to a new server request. This allows the browser to
+free memory and _start_ again from the beginning.
 
-2. **Performance**. If you're prerendering or SSR your code, the browser doesn't
-   have to do it, and so there's at least a perceived performance gain here."
-
-"Server-side rendering (SSR) is faster because it doesn’t wait for the browser
-to load the JS to show content. SSR requires proper servers to send the response
-every time"
-
-- performance / automatic code splitting (pre-rendered pages)
-
-"A poorly-coded SPA can easily eat up megabytes or even gigabytes of memory"
+If not taken care of, a poorly-coded SPA can easily experience performance
+degradation, especially after a lot of navigation and user interaction within
+the same session.
 
 > "Part of the bargain we struck when we switched from building server-rendered
 > websites to client-rendered SPAs is that we suddenly had to take a lot more
 > care with the resources on the user’s device." - _[Nolan
 > Lawson](https://nolanlawson.com/2020/02/19/fixing-memory-leaks-in-web-applications/)_
 
-"The way I see it, is more like Nuxt.js higher level framework. Indeed, you can
-build anything with Nuxt that you can build with Vue CLI, but it also adds SSR
-features on top of it."
+One last point about performance. SPAs will usually ship the bundle for the
+entire site at once - big bundle issue™, which can be noticeable specially in
+mobile devices.
 
-opinated framework Nuxt has its own set of conventions and caveats so it’s not
-Vue Cli vs Nuxt, but more about choosing which one will best suit your
+Web development frameworks - such as Nuxt - are able to implement mechanisms of
+automatic code splitting, where each route gets just the code it requires,
+keeping the size of JavaScript more controlled.
+
+### Vue CLI vs. Nuxt.js
+
+In the early stages of my Nuxt journey, I would ask myself whether Nuxt was
+simply a SSR version of Vue CLI. Well, now I know the answer is a nuanced no.
+
+For starters, yes, Vue CLI apps are intrinsically SPAs. However, you can also
+build SPAs with Nuxt. Additionally, with Nuxt, you can also pre-render your
+pages before they get to the client's browser, whether that's achieved on the
+server (SSR) or during the build process, by generating a [static site](https://joshwcomeau.com/gatsby/a-static-future/). Whichever
+strategy is used, when the page is delivered to the client, your site can still
+benefit from the interactive nature of Vue, since it "hydrates" the static
+markup, once it is loaded.
+
+So, is rendering `mode` the only difference between the two?
+
+No. Nuxt.js is a more opinionated, higher abstraction level framework. Indeed,
+anything you can build with Vue CLI can be built with Nuxt, plus you also get
+some extra features added on top.
+
+With Nuxt, you don't need to think about how to structure your code, everything
+has its own place already pre-established. Also, no need to install and
+configure Vue **routing**. Just place your files in the `pages` folder and Nuxt
+will automatically generate the routes according to the folder structure.
+
+Vuex **state management** also comes installed by default. Add your modules
+under `store` and you're good to go. Finally, HTML **metadata** management is
+also available, with `vue-meta` operating under the hood.
+
+With these extra features in mind, even if you don’t need a SSR website, these
+are still benefits of using Nuxt. I'd probably almost always go with Nuxt,
+unless it was a really small-sized SPA (couple of routes only) with no SEO
 requirements.
 
-If you need better inital rendering on first load or SEO then Nuxt is for you.
-If you don’t need to worry about SEO and your app is light, then Vue Cli will
-work perfectly. and you'll be able to serve it from a CDN with no need for a
-Node.js server or infrastructure.
+Another scenario where you'd not want use Nuxt - which does not apply to a Nuxt
+statically generated site - would be if you didn't want to deal with
+infrastructure and the potential costs of running a a Node.js server. Vue CLI
+apps can be considered easier to deploy, since they typically compile down to
+static assets, and thus be served by any common HTTP server or directly from a
+CDN.
 
-### Developer Experience
+This being said, both have their own set of more appropriate use cases, so it’s
+not so much as Vue CLI vs. Nuxt, but more about choosing which will best suit
+your requirements. If you need faster initial rendering on first-load or SEO,
+then Nuxt is for you. If you don’t need to worry about SEO and your app is
+light, then Vue CLI will work perfectly.
 
-Current version; version I worked with v2.10.2
+## Developer Experience
 
-Creating a new project is a breeze. Nuxt has an official scaffolding tool
-(`create-nuxt-app`) that walks you through some options and setups your project,
-so you can quickly start developing your application. (such as server-side and
-UI framework, linting, and code formatting).
+Nuxt has an official scaffolding tool, `create-nuxt-app`, that guides you
+through some options and setups a new project, so you can quickly start
+developing.
 
-Out-of-the-box you get code bundling and transpilation we didnt' have one
-browser compatibility issue during this problem and that's amazing! Hot module
-replacement in Development, allows auto-updating server for easy development.
+This is when the app's `mode` (SSR or SPA) is specified. There are also other
+options available, where you can choose to integrate other frameworks
+(server-side/UI/ testing). Linting and code formatting are also other features
+the tool can add to your project.
 
-"It sure feels good starting a project without the usual setup and configuration
-problems!"
-predefined/standard folder and file structure, working on a project where
-"everything has its place"
+Being able to start a project without having to deal with the typical setup and
+configuration is great!
 
-- no need for complicated Vue Router setup and configuration, just placing files
-  and folders
-- `nuxt.config.js` is the central point of a Nuxt app. It lives at the project
-  root and allows you to customize a set of features that Nuxt provides.
+Out-of-the-box asset bundling - through Webpack - and code transpiling - through
+Babel - worked flawlessly, and we didn't need to extend the default build
+configuration, nor did we run into any browser compatibility issue during the
+whole project!
 
-Layout-based, avoiding code repetition
+`nuxt.config.js` is the central point of a Nuxt app. It lives at the project
+root and allows you to customize a set of features that Nuxt provides.
 
-Cons:
+Having a standard, predefined folder structure, increases the team's
+productivity. Everything has its place, no need tinkering about where to place
+files. By being layout-based, Nuxt also helps avoiding code repetition.
 
-"Your lib is available only for client side"
+In dev mode, hot-reloading allows you to instantly view the results of source
+code changes reflected on the browser.
 
-I faced some difficulties DOM tree "Errors were a bit tricky to debug." nuxt is
-great but some vue plugins don't compatible with nuxt,
-"The client-side rendered virtual DOM tree is not matching server-rendered content."
-"Mismatching childNodes vs. VNodes"
-Failed to execute 'appendChild' on 'Node': This node type does not support this method.
-The client-side rendered virtual DOM tree is not matching
-server-rendered content. This is likely caused by incorrect HTML markup, for
-example nesting block-level elements inside <p>, or missing <tbody>. Bailing
-hydration and performing full client-side render.
+Asynchronously fetching data is highly facilitated through the combination of
+`axios` and the `asyncData` method.
 
-"that the client and server are two separate entities." understanding the
-lifecycle and how do i access window global object's property from vue
-component?? "
+Finally, building the app for production is as straightforward as `npm run build` followed by `npm run start`.
 
-[understnding nuxt and vue hooks lifcycle](https://dev.to/lilianaziolek/understanding-nuxt-vue-hooks-and-lifecycle-part-1-48lc) You can only query and
-manipulate the DOM in certain hooks
+Our project runs on v2.10.2, which proved to be reliable and stable. Current
+version, at the time of this writing, is v2.12.2.
+I found Nuxt to be a robust, developer-friendly environment to work in.
 
-this schema from the [official docs](https://nuxtjs.org/guide) is an essential
-to take some time to grasp the core concepts, as it will save you many headaches:
+### Technical struggles 😰
+
+The fact that I had to make an effort to remember any major issues faced,
+already speaks for itself in terms of my positive experience using Nuxt.
+
+The only obstacles I can recall - mainly related to my incompetence with Nuxt at
+the time - were a few tricky DOM-related errors, such as `The client-side rendered virtual DOM tree is not matching server-rendered content.` and
+`Mismatching childNodes vs. VNodes`. I came to learn that these errors mostly
+manifest when trying to use Vue.js libraries that don't support SSR, and
+therefore should only be instantiated client-side.
+
+In the end, I was able to fix all these errors and warnings with lengthy debug
+sessions, by essentially trying to isolate the faulty components and applying
+some combination of `<client-only>` in the templates, and `ssr: false` in the
+plugin instantiation in `nuxt.config.js`. Note to self: be more watchful of the
+console, specially when adding a new library, that way you can detect if
+something is wrong as soon as you introduce it.
+
+I also came to realize the importance of understanding the separate stages of
+client/server execution and how Nuxt and Vue [hooks and
+lifecycle](https://dev.to/lilianaziolek/understanding-nuxt-vue-hooks-and-lifecycle-part-1-48lc)
+relate to each other.
+
+If you're new to Nuxt, take some time to study its core concepts, as it can save
+you a lot of headaches, for example when trying to figure out why you're getting
+`undefined` when accessing the `window` object or why you can only query and
+manipulate the DOM in certain hooks.
+
+This schema from the [official docs](https://nuxtjs.org/guide) is an essential
+resource to learn the sequence of steps that take place after the server
+receives a request:
 
 ![schema](/img/articles/2020-03-21-nuxt-schema.svg)
 
-"I think the main problem is that, most of libraries out there doesn't support
-SSR well, we need time to make libraries as universally as possible."
+Something I came to discover, while trying to fix the previously mentioned
+errors, was that we were writing some invalid HTML in our code, such as `<p>`
+elements inside of `<button>` elements. Although in the end it proved to be
+unrelated, some of the errors mentioned invalid HTML as a possible cause.
 
-if it would be possible to antecipate since these issues the build only manifest
-at runtime
-
-adding HTML validation Tirar buttons em todo o lado que deva ser link e aplicar
-style de acordo:
-
-For example having the possibility of some pages being statically generated and
-others SSR.
-
-All and all, "environment. The tooling is simple and robust. The languages are
-modern and clean. Overall it’s a really great environment to be working in.
+Later, with the help of a [validator](https://validator.w3.org/), we were able
+to identify and fix almost all the invalid HTML. I wonder if this is a feature
+that would make sense to have in dev mode. Maybe integrating with an already
+existing plugin or tool? Who knows, if this could be my first contribution to
+Nuxt 😃.
 
 ## Community and Plugin Ecosystem
 
-well and alive The plugin architecture (not only of Nuxt.js, but Vue.js as
-well). extensibility, and allow for faster development cycles modules/community
-plugins is definitely one of the major easy standard way of adding libraries to
-a project There are some plugins/libs that made my life so much easier and I
-have to mention in no particular order of importance:
+Nuxt is backed up by a strong active community. Its
+[modular](https://nuxtjs.org/guide/modules/) architecture is ideal for the
+emergence of extensions that add on to the framework's core functionality. Plus,
+the entire Vue plugin ecosystem is close at hand - just make sure it supports
+SSR, if that's your app's `mode`.
 
-- [@nuxtjs/gtm](https://github.com/nuxt-community/gtm-module) - Add Google Tag Manager Module to you Nuxt.js project
-- nuxt-lazy-load
-- @nuxtjs/google-analytics
-- @bazzite/nuxt-optimized-images
-- vue-awesome-swiper
-- vue-cookies
-- vue-clipboard2
-- vue-slider-component
-- vue-social-sharing
-- vue-youtube
+These are some modules and plugins that made our life so much easier, helping us
+deliver faster and better:
 
-Also, check out this [curated list](https://github.com/nuxt-community/awesome-nuxt) of
+- [@nuxtjs/auth](https://auth.nuxtjs.org/) - Authentication and Authorization
+- [@nuxtjs/axios](https://axios.nuxtjs.org/) - Axios integration
+- [@nuxtjs/dotenv](https://github.com/nuxt-community/dotenv-module/) - Loading `.env` vars into Nuxt's context
+- [@nuxtjs/google-analytics](https://www.npmjs.com/package/@nuxtjs/google-analytics) - Google Analytics
+- [@nuxtjs/gtm](https://github.com/nuxt-community/gtm-module) - Google Tag Manager
+- [@nuxtjs/toast](https://www.npmjs.com/package/@nuxtjs/toast) - Cool little toasts
+- [nuxt-lazy-load](https://www.npmjs.com/package/nuxt-lazy-load/v/latest) - Effortless lazy-loading
+- [@aceforth/nuxt-optimized-images](https://github.com/aceforth/nuxt-optimized-images) - Image size optimization during build
+- [vue-awesome-swiper](https://github.surmon.me/vue-awesome-swiper/) - Swiper component
+- [vue-slider-component](https://nightcatsama.github.io/vue-slider-component/#/) - Slider component
+- [vue-youtube](https://www.npmjs.com/package/vue-youtube) - Youtube wrapper
+- [vue-loading-overlay](https://www.npmjs.com/package/vue-loading-overlay) - Full-screen loading indicator
+- [vue-js-modal](https://www.npmjs.com/package/vue-js-modal) - Handy modal
+
+Also, don't miss out on this [curated list](https://github.com/nuxt-community/awesome-nuxt) of
 awesome things related to Nuxt.js.
 
 ## Was it worth it? Verdict
 
 Yes, absolutely!
 
-I think Nuxt.js is an awesome 👍, production-ready framework for modern web
-development. If your website requires SSR, I would definitely suggest you give
-it a try.
+Just recently got the news from the marketing team, and last month we doubled
+the number of users in comparison to the previous month, with a forecast of
+reaching a total of 100k 🚀 users by the end of this month 🎉.
 
-The way it simplifies the process of bootstraping a project, with integrated
-build process, the predefined opinionated conventions and folder structure, the
-mechanisms for fetching async data, and last but not the least the ecosystem of
-plugins and active community.
+I think Nuxt.js is an amazing, production-ready framework for modern web
+development. If your website requires SSR, I definitely suggest you give it a
+try.
 
-"I will be writing a series of short articles about some of the techniques I
-used instead of a long case study here, because otherwise it would literally be
-way too long for anyone to read. You'll be able to find the articles on the
-blog."
+From the way it simplifies the setup of a project, to the solid build process,
+the opinionated defaults and best practices, the built-in mechanisms for
+asynchronously fetching data, and last but not the least, the ecosystem of
+available plugins and the active community - make me very happy to have made the
+decision to go with Nuxt.
 
-On a more personal note, I learned a lot during the course of this project.
-I’ve been challenged to come up with techniques I’d never come up with
-before,
-There are of course some things I would have done differently, if I was starting
-the project again, knowing what I know today, but none of them relate directly
-to Nuxt.js, but more to Vue.
+On a more personal note, I learned a lot during the course of this project. It
+was a period of massive evolution, where I had to things I’d never done before.
+
+There are of course, some things I would have done differently, if I was
+starting the project again, knowing what I know today, but they are more related
+to CSS and Vue, and not so much to Nuxt specifically.
+
+That's it, hopefully I was able to give a comprehensible rundown of my first
+steps getting to know and working with Nuxt 💚.

@@ -1,7 +1,7 @@
 ---
-date: 2020-03-21
+date: 2020-04-18
 title: Three months of Nuxt.js in Production - A Restrospective
-description: Reviewing Nuxt.js after the first three months working with it in a production setting
+description: My experience with Nuxt.js in a continuous delivery production setting
 slug: nuxt-review
 tags:
   - nuxtjs
@@ -41,10 +41,10 @@ I had built a couple of personal projects - such as this website, just to test
 the waters. Maybe this could be the opportunity to apply it professionally for
 the first time.
 
-The media catalogue seemed an appropriate use case for a static site. The
-content would probably not change that much over time. Could we pass on the
-heavy lifting to the build process and serve a blazing fast static site from a
-CDN?
+The media catalogue seemed an appropriate candidate to be [statically
+built](https://joshwcomeau.com/gatsby/a-static-future/). The content would
+probably not change that much over time. Could we pass on the heavy lifting to
+the build process and serve a blazing fast static site from a CDN?
 
 What about the TV guide feature? We'd certainly have to call some API for that.
 But what if the data changes too often? We wouldn't want to keep re-building the
@@ -123,8 +123,8 @@ lean more to a server-side rendering approach.
 
 Nuxt comes to fill in this gap, powering our Vue.js apps with server-side
 capabilities. It's important to note however, that SSR is not the only
-difference between Nuxt and Vue CLI apps. Nonetheless, this difference may
-typically be the main decision factor when choosing between one and the other.
+difference between Nuxt and Vue CLI. Nonetheless, this difference may typically
+be the main decision factor when choosing between one and the other.
 
 ### Understanding Server-Side Rendering
 
@@ -190,7 +190,7 @@ simply a SSR version of Vue CLI. Well, now I know the answer is a nuanced no.
 For starters, yes, Vue CLI apps are intrinsically SPAs. However, you can also
 build SPAs with Nuxt. Additionally, with Nuxt, you can also pre-render your
 pages before they get to the client's browser, whether that's achieved on the
-server (SSR) or during the build process, by generating a [static site](https://joshwcomeau.com/gatsby/a-static-future/). Whichever
+server (SSR) or during the build process, by generating a static site. Whichever
 strategy is used, when the page is delivered to the client, your site can still
 benefit from the interactive nature of Vue, since it "hydrates" the static
 markup, once it is loaded.
@@ -219,8 +219,7 @@ Another scenario where you'd not want use Nuxt - which does not apply to a Nuxt
 statically generated site - would be if you didn't want to deal with
 infrastructure and the potential costs of running a a Node.js server. Vue CLI
 apps can be considered easier to deploy, since they typically compile down to
-static assets, and thus be served by any common HTTP server or directly from a
-CDN.
+static assets, and thus be served from any common HTTP server or CDN.
 
 This being said, both have their own set of more appropriate use cases, so it’s
 not so much as Vue CLI vs. Nuxt, but more about choosing which will best suit
@@ -324,7 +323,7 @@ deliver faster and better:
 
 - [@nuxtjs/auth](https://auth.nuxtjs.org/) - Authentication and Authorization
 - [@nuxtjs/axios](https://axios.nuxtjs.org/) - Axios integration
-- [@nuxtjs/dotenv](https://github.com/nuxt-community/dotenv-module/) - Loading `.env` vars into Nuxt's context
+- [@nuxtjs/dotenv](https://github.com/nuxt-community/dotenv-module/) - Loading `.env` vars
 - [@nuxtjs/google-analytics](https://www.npmjs.com/package/@nuxtjs/google-analytics) - Google Analytics
 - [@nuxtjs/gtm](https://github.com/nuxt-community/gtm-module) - Google Tag Manager
 - [@nuxtjs/toast](https://www.npmjs.com/package/@nuxtjs/toast) - Cool little toasts
@@ -354,11 +353,12 @@ try.
 From the way it simplifies the setup of a project, to the solid build process,
 the opinionated defaults and best practices, the built-in mechanisms for
 asynchronously fetching data, and last but not the least, the ecosystem of
-available plugins and the active community - make me very happy to have made the
-decision to go with Nuxt.
+available plugins and the active community - all reasons that make me really
+happy to have made the decision to go with Nuxt.
 
 On a more personal note, I learned a lot during the course of this project. It
-was a period of massive evolution, where I had to things I’d never done before.
+was a period of massive evolution, where I had to do things I’d never done
+before.
 
 There are of course, some things I would have done differently, if I was
 starting the project again, knowing what I know today, but they are more related

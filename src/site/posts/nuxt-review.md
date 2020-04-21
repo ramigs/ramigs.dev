@@ -145,15 +145,17 @@ Generally speaking, server-side rendered websites are SEO-friendly by default.
 When the page is delivered to the client (be it a browser or a search engine
 crawler), all the content is already _there_.
 
-In terms of **performance**, a SSR website will typically be perceived as
-faster. Once the HTML is delivered to the client, the user will already start to
-see, get familiarized and interact with the DOM, even before the download of
-JavaScript and other assets is completed.
+In terms of **performance**, under similar conditions, a SSR website will
+typically initially be perceived as faster. Once the HTML is delivered to the
+client, the user will already start to see, get familiarized and interact with
+the DOM, even before the download of JavaScript and other assets is completed.
 
 Of course, all this is very subjective and dependent on the specificities of
 each project. For example, if there's data to be retrieved, a SSR website will
 only deliver the page after fetching it asynchronously. So, if the database
-takes long to respond, this will also have impact.
+takes long to respond, that will also have impact. (This is not to say that a
+SPA will not be affected by such latency, but at least we can _distract_ the
+user with a colorful/spinning loader, while the request takes place.)
 
 A SPA website, on the other hand, may have a slower first-initial load, as the
 whole JavaScript bundle has to be downloaded and the page rendered before the
@@ -161,13 +163,13 @@ user can interact with it. However, from there on, navigating between routes is
 typically noticeably faster, offering a more fluid experience to the user.
 
 In terms of **memory management**, normally with a SSR website you won't have to
-worry as much as with a SPA. A SSR website has the unfair advantage of each
+worry as much as with a SPA. A SSR website has the advantage of each
 route access translating to a new server request. This allows the browser to
 free memory and _start_ again from the beginning.
 
-If not taken care of, a poorly-coded SPA can easily experience performance
-degradation, especially after a lot of navigation and user interaction within
-the same session.
+If not taken care of, a SPA can easily experience performance degradation,
+especially after a lot of navigation and user interaction within the same
+session.
 
 > "Part of the bargain we struck when we switched from building server-rendered
 > websites to client-rendered SPAs is that we suddenly had to take a lot more
@@ -297,7 +299,7 @@ This schema from the [official docs](https://nuxtjs.org/guide) is an essential
 resource to learn the sequence of steps that take place after the server
 receives a request:
 
-![schema](/img/articles/2020-03-21-nuxt-schema.svg)
+![Nuxt.js schema](/img/articles/2020-03-21-nuxt-schema.svg)
 
 Something I came to discover, while trying to fix the previously mentioned
 errors, was that we were writing some invalid HTML in our code, such as `<p>`

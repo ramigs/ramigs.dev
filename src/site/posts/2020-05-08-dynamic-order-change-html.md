@@ -183,7 +183,7 @@ Solution 1 is arguably more practical. However, it breaks keyboard navigation.
 Solution 2 manipulates the DOM, which is operationally more intensive than using
 media queries.
 
-You can reference the code I used to create this tutorial, which includes
+You can [reference the code](https://github.com/ramigs/dynamic-order-change-html) I used to create this tutorial, which includes
 examples for both solutions.
 
 ## Acknowledgements

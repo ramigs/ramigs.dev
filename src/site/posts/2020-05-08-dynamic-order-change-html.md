@@ -53,18 +53,17 @@ one that better fits your use case.
 
 ### Solution 1:
 
-- The parent element is a flex container, or it's not a flex container, but there's no impediment to set it as such
+- The parent element has to be a flex container
 - Achieved using **CSS**
 - Does not actually change the DOM order of the elements
-- Implemented in less steps
+- Less implementation steps
 - Breaks keyboard navigation
 
 ### Solution 2:
 
-- The parent element is not a flex container, and you can't/don't want to set it as such
 - Achieved using **JavaScript**
 - Changes the DOM order of the elements
-- Implemented in more steps
+- More implementation steps
 - Does not break keyboard navigation
 
 ## Solution 1: flex-direction
@@ -100,10 +99,6 @@ has a maximum width of 767 pixels:
 
 And we're done, that's all we need!
 
-If you have more than two child elements and would like to have more control
-over their individual display order, checkout the [order
-property](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Ordering_Flex_Items).
-
 It is important to bear in mind that this solution creates a [disconnect](https://tink.uk/flexbox-the-keyboard-navigation-disconnect/) between
 the visual presentation and the DOM order.
 
@@ -111,6 +106,10 @@ the visual presentation and the DOM order.
 > of assistive technology such as a screen reader. If the visual (CSS) order is
 > important, then screen reader users will not have access to the correct reading
 > order." - _[MDN web docs](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction#Accessibility_Concerns)_
+
+If you have more than two child elements and would like to have more control
+over their individual display order, checkout the [order
+property](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Ordering_Flex_Items).
 
 ## Solution 2: DOM manipulation
 
@@ -180,7 +179,7 @@ the display width. Neither is necessarily _better_.
 
 Solution 1 is arguably more practical. However, it breaks keyboard navigation.
 
-Solution 2 manipulates the DOM, which is operationally more intensive than using
+Solution 2 manipulates the DOM, which is operationally more intensive than just using
 media queries.
 
 You can reference the

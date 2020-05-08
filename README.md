@@ -29,7 +29,9 @@ Website and tech-blog built with Eleventy and Gulp. Deployed and hosted on Netli
 - Add Open Graph
   https://www.freecodecamp.org/news/what-is-open-graph-and-how-can-i-use-it-for-my-website/
 - Dynamic tooltips, as in:
-https://joshwcomeau.com/gatsby/a-static-future/
+  https://joshwcomeau.com/gatsby/a-static-future/
+- Search
+  https://css-tricks.com/how-to-redirect-a-search-form-to-a-site-scoped-google-search/
 
 ## License
 

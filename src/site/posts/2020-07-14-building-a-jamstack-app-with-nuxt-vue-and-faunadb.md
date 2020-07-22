@@ -293,7 +293,7 @@ Log in to your Fauna account.
 Visit the [dashboard](https://dashboard.fauna.com/) and create a new database,
 named `repos`:
 
-![Create a new FaunaDB database](./fauna-new-database.png)
+![Create a new FaunaDB database](/img/articles/2020-07-14-fauna-new-database.png)
 
 ## Importing the schema
 

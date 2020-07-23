@@ -11,10 +11,6 @@ tags:
   - learning
 ---
 
-<!-- > (This article was originally published on
-> [ramigs.dev](https://dev.to/ramigs/building-a-jamstack-app-with-nuxt-vue-and-faunadb-kg)). -->
-
-<!-- #career #personal #discuss #productivity -->
 After 7 months of continuous work on the most recent project I've been involved,
 summer holidays are finally here!
 
@@ -22,7 +18,7 @@ These were intense months, but we've successfully completed the first phase of
 the project and now the goal is to make the most of this summer. Time to rest,
 be with family and friends, enjoy beach and countryside.
 
-![Adaúfe, Braga](/img/articles/2020-07-22-adaufe.jpeg)
+![Praia Fluvial Adaúfe, Braga](/img/articles/2020-07-22-adaufe.jpeg)
 
 Knowing myself well, I already know I won't be able to just take an idle
 vacation. I also want to make the most of this time to learn and study topics
@@ -34,7 +30,8 @@ month and a half (and beyond).
 
 I want to relax and enjoy the summer, so this plan is relatively flexible and
 not super detailed. Its success does not depend on just ticking every item on
-the list. It serves as a guide to help me stay focused and know where I'm going.
+the list. It serves as a guide to help me stay focused and know where I'm
+heading.
 
 ## Reflecting on the past to figure out the path
 
@@ -43,14 +40,14 @@ retrospective of these past months. Organizing ideas, summarizing what I've
 learned, and how that relates to my evolution and the topics I want to study
 next.
 
-![The Path](/img/articles/2020-07-22-the-path.jpeg)
+![The Path, Azoia Sesimbra](/img/articles/2020-07-22-the-path.jpeg)
 
-One of the things I enjoyed most about the last project I've worked on, was the
-fact that being involved from the very start allowed me to have a decisive role
-in terms of architecture and defining the tech-stack.
+One of the things I've enjoyed most about the last project I worked on, was the
+fact that being there from the very start allowed me to have a decisive role in
+terms of architecture and tech-stack definition.
 
-The biggest share of my work focused on frontend development and integration
-with the services layer.
+The biggest share of my work focused on frontend development and service layer
+integration.
 
 I've improved my JavaScript, Vue.js, and Nuxt.js skills. Learned a lot about
 [Strapi](https://strapi.io/), CSS, responsive design, app lifecycle, processes
@@ -87,7 +84,7 @@ Another concept that - nowadays more than ever - has a fundamental relevance in
 the software we deliver is **performance**. This is a domain that interests me a
 lot, so I want to keep studying it further.
 
-I've recently became aware of the term SRE (Site Reliability Engineering)
+I've recently became aware of the term SRE (Site Reliability Engineering), from
 watching a [live chat](https://www.youtube.com/watch?v=xiTbw64hrAM) with
 [Vinícius Moll](https://sretips.com.br/), on [Rodrigo Branas YouTube
 channel](https://www.youtube.com/channel/UCkqOofjb7nl6V8vXrIbGtiQ).
@@ -130,13 +127,14 @@ I remember installing and using regularly was an [Ubuntu](https://ubuntu.com/)
 7.04 (_Feisty Fawn_), back in the distant year of 2007, when CD's were still
 being passed around:
 
-![Ubuntu](/img/articles/2020-07-22-ubuntu.jpg)
+![Ubuntu 7.04 CD](/img/articles/2020-07-22-ubuntu.jpg)
 
 For some time now, I've been wanting to get up-to-date on Linux. Especially in
-terms of day-to-day developer tasks, and if I can make it fit my workflow.
+terms of day-to-day developer tasks, and if I can set up a workflow I'm happy
+with on Linux.
 
 So, I've decided I'll buy a new laptop, install Linux (Debian? Ubuntu? Mint?)
-and set up a robust Dev environment.
+and try to set up a robust Dev environment.
 
 This will serve as a second/backup working computer and also allow me to proceed
 with my Docker experiments.
@@ -237,13 +235,13 @@ Check out my solutions and demos so far on this GitHub repo:
 ## Wrapping up
 
 This post ended up being longer than I initially planned. What was supposed to
-just be a summer plan, has actually ended being a set of guidelines and strategy
-for a longer near future period.
+just be a summer plan, has actually become a set of guidelines and strategy for
+a longer near future period.
 
 It will be very interesting, a year from now, to read this post again and see
 how far I've followed up with each topic.
 
-![Wrapping up Sesimbra](/img/articles/2020-07-22-wrapping-up.jpeg)
+![Sesimbra](/img/articles/2020-07-22-wrapping-up.jpeg)
 
 What about you? Do you also write about your Dev plans?
 

@@ -34,6 +34,8 @@ Website and tech-blog built with Eleventy and Gulp. Deployed and hosted on Netli
   https://css-tricks.com/how-to-redirect-a-search-form-to-a-site-scoped-google-search/
 - Waving Hand
   https://blog.maximeheckel.com/snippets/2020-7-3-waving-hand-animation-framer-motion
+- Headline Analyzer
+  https://coschedule.com/headline-analyzer  
 
 ## License
 

@@ -3,6 +3,7 @@ date: 2020-07-14
 title: Building a Jamstack app with Nuxt, Vue and FaunaDB
 description: Changing the order of HTML elements between mobile and desktop layouts
 slug: building-a-jamstack-app-with-nuxt-vue-and-faunadb
+canonical: "https://dev.to/ramigs/building-a-jamstack-app-with-nuxt-vue-and-faunadb-kg"
 tags:
   - jamstack
   - nuxtjs

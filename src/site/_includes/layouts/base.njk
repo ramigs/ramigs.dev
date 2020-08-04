@@ -35,7 +35,9 @@
         <meta name="author" content="Rami Shashati">
 
         <link rel="stylesheet" href="/css/main.min.css">
-
+        {% if canonical %}
+            <link rel="canonical" href="{{ canonical }}" />
+        {% endif %}
     </head>
     <body>
         <div class="container">

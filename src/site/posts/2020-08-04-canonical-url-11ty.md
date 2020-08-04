@@ -6,6 +6,7 @@ slug: canonical-url-11ty
 tags:
   - 11ty
   - jamstack
+  - seo
 ---
 
 Cross-posting can be a great way to expose your content to new, larger
@@ -40,7 +41,7 @@ Basically, we're conditionally adding the `<link>` tag, depending on whether a
 key `canonical` exists in the [front
 matter](https://www.11ty.dev/docs/data-frontmatter/) of the content page.
 
-> If you're not using Nunjucks, consult the documentation of your template
+> If you're not using Nunjucks, check out the documentation of your template
 > language to find out how to conditionally render HTML.
 
 Then, in the front matter's content file, simply add a `canonical` key pointing

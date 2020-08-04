@@ -49,3 +49,7 @@ to the original URL, like so:
 ```yaml
 canonical: "https://dev.to/you/your-awesome-article"
 ```
+
+Build your static site again and confirm that the `<link>` tag is present.
+
+Done!

@@ -36,18 +36,18 @@
   ],
   "devDependencies": {
     "@11ty/eleventy": "^0.7.1",
-    "@fortawesome/fontawesome-free": "^5.11.2",
-    "autoprefixer": "^9.6.2",
-    "browser-sync": "^2.26.7",
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "autoprefixer": "^9.8.6",
+    "browser-sync": "^2.26.12",
     "cssnano": "^4.1.10",
-    "glob": "^7.1.4",
+    "glob": "^7.1.6",
     "gulp": "^4.0.2",
     "gulp-eslint": "^5.0.0",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
-    "gulp-sass": "^4.0.2",
-    "luxon": "^1.19.3",
-    "webpack": "^4.41.0",
+    "gulp-sass": "^4.1.0",
+    "luxon": "^1.25.0",
+    "webpack": "^4.44.1",
     "webpack-stream": "^5.2.1"
   }
 }

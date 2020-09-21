@@ -9,7 +9,7 @@ tags:
   - nuxtjs
 ---
 
-> (This article was originally published on [strapi.io](https://strapi.io/blog/strapi-authentication-in-nuxt-js")).
+> (This article was originally published on [strapi.io](https://strapi.io/blog/strapi-authentication-in-nuxt-js)).
 
 This is a step-by-step guide on how to implement Strapi-based authentication in
 a Nuxt.js app.

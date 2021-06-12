@@ -214,6 +214,7 @@ The next steps I'd like to look into:
   passwords from the main script)
 
 If you have any comment or suggestion, feel free to share your perspective by
-opening a PR for this article.
+opening a PR for [this
+article](https://github.com/ramigs/ramigs.dev/blob/master/src/site/posts/2021-06-12-automating-database-backups.md).
 
 

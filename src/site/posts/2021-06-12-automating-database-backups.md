@@ -210,11 +210,11 @@ As in any process, there's always room for improvement.
 The next steps I'd like to look into:
 
 - email notifications (specially in the case of failure) 
-- secure password management (that would allow removing database and gpg
+- secure password management (that would allow removing database and GPG
   passwords from the main script)
 
-If you have any comment or suggestion, feel free to share your perspective by
-opening a PR for [this
+If you have any comment or suggestion, feel free to share it by opening a PR for
+[this
 article](https://github.com/ramigs/ramigs.dev/blob/master/src/site/posts/2021-06-12-automating-database-backups.md).
 
 

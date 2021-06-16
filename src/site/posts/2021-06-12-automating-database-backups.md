@@ -15,7 +15,7 @@ We already know that backups - and even more so, **restores** - are of paramount
 importance.
 
 The hard work we put into our projects must be safeguarded. In the context of
-teams and organizations, this necessity is magnified.
+teams and organizations, this necessity becomes even more pronounced.
 
 Nowadays, codebase backup and version control are already assumed as given when
 we use a git-based cloud provider, such as GitHub or GitLab.
@@ -209,9 +209,11 @@ achieve that through an automated procedure.
 As in any process, there's always room for improvement. 
 The next steps I'd like to look into:
 
-- email notifications (specially in the case of failure) 
-- secure password management (that would allow removing database and GPG
-  passwords from the main script)
+- Email notifications, specially in the case of failure.
+- Secure password management, that would allow removing database and GPG
+  passwords from the main script. [This
+  article](https://smallstep.com/blog/command-line-secrets/) may be a good
+  starting point.
 
 If you have any comment or suggestion, feel free to share it by opening a PR for
 [this

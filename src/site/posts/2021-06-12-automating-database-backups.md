@@ -42,7 +42,7 @@ server.
 
 ## Infrastructure and tools
 
-As a rule of thumb, before implementing a custom solution, one should
+As a general rule of thumb, before implementing a custom solution, one should
 investigate if the problem has already been solved.
 
 Although many times it has been solved already, a solution that perfectly fits
@@ -73,7 +73,8 @@ On the same production server, we also have a cron job, configured to run a
 shell script that takes a snapshot of the database, including all the data it
 contains, and sends it to the backup server via SSH.
 
->cron is a time-based job scheduler for Unix-like computer operating systems.
+>[cron](https://man7.org/linux/man-pages/man8/cron.8.html) is a time-based job
+>scheduler for Unix-like computer operating systems.
 
 >SSH is the de facto standard for secure remote access and data exchange between
 >a client and a server. SSH is a vast subject. Here you can find information on

@@ -15,25 +15,26 @@ We already know that backups - and even more so, **restores** - are of paramount
 importance.
 
 The hard work we put into our projects must be safeguarded. In the context of
-teams and organizations, this necessity becomes even more pronounced.
+teams and organizations this necessity becomes even more pronounced.
 
-Nowadays, codebase backup and version control are already assumed as given when
-we use a git-based cloud provider, such as GitHub or GitLab.
+Nowadays, features such as codebase backup and version control are assumed as
+given when we use a git-based cloud provider, such as GitHub or GitLab.
 
 >Depending on how critical to the business an application is, you may want to
->consider further measures in assuring the codebase is backed up with more
->redundancy.
+>consider further measures in assuring the codebase is backed up with
+>appropriate redundancy.
 
 But what about the database, and, more specifically, the data that it stores?
 
-Once an application goes into production, the generated and stored data begins
-holding an incommensurable value. Loosing it is a scenario that an organization
-simply can't afford.
+Once an application goes into production, its generated data has an
+incommensurable value. Loosing it is a scenario that an organization simply
+can't afford.
 
 On the occurrence of hardware faults, software faults, or human errors,
 **disaster recovery** plans are crucial to ensure that organizations can respond
-quickly, minimizing any negative effects on business operations. In the context
-of databases, the ability to recover is mainly tied to the ability to restore.
+quickly to minimize any negative effects on business operations. In the context
+of databases, the ability to recover is fundamentally defined by ability to
+restore.
 
 In this article, we'll describe the implementation of an **automated database
 backup process**. It will execute daily, taking a snapshot of a production
@@ -45,16 +46,16 @@ server.
 As a general rule of thumb, before implementing a custom solution, one should
 investigate if the problem has already been solved.
 
-Although many times it has been solved already, a solution that perfectly fits
-our requirements does either not exist or the effort to customize it is bigger
-than just implementing a solution of our own.
+Although many times we may find that it has been solved already, a solution that
+perfectly fits our requirements does either not exist or the effort to customize
+it is bigger than just implementing a solution of our own.
 
 This was the case when I was asked to implement this automated database backup
 procedure. I didn't find anything matching the specificities of our setup, so I
-decided to go with a custom solution.
+had to go with a custom solution.
 
 Let's now examine the following diagram, an overview of the infrastructure and
-tools involved in this setup:
+tools involved in the setup:
 
 ![Diagram of automated backup procedure](/img/articles/2021-06-12-automating-database-backups.png)
 
@@ -67,11 +68,12 @@ On the production server, we have a MySQL database running inside a Docker
 container.
 
 >[Docker](https://www.docker.com/) is an awesome containerization tool that
-helps standardizing development and deployment.
+helps standardizing development and deployment, by packaging applications and
+their dependencies.
 
 On the same production server, we also have a cron job, configured to run a
-shell script that takes a snapshot of the database, including all the data it
-contains, and sends it to the backup server via SSH.
+shell script that takes a snapshot of the database (including all the data it
+contains) and sends it to the backup server via SSH.
 
 >[cron](https://man7.org/linux/man-pages/man8/cron.8.html) is a time-based job
 >scheduler for Unix-like computer operating systems.
@@ -82,9 +84,9 @@ contains, and sends it to the backup server via SSH.
 >properly](https://goteleport.com/blog/how-to-ssh-properly/) and [manage its
 >keys](https://goteleport.com/blog/ssh-key-management/).
 
-The idea for this article was not so much to serve as step-by-step guide (even
-though you could almost use it as such) - but more as a general description of
-how the procedure was implemented in a real production setting, so that you can
+The purpose of this article is not to serve as a step-by-step guide (although
+you can pretty much use it as such) - but more as a general description of how
+the procedure was implemented in a real production setting, so that you can
 adapt it to your specific setup.
 
 ## Backup script
@@ -190,7 +192,8 @@ archive tool at your disposal.
 
 Access the web interface of the database content managing tool you're using
 (e.g., phpMyAdmin, Adminer) and run the SQL file that resulted from the previous
-step. Alternatively, you can also execute the SQL file through the command-line.
+step. Alternatively, if you don't have a content managing tool installed for
+your database, you can also execute the SQL file through the command-line.
 
 ### Verify restore
 
@@ -204,11 +207,11 @@ And, we're done 💪.
 
 Thank you for reading this far!
 
-We've discussed the importance of regular database backups and seen how to
-achieve that through an automated procedure.
+We've discussed the importance of regular database backups and how to automate
+them.
 
 As in any process, there's always room for improvement. 
-The next steps I'd like to look into:
+The next features I'd like to implement:
 
 - Email notifications, specially in the case of failure.
 - Secure password management, that would allow removing database and GPG

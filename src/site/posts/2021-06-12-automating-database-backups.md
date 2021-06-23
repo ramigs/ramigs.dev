@@ -219,8 +219,7 @@ The next features I'd like to implement:
   article](https://smallstep.com/blog/command-line-secrets/) may be a good
   starting point.
 
-If you have any comment or suggestion, feel free to share it by opening a PR for
-[this
+Feel free to share any comment or suggestion by opening a PR on [this
 article](https://github.com/ramigs/ramigs.dev/blob/master/src/site/posts/2021-06-12-automating-database-backups.md).
 
 

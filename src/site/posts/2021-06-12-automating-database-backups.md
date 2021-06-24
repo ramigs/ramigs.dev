@@ -11,7 +11,7 @@ tags:
   - shell
 ---
 
-We already know that backups - and even more so, **restores** - are of paramount
+We already know that backups (and even more so, **restores**) are of paramount
 importance.
 
 The hard work we put into our projects must be safeguarded. In the context of

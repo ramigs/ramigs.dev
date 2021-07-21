@@ -27,8 +27,8 @@ I had a sneaky suspicion that simply `rm`'ing and recreating the file
 would not be such a great idea. 
 
 Turns out my hunch was right. My investigation led me to learn that when a
-process has a file opened - either for read or write, it's actually holding a
-handle to that file's [inode](https://linuxhandbook.com/inode-linux/).
+process opens a file - either for read or write, it's actually holding a handle
+to that file's [inode](https://linuxhandbook.com/inode-linux/).
 
 > inode is a Linux filesystem data structure that's assigned to each created
 file. Its purpose is to store various metadata about the file.

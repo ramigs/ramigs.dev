@@ -1,6 +1,6 @@
 ---
 date: 2021-07-20
-title: How to reliably clear a log file on Linux
+title: How to reliably clear a Linux log file
 description: Presenting file truncation and log rotation as two viable approaches for reliably clearing a log file on Linux
 slug: reliably-clear-log-file-linux
 tags:
@@ -45,9 +45,8 @@ newly created file won't have the same inode as the deleted file.
 Ok, so deleting and recreating the log file is not a viable solution. What can
 we do instead to free up that disk space?
 
-We need to **truncate** the contents of the file, while its inode remains the
-same. In other words, we need to clear the contents of the file without deleting
-it.
+We need the file's inode to remain the same, so we'll **truncate** its contents
+without deleting it.
 
 Manually editing the file is not *clean* solution a at all. What if the file
 gets written to by another process while we're editing it?

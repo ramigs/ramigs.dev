@@ -82,13 +82,15 @@ that disk space back.
 
 ## References
 
-- [https://www.howtogeek.com/465350/everything-you-ever-wanted-to-know-about-inodes-on-linux/](https://www.howtogeek.com/465350/everything-you-ever-wanted-to-know-about-inodes-on-linux/)
-- [https://linuxhandbook.com/inode-linux/](https://linuxhandbook.com/inode-linux/)
-- [https://serverfault.com/questions/285843/is-there-a-proper-way-to-clear-logs](https://serverfault.com/questions/285843/is-there-a-proper-way-to-clear-logs)
-- [https://serverfault.com/questions/665213/missing-var-log-mail-log-after-deleting-it-how-do-i-recreate-it](https://serverfault.com/questions/665213/missing-var-log-mail-log-after-deleting-it-how-do-i-recreate-it)
-- [https://askubuntu.com/questions/1138180/can-i-delete-var-log-files-because-of-low-root-space-in-ubuntu](https://askubuntu.com/questions/1138180/can-i-delete-var-log-files-because-of-low-root-space-in-ubuntu)
-- [https://linuxhandbook.com/empty-file-linux/](https://linuxhandbook.com/empty-file-linux/)
-- [https://linux.die.net/man/1/truncate](https://linux.die.net/man/1/truncate)
-- [https://linuxconfig.org/logrotate](https://linuxconfig.org/logrotate)
-- [https://www.tecmint.com/install-logrotate-to-manage-log-rotation-in-linux/](https://www.tecmint.com/install-logrotate-to-manage-log-rotation-in-linux/)
-- [https://www.redhat.com/sysadmin/setting-logrotate](https://www.redhat.com/sysadmin/setting-logrotate)
+Some resources that helped me write this article:
+
+- [Everything You Ever Wanted to Know About inodes on Linux](https://www.howtogeek.com/465350/everything-you-ever-wanted-to-know-about-inodes-on-linux/)
+- [Everything You Need to Know About inodes in Linux](https://linuxhandbook.com/inode-linux/)
+- [Server Fault Question: Is there a proper way to clear logs?](https://serverfault.com/questions/285843/is-there-a-proper-way-to-clear-logs)
+- [Server Fault Question: Missing /var/log/mail.log (after deleting it) - How do I recreate it?](https://serverfault.com/questions/665213/missing-var-log-mail-log-after-deleting-it-how-do-i-recreate-it)
+- [Ask Ubuntu Question: Can I delete /var/log files because of low root space in Ubuntu?](https://askubuntu.com/questions/1138180/can-i-delete-var-log-files-because-of-low-root-space-in-ubuntu)
+- [How to Empty a Log File in Linux](https://linuxhandbook.com/empty-file-linux/)
+- [truncate(1) - Linux man page](https://linux.die.net/man/1/truncate)
+- [logrotate command in Linux with examples](https://linuxconfig.org/logrotate)
+- [How to Setup and Manage Log Rotation Using Logrotate in Linux](https://www.tecmint.com/install-logrotate-to-manage-log-rotation-in-linux/)
+- [Setting up logrotate in Linux](https://www.redhat.com/sysadmin/setting-logrotate)

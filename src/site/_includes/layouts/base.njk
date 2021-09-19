@@ -25,14 +25,11 @@
         {% endif %}
     </head>
     <body>
-        <div class="container">
-            {% include "partials/header.njk" %}
-        </div>
-        <main class="container">
-
+        {% include "partials/header.njk" %}
+        <main class="small-container">
             {{ content | safe }}
         </main>
-        <div class="container">
+        <div class="small-container">
             {% include "partials/footer.njk" %}
         </div>
         <script src="/js/main.bundle.js"></script>

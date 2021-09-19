@@ -42,52 +42,39 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  border-left: solid 8px mix($font-color, $primary-color, 10%);
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  margin: auto;
-}
-
-main {
-  flex: 1;
-}
-
-.container {
-  width: 400px;
-  @include small-breakpoint {
-    width: 500px;
-  }
-  @include medium-breakpoint {
-    width: 600px;
-  }
-  @include large-breakpoint {
-    width: 700px;
-  }
-}
-
 nav {
-  padding-top: 2em;
+  // padding: 0 !important;
+  margin-top: 2em;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  @include small-breakpoint {
+    align-items: flex-end;
+  }
   margin-bottom: 4rem;
 
+  .logo-container {
+    width: 400px;
+    //height: 120px;
+
+    .logo-a {
+      border: 2px solid pink;
+    }
+  }
+
   .logo {
-    height: 60px;
-    @include medium-breakpoint {
-      height: 80px;
-    }
-    @include large-breakpoint {
-      height: 100px;
-    }
+    vertical-align: top;
+    // border: 2px solid blue;
+    width: 100%;
+    height: auto;
   }
 }
 
 .nav-links {
+  margin: 0;
+  // align-self: flex-end;
   display: flex;
-  padding-top: 4em;
+  // padding-top: 4em;
   padding-left: 0;
   flex-direction: column;
   @include medium-breakpoint {
@@ -289,4 +276,53 @@ footer a:hover {
   float: right;
   shape-outside: circle();
   margin: 10px 0 30px 30px;
+}
+
+// Responsive
+@media only screen and (max-width: $mobile) {
+  nav {
+    margin-top: 1em;
+    margin-bottom: 3em;
+  }
+
+  .nav-links {
+    line-height: 2.2em;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  h2.with-separator {
+    margin-top: 1em;
+  }
+
+  .article-listing {
+    font-size: 1rem;
+  }
+
+  footer {
+    margin-top: 0;
+
+    p {
+      font-size: 0.8em;
+      margin-bottom: 0;
+    }
+  }
+
+  .profile-img-circle {
+    display: none;
+  }
+
+  a {
+    word-wrap: break-word;
+  }
 }

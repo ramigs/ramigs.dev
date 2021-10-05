@@ -14,13 +14,13 @@ This is the story about how my team got to know and use
 [Artillery](https://artillery.io) to load test the backend (and database) of the
 application we're working on.
 
-I'll begin by giving a bit of context on the challenge that led us to the
-necessity for load testing and Artillery as the right tool for it.
+I'll begin by giving a bit of context on the challenge that led us to need load
+testing and Artillery as the right tool for that.
 
 I'll then provide a brief overview on what Artillery is and how to use it to
 write and run load tests. I'll also be sharing some of the insights we've
-learned along the way, plus some really cool and useful Artillery features and
-testing strategies.
+learned along the way, plus some very useful Artillery features and testing
+strategies.
 
 ## The challenge
 
@@ -28,15 +28,15 @@ So, recently we got some really good news from our product managers. The first
 iteration of our application in production has been a success, and as a result,
 new users are expected to be onboarded soon.
 
-This means we need to make sure our current application and infrastructure will
-be able to scale accordingly, as the number of concurrent users is estimated to
-increase by a factor of 50 and the database size to grow by a factor of 10.
+This means we need to make sure our application and infrastructure will be able
+to scale accordingly, as the number of concurrent users is estimated to increase
+by a factor of 50 and the database size to grow by a factor of 10.
 
 **Is our current infrastructure able to handle the expected traffic increase?
-How will the performance be affected?**
+How will performance be affected?**
 
 Instead of second-guessing, we decided it would be better to rely on concrete
-metrics that would help us make the most informed decisions.
+metrics that would help us make better-informed decisions.
 
 ## Load testing
 
@@ -44,24 +44,25 @@ At this point, it was clear that we needed a tool to load test the application.
 After researching and gathering some in-house positive feedback, we opted to go
 with Artillery.
 
-Our application is deployed on a VPS using Docker containers and follows a
-common architecture consisting of three main components: frontend (Nuxt.js),
-backend API (.NET Core C#), and database (MySQL). In front of everything we have
-nginx serving as a reverse proxy.
+Our application is deployed on a virtual private server using Docker containers,
+and follows a common architecture consisting of three main components: frontend
+(Nuxt.js), backend API (.NET Core C#), and database (MySQL). In front of
+everything we have nginx serving as a reverse proxy.
 
-Even though Artillery is more specifically tailored for backend testing, at the
-end of the day Artillery's HTTP testing is essentially done by sending HTTP
-requests and checking the status and latency of responses.
+Even though Artillery is more specifically tailored for backend testing,
+Artillery's HTTP testing is ultimately accomplished by sending HTTP requests to
+a URI and checking the responses' status and latency.
 
 The way our application is set up allows us to load test the entire stack
-(including frontend and nginx). Since all the requests go through nginx before
-being dispatched to and handled by `@nuxtjs/proxy`, which pretty much
-approximates Artillery's testing to real user behavior.
+(including frontend and nginx), since all requests go through nginx before being
+dispatched to and handled by
+[`@nuxtjs/proxy`](https://www.npmjs.com/package/@nuxtjs/proxy). This works great
+for us, as it more closely resembles real user behavior.
 
 In any case, even if your application is not set up in a similar way, but you'd
-still like to test other components of your stack, Artillery's extensibility -
-and namely "hooks", as we'll see later down the article, allow you to introduce
-further logic (e.g., frontend HTTP requests).
+still like to test other components of your stack, Artillery's extensibility
+(through "hooks", as we'll see later down the article) allows you to introduce
+further logic (e.g., HTTP requests to the frontend).
 
 ## Artillery
 
@@ -168,7 +169,7 @@ config:
 ```
 
 Finally, after you've executed the test, you may also examine the results
-visually, by uploading the results JSON file to the [Artillery report
+visually, by uploading the JSON results file to the [Artillery report
 viewer](https://reportviewer.artillery.io/).
 
 ## Wrapping up

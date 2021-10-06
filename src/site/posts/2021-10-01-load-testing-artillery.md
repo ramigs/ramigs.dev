@@ -57,12 +57,12 @@ The way our application is set up allows us to load test the entire stack
 (including frontend and nginx), since all requests go through nginx before being
 dispatched to and handled by
 [`@nuxtjs/proxy`](https://www.npmjs.com/package/@nuxtjs/proxy). This works great
-for us, as it more closely resembles real user behavior.
+for us, as it makes our load testing more closely resemble real user behavior.
 
 In any case, even if your application is not set up in a similar way, but you'd
 still like to test other components of your stack, Artillery's extensibility
 (through "hooks", as we'll see later down the article) allows you to introduce
-further logic (e.g., HTTP requests to the frontend).
+further logic in your tests (e.g., HTTP requests to the frontend).
 
 ## Artillery
 
@@ -183,7 +183,7 @@ bottlenecks comes from the database.
 
 We've found it very useful to perform several tests using different strategies
 (warm-up, ramp-up, and maximum load), mixing up different `phase` attributes and
-respective values, to really understand how the current infrastructure performs.
+respective values, to really understand how the current infrastructure responds.
 
 We combined all the results in an Excel sheet which we then examined to derive
 the points of inflection (in terms of number of concurrent users and database
@@ -192,8 +192,7 @@ we've defined as acceptable.
 
 As a next step, we'll be adding more computational resources to the database, by
 migrating it to a managed database service, as we continue to use Artillery to
-monitor the performance improvements that result from implemented infrastructure
-updates.
+monitor the performance improvements that result from each update we implement.
 
 ## Resources
 

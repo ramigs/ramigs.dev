@@ -4,6 +4,7 @@ title: "[TIL] mv and cp file permissions"
 description: mv and cp file permissions
 slug: mv-and-cp-file-permissions
 tags:
+  - til
   - mv
   - cp
   - linux

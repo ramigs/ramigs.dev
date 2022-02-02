@@ -5,9 +5,11 @@ description: mv and cp file permissions
 slug: mv-and-cp-file-permissions
 tags:
   - til
+  - linux
+  - bash
+  - shell
   - mv
   - cp
-  - linux
 ---
 
 TIL that `mv` preserves file permissions, but `cp` does not.

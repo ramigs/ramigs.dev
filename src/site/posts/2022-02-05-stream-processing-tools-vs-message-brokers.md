@@ -1,6 +1,6 @@
 ---
 date: 2022-02-05
-title: "[TIL] Difference between data streaming and message brokers"
+title: "[TIL] Difference between data streaming tools and message brokers"
 description: "Understanding the different use cases for data streaming tools and message brokers"
 slug: stream-processing-tools-vs-message-brokers
 tags:

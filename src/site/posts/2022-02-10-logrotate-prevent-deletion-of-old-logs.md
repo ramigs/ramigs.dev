@@ -2,7 +2,7 @@
 date: 2022-02-10
 title: "[TIL] logrotate: how to prevent deletion of old logs"
 description: "How to avoid logrotate to delete rotated logs"
-slug: auth0-email-delivery
+slug: logrotate-prevent-deletion-of-old-logs
 tags:
   - til
   - logrotate

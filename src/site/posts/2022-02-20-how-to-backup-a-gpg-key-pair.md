@@ -10,7 +10,7 @@ tags:
   - backup
 ---
 
-TIL that after generating a gpg key pair, one should always backup<sup>\*</sup>
+TIL that after generating a GPG key pair, one should always backup<sup>\*</sup>
 the following:
 
 1. **key pair** itself: `gpg -o private.gpg --export-options backup --export-secret-keys my-key`

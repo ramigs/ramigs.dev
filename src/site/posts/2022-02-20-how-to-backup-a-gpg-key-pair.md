@@ -10,17 +10,16 @@ tags:
   - backup
 ---
 
-TIL that after generating a GPG key pair, one should always backup<sup>\*</sup>
-the following:
+TIL that after generating a GPG key pair, one should always backup the
+following:
 
 1. **key pair** itself: `gpg -o private.gpg --export-options backup --export-secret-keys my-key`
 2. **revocation certificate**: `gpg --output revoke.asc --gen-revoke my-key`
 3. **key passphrase**: should be stored separately from the above, ideally on a
    password manager
 
-> <sup>\*</sup> Always consider carefully your security requirements for
-> decisions regarding redundancy and backup storage location (ideally on offline
-> media)
+> Always consider carefully your security requirements for decisions regarding
+> redundancy and backup storage location (ideally on offline media).
 
 For more information, please check:
 

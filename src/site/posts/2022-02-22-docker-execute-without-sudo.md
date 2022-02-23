@@ -15,8 +15,8 @@ tags:
 On certain Linux distributions, such as Ubuntu, the `docker` command can only be
 executed by the root user or by a user in the `docker` group.
 
-For the sake of convenience, to not have to type `sudo` every time, user can be
-added to the `docker` group, as so:
+For the sake of convenience, to not have to type `sudo` every time, add your
+user to the `docker` group, as so:
 
 ```
 sudo usermod -aG docker ${USER}

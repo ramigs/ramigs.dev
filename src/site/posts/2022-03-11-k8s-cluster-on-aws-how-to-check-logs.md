@@ -10,13 +10,14 @@ tags:
   - eks
 ---
 
-TIL how to check the logs of a K8S cluster on AWS.
+TIL how to check Pod logs on a K8S cluster running on [AWS
+EKS](https://aws.amazon.com/eks/).
 
 Requirements:
 
+- K8S cluster on AWS EKS
 - [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 - `kubectl`
-- K8S cluster on AWS EKS
 
 First, connect to the AWS account. Here, I'm doing it using [Named
 Profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html):

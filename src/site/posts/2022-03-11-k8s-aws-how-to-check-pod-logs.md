@@ -1,8 +1,8 @@
 ---
 date: 2022-03-11
 
-title: "[TIL] K8S cluster on AWS: How to check logs"
-description: "How to check K8S cluster logs on AWS"
+title: "[TIL] K8S AWS: How to check Pod logs"
+description: "How to check Pod logs on a K8S cluster running on AWS EKS"
 slug: k8s-cluster-on-aws-how-to-check-logs
 tags:
   - k8s

@@ -1,21 +1,21 @@
 ---
 date: 2022-03-11
 
-title: "[TIL] K8S AWS: How to check Pod logs"
-description: "How to check Pod logs on a K8S cluster running on AWS EKS"
-slug: k8s-cluster-on-aws-how-to-check-logs
+title: "[TIL] K8s AWS: How to check Pod logs"
+description: "How to check Pod logs on a K8s cluster running on AWS EKS"
+slug: k8s-aws-how-to-check-pod-logs
 tags:
   - k8s
   - aws
   - eks
 ---
 
-TIL how to check Pod logs on a K8S cluster running on [AWS
+TIL how to check Pod logs on a K8s cluster running on [AWS
 EKS](https://aws.amazon.com/eks/).
 
 Requirements:
 
-- K8S cluster on AWS EKS
+- K8s cluster on AWS EKS
 - [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 - `kubectl`
 

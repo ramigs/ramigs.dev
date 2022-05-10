@@ -49,7 +49,7 @@ aws cloudfront get-distribution --id E2FXR8603J97N3
 ### Create cache invalidation
 
 ```shell
-aws cloudfront create-invalidation --distribution-id E2FXR8603J97N3 --paths "/\*"
+aws cloudfront create-invalidation --distribution-id E2FXR8603J97N3 --paths "/*"
 ```
 
 ### Check status of cache invalidation

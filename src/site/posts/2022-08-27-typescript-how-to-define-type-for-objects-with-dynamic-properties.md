@@ -9,28 +9,48 @@ tags:
   - til
 ---
 
-TIL how to define a type for objects with dynamic properties (any number of properties with unknown key names and values).
+TIL how to define a type for objects with dynamic properties. By this we mean an
+object that can have any number of properties, with unknown property names and
+values. However, we know what their **types** should be.
 
-Let's say we want to create a type for objects such as:
+Let's take a look at an example to make this clearer.
+
+Let's say we want to create a type to represent dictionary objects such as:
 
 ```js
-const cache = {
-  1: "value 1",
-  2: "value 2",
-  3: "value 3",
+const dictionary = {
+  hello: "olá",
+  goodbye: "adeus",
 };
 ```
+
+In this case, we want Typescript to help us enforce that both property name and
+property value are of type `string`.
 
 We can use the `Record` utility type, like so:
 
 ```js
-type Cache = Record<string, string>;
+type MyDictionary = Record<string, string>;
 
-const cache: Cache = {};
+const dictionary: MyDictionary = {};
 ```
 
-This utility type is an alternative to and a name alias of:
+Now, if we try to set something like the following, Typescript will signal an
+error and stop us:
 
 ```js
-type Cache = { [k: string]: string };
+// Type 'number' is not assignable to type 'string'.
+dictionary.one = 1;
 ```
+
+This utility type is a name alias for [index
+signatures](https://www.typescriptlang.org/docs/handbook/2/objects.html#index-signatures):
+
+```js
+type MyDictionary = { [k: string]: string };
+```
+
+See:
+
+- [Record<Keys, Type> - TypeScript documentation](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)
+- [Define a Type for Object with Dynamic keys in TypeScript - Borislav Hadzhiev](https://bobbyhadz.com/blog/typescript-object-with-dynamic-keys)

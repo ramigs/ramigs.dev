@@ -1,8 +1,8 @@
 ---
 date: 2022-08-27
 
-title: "[TIL] Typescript: How to define a type for objects with dynamic properties"
-description: "Typescript: How to define a type for objects with dynamic properties"
+title: "[TIL] TypeScript: How to define a type for objects with dynamic properties"
+description: "TypeScript: How to define a type for objects with dynamic properties"
 slug: typescript-how-to-define-type-for-objects-with-dynamic-properties
 tags:
   - typescript
@@ -24,10 +24,10 @@ const dictionary = {
 };
 ```
 
-In this case, we want Typescript to help us enforce that both property name and
+In this case, we want TypeScript to help us enforce that both property name and
 property value are of type `string`.
 
-We can use the `Record` utility type, like so:
+We can use the `Record<Keys, Type>` utility type, like so:
 
 ```js
 type MyDictionary = Record<string, string>;
@@ -35,7 +35,7 @@ type MyDictionary = Record<string, string>;
 const dictionary: MyDictionary = {};
 ```
 
-Now, if we try to set something like the following, Typescript will signal an
+Now, if we try to set something like the following, TypeScript will signal an
 error and stop us:
 
 ```js
@@ -43,7 +43,7 @@ error and stop us:
 dictionary.one = 1;
 ```
 
-This utility type is a name alias for [index
+The `Record<Keys, Type>` utility type is a name alias for [index
 signatures](https://www.typescriptlang.org/docs/handbook/2/objects.html#index-signatures):
 
 ```js

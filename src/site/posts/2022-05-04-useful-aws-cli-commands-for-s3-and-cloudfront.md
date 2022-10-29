@@ -34,7 +34,7 @@ aws s3 cp static/logo.png s3://cdn-dev/logo.png
 
 ## Amazon CloudFront
 
-### Get distribution id list:
+### Get distribution id list
 
 ```shell
 aws cloudfront list-distributions --output table --query 'DistributionList.Items[*].Id'

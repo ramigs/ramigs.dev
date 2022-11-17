@@ -36,6 +36,9 @@ terraform apply
 terraform fmt
 ```
 
+More about [terraform
+fmt](https://spacelift.io/blog/terraform-fmt).
+
 ### Extract the value of an output variable from the state file
 
 ```shell
@@ -47,3 +50,6 @@ terraform output
 ```shell
 terraform destroy
 ```
+
+More about [terraform
+destroy](https://spacelift.io/blog/how-to-destroy-terraform-resources).

@@ -47,8 +47,8 @@
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.1.0",
     "luxon": "^1.25.0",
-    "webpack": "^4.44.1",
-    "webpack-stream": "^5.2.1"
+    "webpack": "^5.75.0",
+    "webpack-stream": "^7.0.0"
   },
   "dependencies": {}
 }

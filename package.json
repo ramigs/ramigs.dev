@@ -46,7 +46,7 @@
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.1.0",
-    "luxon": "^1.25.0",
+    "luxon": "^1.28.1",
     "webpack": "^4.44.1",
     "webpack-stream": "^5.2.1"
   },

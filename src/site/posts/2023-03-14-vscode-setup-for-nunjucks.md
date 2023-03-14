@@ -26,6 +26,6 @@ Nunjucks](https://11ty.rocks/tips/vscode/#extend-emmet-for-nunjucks).
 
 ### Resources
 
-- [Nunjucks Settings for VS
-  Code](https://hyunbinseo.medium.com/nunjucks-settings-for-vs-code-a0da0dc66b95)
+- [Nunjucks Settings for VS Code -
+  Hyunbin](https://hyunbinseo.medium.com/nunjucks-settings-for-vs-code-a0da0dc66b95)
 - [VSCode Settings - 11ty Rocks!](https://11ty.rocks/tips/vscode/)

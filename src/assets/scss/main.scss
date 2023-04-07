@@ -266,18 +266,6 @@ footer a:hover {
   border: 0;
 }
 
-// About Me
-.profile-img-circle {
-  width: 150px;
-  height: 150px;
-  background: url(../img/cropped.png) center;
-  filter: brightness(110%);
-  border-radius: 50%;
-  float: right;
-  shape-outside: circle();
-  margin: 10px 0 30px 30px;
-}
-
 // Responsive
 @media only screen and (max-width: $mobile) {
   nav {
@@ -316,10 +304,6 @@ footer a:hover {
       font-size: 0.8em;
       margin-bottom: 0;
     }
-  }
-
-  .profile-img-circle {
-    display: none;
   }
 
   a {

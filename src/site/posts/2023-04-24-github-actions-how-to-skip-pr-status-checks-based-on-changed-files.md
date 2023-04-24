@@ -1,8 +1,8 @@
 ---
 date: 2023-04-24
-title: "GitHub Actions: how to skip tests in a PR workflow based on changed files"
-description: "GitHub Actions: how to conditionally skip tests in the PR pipeline based on changed files"
-slug: github-actions-how-to-skip-tests-in-pr-workflow-based-on-changed-files
+title: "GitHub Actions: how to skip PR status checks based on changed files"
+description: "GitHub Actions: how to conditionally status checks in PRs based on changed files"
+slug: github-actions-how-to-skip-pr-status-checks-based-on-changed-files
 tags:
   - github
   - actions

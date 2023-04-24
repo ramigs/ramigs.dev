@@ -6,6 +6,7 @@ description: "How to fix deprecated Node.js 12 GitHub Action chrisdickinson/setu
 slug: how-to-fix-deprecated-github-action-chrisdickinson-setup-yq
 tags:
   - github
+  - actions
   - node
 ---
 

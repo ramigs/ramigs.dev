@@ -1,5 +1,5 @@
 ---
-date: 2023-05-04
+date: 2023-05-08
 title: "VSCode: Vue 2 or Vue 3 extensions per project"
 description: "VSCode: How to configure extensions for Vue 2 or Vue 3 per project"
 slug: vscode-how-to-configure-extensions-vue-2-or-vue-3

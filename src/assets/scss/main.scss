@@ -266,6 +266,18 @@ footer a:hover {
   border: 0;
 }
 
+.outside-container {
+  border: 1px solid blue;
+  margin-bottom: 2rem;
+}
+
+.responsive-element {
+  border: 1px solid red;
+  width: 100%;
+  max-width: 580px;
+  margin: auto;
+}
+
 // Responsive
 @media only screen and (max-width: $mobile) {
   nav {

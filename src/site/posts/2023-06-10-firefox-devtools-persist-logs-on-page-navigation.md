@@ -10,7 +10,7 @@ tags:
 ---
 
 TIL about a Firefox DevTools option, which allows to specify whether the request
-list and logs are cleared or not on page navigation (or page reload).
+list and logs should be cleared or not on page navigation (or page reload).
 
 It can be specially helpful while developing/troubleshooting.
 

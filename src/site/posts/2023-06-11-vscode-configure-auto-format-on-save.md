@@ -27,6 +27,6 @@ From the project root, create a `.vscode/settings.json` file with the following:
 }
 ```
 
-When a project contributor checks out the project, and is using VSCode (with
+When a project contributor checks out the project and is using VSCode (with
 `eslint` and `prettier` plugins installed) auto format on save will be enabled,
 based on the `eslint` and `prettier` rules configured.

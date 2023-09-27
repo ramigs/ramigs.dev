@@ -4,6 +4,7 @@ title: "[TIL] Nuxt 2: nuxt generate fails silently and how to avoid it"
 description: "Nuxt 2: How to force generate command to exit with non-0 code on errors"
 slug: nuxt2-generate-fails-silently-and-how-to-avoid-it
 tags:
+  - til
   - nuxt
 ---
 

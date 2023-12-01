@@ -1,6 +1,6 @@
 ---
 date: 2023-12-01
-title: "[TIL] VSCode: Setting the TypeScript version"
+title: "[TIL] VSCode: Setting the correct TypeScript version"
 description: "The importance of setting the TypeScript version according to the project in VSCode"
 slug: vscode-setting-typescript-version
 tags:

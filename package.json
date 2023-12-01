@@ -1,8 +1,8 @@
 {
   "name": "ramigs",
   "version": "1.0.0",
-  "description": "Rami Shashati's personal website",
-  "author": "Rami Shashati <ramigs@gmail.com>",
+  "description": "ramigs' personal website and tech-blog",
+  "author": "ramigs <ramigs@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",

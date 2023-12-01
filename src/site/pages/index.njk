@@ -8,8 +8,8 @@ description: Home
 {% block content %}
 
 <h1>
-👋 I'm Rami, a <strong>software engineer</strong> and <strong>technical
-writer</strong> from Lisbon, Portugal.
+👋 I'm ramigs, a <strong>software developer</strong> and <strong>technical
+writer</strong>.
 </h1>
 
 <p>
@@ -19,6 +19,9 @@ architectures, developer experience, and automation.
 </p>
 
 <div class="social-icons">
+  <a href="mailto:ramigs@gmail.com">
+    <i class="far fa-envelope"></i>
+  </a>
   <a target="_blank" href="https://github.com/ramigs">
     <i class="fab fa-github"></i>
   </a>
@@ -28,12 +31,9 @@ architectures, developer experience, and automation.
 {#   <a target="_blank" href="https://www.linkedin.com/in/ramigs/">
     <i class="fab fa-linkedin-in"></i>
   </a> #}
-  <a href="mailto:ramigs@gmail.com">
-    <i class="far fa-envelope"></i>
-  </a>      
 </div>
 
-<h2 class="with-separator">Recent Articles</h2>
+<h2 class="with-separator">Recent Posts</h2>
 
 <ul class="article-listing">
 {%- for page in collections.posts.slice(collections.posts.length - 6, collections.posts.length) | reverse -%}

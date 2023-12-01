@@ -1,23 +1,29 @@
 ---
 permalink: blog/index.html
 layout: default
-title: Articles
+title: Posts
 description: Full Stack Developer from Lisbon, Portugal.
 ---
 
 {% block content %}
 
-<h1 class="with-separator">Articles</h1>
+  <h1 class="with-separator">Posts</h1>
 
-{% for page in collections.posts | reverse %}
-  {% if loop.first %}<ul class="article-listing">{% endif %}
-  <li>
-    <article>
-      <a href="{{ page.url }}">{{ page.data.title }}</a>
-      <p class="article-date"><time datetime="{{ page.data.date | dateDisplay }}">{{ page.data.date|dateDisplay }}</time></p>
-    </article>
-  </li>
-  {% if loop.last %}</ul>{% endif %}
-{% endfor %}
+  {% for page in collections.posts | reverse %}
+    {% if loop.first %}
+      <ul class="article-listing">
+      {% endif %}
+      <li>
+        <article>
+          <a href="{{ page.url }}">{{ page.data.title }}</a>
+          <p class="article-date">
+            <time datetime="{{ page.data.date | dateDisplay }}">{{ page.data.date|dateDisplay }}</time>
+          </p>
+        </article>
+      </li>
+      {% if loop.last %}
+      </ul>
+    {% endif %}
+  {% endfor %}
 
 {% endblock %}

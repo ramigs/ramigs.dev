@@ -1,10 +1,9 @@
 ---
 date: 2023-12-01
-title: "Migrating to Cypress.js 13 is awesome DevEx"
+title: "Migrating to Cypress.js 13 is awesome DX"
 description: "My experience updating Cypress.js versions in two different projects"
-slug: migrating-to-cypress-13-is-awesome-devex
+slug: migrating-to-cypress-13-is-awesome-dx
 tags:
-  - til
   - cypress
 ---
 
@@ -28,7 +27,7 @@ Was such a nice experience using the migration tool, take a look at the amazing
 UI of one of the migration steps (replacing `cypress.json` with
 `cypress.config.ts`, because `cypress.json` is no longer supported):
 
-![Require status checks](/img/articles/2023-12-01-migrating-to-cypress-13-is-awesome-devex.png)
+![Require status checks](/img/articles/2023-12-01-migrating-to-cypress-13-is-awesome-dx.png)
 
 Thank you Cypress team, great work! We know how difficult version management can
 be, especially in the JavaScript ecosystem 😅.

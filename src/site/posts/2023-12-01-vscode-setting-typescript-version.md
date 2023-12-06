@@ -28,3 +28,11 @@ This will add `"typescript.tsdk": "node_modules/typescript/lib"` to
 entire team can benefit from it.
 
 Now the project is in charge (not the editor), no more confusing differences 🙌.
+
+**Note:** Don't forget to check with your team before pushing the `.vscode`
+folder to the repository, because if someone is already using a
+`.vscode/settings.json` file locally, this will cause conflicts. Unfortunately,
+at the moment of writing, it's still not possible to [extend
+settings](https://github.com/microsoft/vscode/issues/15909). Alternatively, you
+can push a `.vscode/settings.json.default` to serve as reference, similar to
+what it's done with `env.default` or `env.sample`, for example.

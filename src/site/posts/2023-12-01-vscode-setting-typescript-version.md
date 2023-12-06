@@ -27,6 +27,14 @@ This will add `"typescript.tsdk": "node_modules/typescript/lib"` to
 `.vscode/settings.json` and should be committed to the repository, so that the
 entire team can benefit from it.
 
+You can also add the setting to your own VSCode **User Settings**, so that this
+applies to any instance of VSCode you open:
+
+```yaml
+"typescript.tsdk": "node_modules\\typescript\\lib",
+"typescript.enablePromptUseWorkspaceTsdk": true,
+```
+
 Now the project is in charge (not the editor), no more confusing differences 🙌.
 
 **Note:** Don't forget to check with your team before pushing the `.vscode`

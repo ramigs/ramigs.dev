@@ -31,7 +31,7 @@ You can also add the setting to your own VSCode **User Settings**, so that this
 applies to any instance of VSCode you open:
 
 ```yaml
-"typescript.tsdk": "node_modules\\typescript\\lib",
+"typescript.tsdk": "node_modules/typescript/lib",
 "typescript.enablePromptUseWorkspaceTsdk": true,
 ```
 

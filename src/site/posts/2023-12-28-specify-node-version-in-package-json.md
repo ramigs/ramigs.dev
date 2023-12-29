@@ -23,3 +23,10 @@ When `engines.node` is specified, someone that tries to `yarn install` (and not
 using a compatible `node` version) will get an error similar to `The engine
 "node" is incompatible with this module. Expected version "v20.10.0". Got
 "16.20.2"`.
+
+Run the following command to set `engines.node` according to the current `node`
+version:
+
+```sh
+npm pkg set engines.node=$(node -v)
+```

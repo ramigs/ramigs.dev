@@ -5,16 +5,16 @@ const browsersync = require("browser-sync").create();
 function init(done) {
   browsersync.init({
     server: {
-      baseDir: "./dist/"
+      baseDir: "./dist/",
     },
     files: [
       "./dist/css/main.min.css",
       "./dist/js/main.bundle.js",
-      "./dist/**/*.{html, xml}"
+      "./dist/**/*.{html, xml}",
     ],
     port: 3000,
     open: true,
-    browser: "google chrome"
+    browser: "firefox",
   });
   done();
 }
@@ -28,5 +28,5 @@ function reload(done) {
 // exports
 module.exports = {
   init: init,
-  reload: reload
+  reload: reload,
 };

@@ -1,8 +1,8 @@
 ---
 date: 2024-01-16
-title: "GitHub Actions: conditional values"
-description: "How to conditionally set a value in GitHub Actions"
-slug: github-actions-conditional-values
+title: "GitHub Actions: how to set a value conditionally"
+description: "How to set a value conditionally in GitHub Actions"
+slug: github-actions-how-to-set-a-value-conditionally
 tags:
   - git
   - github

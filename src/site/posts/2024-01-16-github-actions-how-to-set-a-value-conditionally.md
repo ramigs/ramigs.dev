@@ -9,7 +9,7 @@ tags:
   - actions
 ---
 
-How to conditionally set a value on GitHub Actions:
+How to conditionally set a value in GitHub Actions:
 
 ```yaml
 env:

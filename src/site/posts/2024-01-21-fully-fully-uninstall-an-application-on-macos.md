@@ -19,6 +19,7 @@ leftovers:
 - /Library/LaunchAgents
 - /Library/LaunchDaemons
 - /Library/Preferences
+- /Library/PrivilegedHelperTools
 - ~/Library/Application Scripts
 - ~/Library/Application Support
 - ~/Library/Caches

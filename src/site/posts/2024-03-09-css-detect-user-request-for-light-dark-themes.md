@@ -22,5 +22,9 @@ It can be used as such:
 }
 ```
 
+Chrome DevTools has a [very useful
+toggle](https://stackoverflow.com/questions/57606960/how-can-i-emulate-prefers-color-scheme-media-query-in-chrome)
+that allows emulating different `prefers-color-scheme` values.
+
 Learn more about `prefers-color-scheme`
 [here](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).

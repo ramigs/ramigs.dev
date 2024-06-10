@@ -11,8 +11,8 @@ tags:
 
 ## How I discovered Open Props
 
-Recently, we were given a mission to fully replace a UI design on one of my
-client's applications - a typical user dashboard, built on [Nuxt
+Recently, we were given a mission to fully replace the frontend design in one of
+my client's applications - a typical user dashboard, built on [Nuxt
 2](https://v2.nuxt.com/).
 
 We were handed new Figma designs, which totally differed from the previous

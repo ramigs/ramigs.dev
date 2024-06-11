@@ -27,8 +27,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
-    name: "Build and deploy to all environments"
+  deploy:
+    name: "Deploy to all environments"
     runs-on: ubuntu-latest
     steps:
       - name: Invoke Deploy pipeline workflow for dev

@@ -2,7 +2,7 @@
 date: 2024-06-06
 title: "Open Props review"
 description: "A review on using Open Props in production"
-slug: reviewing-open-props
+slug: open-props-review
 tags:
   - css
   - open-props

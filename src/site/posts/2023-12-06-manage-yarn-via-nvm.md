@@ -10,7 +10,7 @@ tags:
   - nvm
 ---
 
-TIL that it's possible to manage via `nvm`. not only `node` versions, but also
+TIL that it's possible to manage via `nvm`, not only `node` versions, but also
 `yarn` versions.
 
 The advantage of doing so (instead of one single installation via `brew`, for

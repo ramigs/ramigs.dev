@@ -8,8 +8,8 @@ tags:
   - git
 ---
 
-Yesterday I got reminded of this the hard way, by loosing a reasonable amount of
-work due to an accidental `git restore .` in my command history.
+Yesterday I got reminded about this the hard way, by loosing a reasonable amount
+of work due to an accidental `git restore .` in my command history.
 
 My IDE was closed at that time, so wasn't even able to use its undo
 functionality to recover my changes.

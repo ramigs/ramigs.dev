@@ -8,10 +8,10 @@ tags:
   - git
 ---
 
-Yesterday I got reminded about this the hard way, by loosing a reasonable amount
-of work due to an accidental `git restore .` in my command history.
+Just another gentle reminder to "commit early, commit often".
+
+Yesterday I got reminded of this the hard way, when loosing a reasonable amount
+of work due to an accidental `git restore .`.
 
 My IDE was closed at that time, so wasn't even able to use its undo
-functionality to recover my changes.
-
-Just another gentle reminder to "commit early, commit often".
+functionality to recover my changes 😭.

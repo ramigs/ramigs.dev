@@ -21,7 +21,7 @@ deprecated and will be removed in Dart Sass 2.0.0.`
 
 Then, add the following property to the `UserConfig` object in `vite.config.ts`:
 
-```ts
+```js
 css: {
   preprocessorOptions: {
     scss: {

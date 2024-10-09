@@ -60,6 +60,6 @@ If we remove the status `Pending`, TypeScript will also complain:
 `Object literal may only specify known properties, and 'Pending' does not exist
 in type '{ Completed: BadgeColor; Canceled: BadgeColor; }'.`
 
-If we try to assign a non existing `BadgeColor`, TypeScript will also complain:
+If we try to assign a non-existing `BadgeColor`, TypeScript will also complain:
 
 `Type '"blue"' is not assignable to type 'BadgeColor'.`

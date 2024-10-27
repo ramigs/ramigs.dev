@@ -34,8 +34,8 @@ type WorkoutPlanBase = {
 ```
 
 Then, we define our workout plan type using an intersection (to _extend_ from
-the base type) and a **discriminated union** (where we use the literal type of
-`workoutType` to specify the respective two possible types of `exercises`):
+the base type) and a **discriminated union** (where we use the literal type for
+`workoutType` to specify the respective two possible types for `exercises`):
 
 ```js
 type WorkoutPlan = WorkoutPlanBase &

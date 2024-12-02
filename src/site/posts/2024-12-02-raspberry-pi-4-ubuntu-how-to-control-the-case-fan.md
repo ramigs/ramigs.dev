@@ -33,6 +33,9 @@ sudo apt update
 sudo apt full-upgrade
 ```
 
+Based on my experiments, this step seems to really be needed, maybe because it
+installs some Raspberry Pi required drivers (?).
+
 Finally, edit the file `/boot/firmware/config.txt:` and add the following at the
 end of the file:
 

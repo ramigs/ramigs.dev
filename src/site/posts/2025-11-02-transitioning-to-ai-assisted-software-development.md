@@ -14,10 +14,11 @@ tags:
 Over the last couple of months, I've (finally) decided to take the leap and
 start using AI tools to assist my day-to-day software development work.
 
-What began as basic prompts in Gemini—I find myself turning to Google and Stack
-Overflow much less and less—has now evolved into using GitHub Copilot directly
-in VSCode. These tools have already made a noticeable impact, helping me with
-code explanations, code generation, refactoring, and brainstorming new ideas.
+What began as basic prompts in Gemini—I find myself nowadays turning to Google
+and Stack Overflow less and less—has now evolved into using GitHub Copilot
+directly in VSCode. These tools have already made a noticeable impact, helping
+me with code explanations, code generation, refactoring, and brainstorming new
+ideas.
 
 Initially, I was not only a bit skeptical about relying on AI for programming
 tasks, but I also wanted to let these tools mature and avoid getting caught up

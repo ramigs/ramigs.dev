@@ -1,54 +1,14 @@
 {
-  "name": "ramigs",
-  "version": "1.0.0",
-  "description": "ramigs' personal website and tech-blog",
-  "author": "ramigs <ramigs@gmail.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ramigs/ramigs.dev"
-  },
+  "name": "astro",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "dev": "gulp dev",
-    "build": "gulp build",
-    "clean": "rm -rf dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "browserslist": [
-    "> 1%",
-    "ie >= 8",
-    "edge >= 15",
-    "ie_mob >= 10",
-    "ff >= 45",
-    "chrome >= 45",
-    "safari >= 7",
-    "opera >= 23",
-    "ios >= 6",
-    "android >= 4",
-    "bb >= 10"
-  ],
-  "keywords": [
-    "ramigs",
-    "eleventy",
-    "netlify",
-    "gulp",
-    "webpack"
-  ],
-  "devDependencies": {
-    "@11ty/eleventy": "^0.7.1",
-    "@fortawesome/fontawesome-free": "^5.14.0",
-    "autoprefixer": "^9.8.6",
-    "browser-sync": "^2.26.12",
-    "cssnano": "^4.1.10",
-    "glob": "^7.1.6",
-    "gulp": "^4.0.2",
-    "gulp-eslint": "^5.0.0",
-    "gulp-postcss": "^8.0.0",
-    "gulp-rename": "^1.4.0",
-    "gulp-sass": "^4.1.0",
-    "luxon": "^1.25.0",
-    "webpack": "^4.44.1",
-    "webpack-stream": "^5.2.1"
-  },
-  "dependencies": {}
+  "dependencies": {
+    "astro": "^5.15.4"
+  }
 }

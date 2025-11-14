@@ -1,8 +1,11 @@
 ---
-import DefaultLayout from "@layouts/DefaultLayout.astro";
-import { SITE, HOME, SOCIALS } from "@consts";
+import DefaultLayout from '@layouts/DefaultLayout.astro';
+import { SITE, HOME, SOCIALS } from '@consts';
+import Container from '@components/Container.astro';
 ---
 
 <DefaultLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
-	<h1>Page Index</h1>
+  <Container>
+    <h1>Page Home</h1>
+  </Container>
 </DefaultLayout>

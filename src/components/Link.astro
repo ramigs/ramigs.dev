@@ -1,0 +1,57 @@
+---
+type Props = {
+  href: string;
+  external?: boolean;
+  underline?: boolean;
+};
+
+const { href, external, underline = true, ...rest } = Astro.props;
+---
+
+<a
+  href={href}
+  target={external ? '_blank' : '_self'}
+  class={underline ? 'link link-underline' : 'link'}
+  {...rest}
+>
+  <slot />
+</a>
+
+<style>
+  .link {
+    text-decoration: none;
+    display: inline-block;
+    color: currentColor;
+    transition:
+      color 0.3s ease-in-out,
+      text-decoration-color 0.3s ease-in-out;
+  }
+
+  .link-underline {
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 0, 0, 0.15);
+    text-underline-offset: 2px;
+  }
+
+  .link-underline:hover {
+    text-decoration-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .link:hover {
+    color: black;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .link-underline {
+      text-decoration-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .link-underline:hover {
+      text-decoration-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .link:hover {
+      color: white;
+    }
+  }
+</style>

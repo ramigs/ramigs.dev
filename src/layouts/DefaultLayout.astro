@@ -1,9 +1,9 @@
 ---
-/* import Head from "@components/Head.astro";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro"; */
+//import Head from "@components/Head.astro";
+import Header from '@components/Header.astro';
+//import Footer from "@components/Footer.astro";
 import { SITE } from '@consts';
-import '@styles/main.css'; // Import the global stylesheet
+import '@styles/main.css';
 
 type Props = {
   title: string;
@@ -23,6 +23,7 @@ const { title, description } = Astro.props;
     <title>Astro</title>
   </head>
   <body>
+    <Header />
     <main>
       <slot />
     </main>

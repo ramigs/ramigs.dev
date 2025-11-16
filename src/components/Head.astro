@@ -115,15 +115,26 @@ const { title, description, image = '/nano.png' } = Astro.props;
 
     const systemThemeButton = document.getElementById('system-theme-button');
     systemThemeButton?.addEventListener('click', () => {
-      localStorage.setItem('theme', 'system');
-      toggleTheme(window.matchMedia('(prefers-color-scheme: dark)').matches);
+      localStorage.removeItem('theme');
+
+      // Now check the OS and apply it
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        toggleTheme(true);
+      } else {
+        toggleTheme(false);
+      }
     });
 
     window
       .matchMedia('(prefers-color-scheme: dark)')
       .addEventListener('change', (event) => {
-        if (localStorage.theme === 'system' || !localStorage.theme) {
-          toggleTheme(event.matches);
+        // ONLY apply OS change if no theme is manually set
+        if (!localStorage.getItem('theme')) {
+          if (event.matches) {
+            toggleTheme(true);
+          } else {
+            toggleTheme(false);
+          }
         }
       });
 
@@ -185,12 +196,22 @@ const { title, description, image = '/nano.png' } = Astro.props;
   }
 
   function preloadTheme() {
-    const userTheme = localStorage.theme;
+    const savedTheme = localStorage.theme;
+    const osPrefersDark = window.matchMedia(
+      '(prefers-color-scheme: dark)'
+    ).matches;
 
-    if (userTheme === 'light' || userTheme === 'dark') {
-      toggleTheme(userTheme === 'dark');
+    if (savedTheme) {
+      // 1. User has a saved preference
+      if (savedTheme === 'dark') {
+        toggleTheme(true);
+      }
+      // If 'light', we do nothing (it's the default)
     } else {
-      toggleTheme(window.matchMedia('(prefers-color-scheme: dark)').matches);
+      // 2. No saved preference, use OS
+      if (osPrefersDark) {
+        toggleTheme(true);
+      }
     }
   }
 

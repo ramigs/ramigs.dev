@@ -2,10 +2,274 @@
 import DefaultLayout from '@layouts/DefaultLayout.astro';
 import { SITE, HOME, SOCIALS } from '@consts';
 import Container from '@components/Container.astro';
+import Link from '@components/Link.astro';
+import { getCollection } from 'astro:content';
+
+const blog = (await getCollection('blog'))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
+
+const projects = (await getCollection('projects'))
+  .filter((project) => !project.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
+
+const allwork = (await getCollection('work'))
+  .sort(
+    (a, b) =>
+      new Date(b.data.dateStart).valueOf() -
+      new Date(a.data.dateStart).valueOf()
+  )
+  .slice(0, SITE.NUM_WORKS_ON_HOMEPAGE);
+
+const work = await Promise.all(
+  allwork.map(async (item) => {
+    const { Content } = await item.render();
+    return { ...item, Content };
+  })
+);
 ---
 
 <DefaultLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
-    <h1>Page Home</h1>
+    <h4 class="animate page-title">
+      Hi, I'm Nano <span class="wave-emoji">👋🏻</span>
+    </h4>
+    <div class="sections-wrapper">
+      <section>
+        <article class="intro-article">
+          <p class="animate">
+            I am a minimal, seo friendly, accessible portfolio and blog for
+            developers. I am an even more lightweight version of my popular
+            theme
+            <Link
+              href="https://github.com/markhorn-dev/astro-sphere"
+              aria-label="Astro Sphere on Github"
+              external
+            >
+              Astro Sphere
+            </Link>. I have a lighthouse scores of 100 across the board for
+            performance, accesibility, best practices and SEO.
+          </p>
+          <p class="animate">
+            I come packed with full type safety, a sitemap, an rss feed,
+            markdown and mdx support (use components in your markdown) through
+            astro integrations. I am styled with tailwind and come preconfigured
+            with light, dark and system/os theme preferences out of the box.
+          </p>
+          <p class="animate">
+            Visit
+            <Link
+              href="https://github.com/markhorn-dev/astro-nano"
+              aria-label="Astro Nano on Github"
+              external
+            >
+              Astro Nano on Github
+            </Link>
+            to fork the repository, read the docs or one-click deploy on Vercel or
+            Netlify.
+          </p>
+        </article>
+      </section>
+
+      <section class="animate section-spacing">
+        <div class="section-header">
+          <h5 class="section-title">Latest posts</h5>
+          <Link href="/blog"> See all posts </Link>
+        </div>
+        <ul class="list-spacing">
+          {
+            blog.map((post) => (
+              <li>
+                <ArrowCard entry={post} />
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class="animate section-spacing">
+        <div class="section-header">
+          <h5 class="section-title">Work Experience</h5>
+          <Link href="/work"> See all work </Link>
+        </div>
+        <ul class="work-list">
+          {
+            work.map((entry) => (
+              <li>
+                <div class="work-date">
+                  {dateRange(entry.data.dateStart, entry.data.dateEnd)}
+                </div>
+                <div class="work-company">{entry.data.company}</div>
+                <div class="work-role">{entry.data.role}</div>
+                <article>
+                  <entry.Content />
+                </article>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class="animate section-spacing">
+        <div class="section-header">
+          <h5 class="section-title">Recent projects</h5>
+          <Link href="/projects"> See all projects </Link>
+        </div>
+        <ul class="list-spacing">
+          {
+            projects.map((project) => (
+              <li>
+                <ArrowCard entry={project} />
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class="animate connect-section">
+        <h5 class="section-title">Let's Connect</h5>
+        <article>
+          <p>
+            If you want to get in touch with me about something or just to say
+            hi, reach out on social media or send me an email.
+          </p>
+        </article>
+        <ul class="socials-list">
+          {
+            SOCIALS.map((SOCIAL) => (
+              <li class="social-item">
+                <Link
+                  href={SOCIAL.HREF}
+                  external
+                  aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}
+                >
+                  {SOCIAL.NAME}
+                </Link>
+                {'/'}
+              </li>
+            ))
+          }
+          <li class="email-item">
+            <Link
+              href={`mailto:${SITE.EMAIL}`}
+              aria-label={`Email ${SITE.NAME}`}
+            >
+              {SITE.EMAIL}
+            </Link>
+          </li>
+        </ul>
+      </section>
+    </div>
   </Container>
 </DefaultLayout>
+
+<style>
+  .page-title {
+    font-weight: 600;
+    color: #000000;
+  }
+
+  :global(.dark) .page-title {
+    color: #ffffff;
+  }
+
+  .wave-emoji {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .sections-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .intro-article {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .section-spacing {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .connect-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .section-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .section-title {
+    font-weight: 600;
+    color: #000000;
+  }
+
+  :global(.dark) .section-title {
+    color: #ffffff;
+  }
+
+  .list-spacing {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .work-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .work-date {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    opacity: 0.75;
+  }
+
+  .work-company {
+    font-weight: 600;
+    color: #000000;
+  }
+
+  :global(.dark) .work-company {
+    color: #ffffff;
+  }
+
+  .work-role {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    opacity: 0.75;
+  }
+
+  .socials-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .social-item {
+    display: flex;
+    gap: 0.5rem;
+    white-space: nowrap;
+  }
+
+  .email-item {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+</style>

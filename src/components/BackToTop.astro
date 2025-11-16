@@ -1,0 +1,71 @@
+<button id="back-to-top" class="back-to-top-button">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    class="back-to-top-icon"
+  >
+    <line x1="5" y1="12" x2="19" y2="12" class="arrow-line"></line>
+    <polyline points="12 5 5 12 12 19" class="arrow-tip"></polyline>
+  </svg>
+  <div class="back-to-top-text">Back to top</div>
+</button>
+
+<style>
+  .back-to-top-button {
+    position: relative;
+    width: fit-content;
+    cursor: pointer;
+    display: flex;
+    padding: 0.375rem 0.75rem 0.375rem 2rem;
+    flex-wrap: nowrap;
+    border-radius: 0.25rem;
+    border: 1px solid var(--text-link-underline);
+    background-color: transparent;
+    color: var(--text-primary);
+    transition:
+      background-color 0.3s ease-in-out,
+      color 0.3s ease-in-out,
+      border-color 0.3s ease-in-out;
+  }
+
+  .back-to-top-button:hover {
+    background-color: var(--text-link-underline);
+    color: var(--text-link-hover);
+    border-color: var(--text-link-underline-hover);
+  }
+
+  .back-to-top-icon {
+    position: absolute;
+    top: 50%;
+    left: 0.5rem;
+    transform: translateY(-50%) rotate(90deg);
+    width: 1rem;
+    height: 1rem;
+    stroke-width: 2;
+    fill: none;
+    stroke: currentColor;
+  }
+
+  .arrow-line {
+    transform: translateX(0.5rem) scaleX(0);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .back-to-top-button:hover .arrow-line {
+    transform: translateX(0) scaleX(1);
+  }
+
+  .arrow-tip {
+    transform: translateX(0.25rem);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .back-to-top-button:hover .arrow-tip {
+    transform: translateX(0);
+  }
+
+  .back-to-top-text {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+</style>

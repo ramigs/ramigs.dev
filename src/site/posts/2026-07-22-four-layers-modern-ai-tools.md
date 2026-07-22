@@ -12,9 +12,9 @@ tags:
   - rag
 ---
 
-When we as developers start using AI tools, we often think it's all about
-writing better prompts. But as we dig deeper, we realize **Prompt Engineering**
-is only layer one.
+When we start integrating AI tools into our daily development workflow, we often
+think it's all about writing better prompts. But as we dig deeper, we realize
+Prompt Engineering is only layer one.
 
 Today I learned that understanding how modern AI tools work comes down to four
 distinct layers:
@@ -23,8 +23,8 @@ distinct layers:
 
 _What I tell the model._
 
-This is the foundation: craft clear system instructions, set explicit
-boundaries, format outputs, and provide few-shot examples. It governs the
+This is the foundation: crafting clear system instructions, setting explicit
+boundaries, formatting outputs, and providing few-shot examples. It governs the
 immediate reasoning and output of the model.
 
 ## 2. Context Engineering

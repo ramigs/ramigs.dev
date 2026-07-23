@@ -7,7 +7,6 @@ slug: four-layers-modern-ai-tools
 tags:
   - ai
   - llm
-  - engineering
   - prompt-engineering
   - rag
 ---

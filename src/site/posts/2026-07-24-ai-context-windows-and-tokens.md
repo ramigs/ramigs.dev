@@ -9,7 +9,9 @@ tags:
   - llm
 ---
 
-TIL an AI's **Context Window** isn't measured by the number of messages or files
+_Credit / Source: Learned via [Full Cycle](https://fullcycle.com.br/)_
+
+TIL that an AI's **Context Window** isn't measured by the number of messages or files
 you send, but by a hard limit on total **tokens**.
 
 Think of the Context Window as the LLM's temporary desk space.

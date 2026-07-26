@@ -5,6 +5,7 @@ title: "[TIL] The 4 Layers of Modern AI Tools (Prompt, Context, Harness, Loop)"
 description: "Understanding how AI tools work from a developer's perspective: the four layers of Prompt, Context, Harness, and Loop engineering"
 slug: four-layers-modern-ai-tools
 tags:
+  - til
   - ai
   - llm
   - prompt-engineering

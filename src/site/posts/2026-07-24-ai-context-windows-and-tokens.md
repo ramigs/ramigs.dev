@@ -5,6 +5,7 @@ title: "[TIL] AI Context Windows and Tokens"
 description: "A breakdown of the 8 pillars of AI-assisted software development, centered around optimizing your core dev workflow."
 slug: ai-context-windows-and-tokens
 tags:
+  - til
   - ai
   - llm
 ---

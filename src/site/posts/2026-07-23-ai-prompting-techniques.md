@@ -5,6 +5,7 @@ title: '[TIL] Prompting Techniques (How AI Models Actually "Think")'
 description: "A quick guide to the 5 core AI prompting techniques and how they help LLMs solve complex tasks."
 slug: ai-prompting-techniques
 tags:
+  - til
   - ai
   - llm
   - prompt-engineering

@@ -5,6 +5,7 @@ title: "[TIL] The 9 Pillars of AI-Assisted Software Development"
 description: "A breakdown of the 8 pillars of AI-assisted software development, centered around optimizing your core dev workflow."
 slug: pillars-of-ai-assisted-software-development
 tags:
+  - til
   - ai
   - workflow
   - productivity

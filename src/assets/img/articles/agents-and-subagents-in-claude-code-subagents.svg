@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 680" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#42210b" />
+    </marker>
+    <marker id="arrow3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9c9c9c" />
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="958" height="678" rx="12" fill="#fafafa" stroke="#dedede" />
+
+  <text x="480" y="34" font-size="12.5" fill="#606060" font-style="italic" text-anchor="middle">delegates &#8212; can run in parallel</text>
+
+  <!-- Main agent -->
+  <rect x="30" y="170" width="230" height="300" rx="10" fill="#ffffff" stroke="#42210b" stroke-width="2" />
+  <text x="50" y="200" font-size="15" font-weight="700" fill="#42210b">MAIN AGENT</text>
+
+  <text x="50" y="228" font-size="12.5" fill="#404040">&#8226; receives the goal</text>
+  <text x="50" y="250" font-size="12.5" fill="#404040">&#8226; decides to delegate</text>
+  <text x="50" y="272" font-size="12.5" fill="#404040">&#8226; sends a specific task</text>
+  <text x="50" y="294" font-size="12.5" fill="#404040">&#8226; consolidates results</text>
+
+  <line x1="50" y1="312" x2="240" y2="312" stroke="#dedede" />
+  <text x="50" y="334" font-size="12" font-weight="700" fill="#42210b">Own context</text>
+  <g>
+    <rect x="50" y="344" width="14" height="14" fill="#f8c013" />
+    <rect x="70" y="344" width="14" height="14" fill="#f8c013" />
+    <rect x="90" y="344" width="14" height="14" fill="#f8c013" />
+    <rect x="110" y="344" width="14" height="14" fill="#ffffff" stroke="#dedede" />
+    <rect x="130" y="344" width="14" height="14" fill="#ffffff" stroke="#dedede" />
+  </g>
+  <text x="50" y="380" font-size="11" fill="#808080">separate from every subagent below</text>
+
+  <!-- Subagent A -->
+  <rect x="580" y="40" width="270" height="130" rx="10" fill="#ffffff" stroke="#f8c013" stroke-width="2.5" />
+  <text x="598" y="66" font-size="13.5" font-weight="700" fill="#42210b">SUBAGENT A</text>
+  <text x="598" y="86" font-size="12" fill="#404040">task: specific to this subagent</text>
+  <text x="598" y="104" font-size="12" fill="#404040">prompt: from the main agent</text>
+  <text x="598" y="124" font-size="11" font-weight="700" fill="#42210b">own context</text>
+  <rect x="598" y="132" width="12" height="12" fill="#f8c013" /><rect x="614" y="132" width="12" height="12" fill="#f8c013" /><rect x="630" y="132" width="12" height="12" fill="#ffffff" stroke="#dedede" />
+
+  <!-- Subagent B -->
+  <rect x="580" y="210" width="270" height="130" rx="10" fill="#ffffff" stroke="#f8c013" stroke-width="2.5" />
+  <text x="598" y="236" font-size="13.5" font-weight="700" fill="#42210b">SUBAGENT B</text>
+  <text x="598" y="256" font-size="12" fill="#404040">task: specific to this subagent</text>
+  <text x="598" y="274" font-size="12" fill="#404040">prompt: from the main agent</text>
+  <text x="598" y="294" font-size="11" font-weight="700" fill="#42210b">own context</text>
+  <rect x="598" y="302" width="12" height="12" fill="#f8c013" /><rect x="614" y="302" width="12" height="12" fill="#ffffff" stroke="#dedede" /><rect x="630" y="302" width="12" height="12" fill="#ffffff" stroke="#dedede" />
+
+  <!-- Subagent C -->
+  <rect x="580" y="380" width="270" height="130" rx="10" fill="#ffffff" stroke="#f8c013" stroke-width="2.5" />
+  <text x="598" y="406" font-size="13.5" font-weight="700" fill="#42210b">SUBAGENT C</text>
+  <text x="598" y="426" font-size="12" fill="#404040">task: specific to this subagent</text>
+  <text x="598" y="444" font-size="12" fill="#404040">prompt: from the main agent</text>
+  <text x="598" y="464" font-size="11" font-weight="700" fill="#42210b">own context</text>
+  <rect x="598" y="472" width="12" height="12" fill="#f8c013" /><rect x="614" y="472" width="12" height="12" fill="#f8c013" /><rect x="630" y="472" width="12" height="12" fill="#f8c013" />
+
+  <!-- Delegate arrows (main -> subagents), solid -->
+  <line x1="260" y1="210" x2="578" y2="105" stroke="#42210b" stroke-width="2" marker-end="url(#arrow2)" />
+  <line x1="260" y1="320" x2="578" y2="275" stroke="#42210b" stroke-width="2" marker-end="url(#arrow2)" />
+  <line x1="260" y1="430" x2="578" y2="445" stroke="#42210b" stroke-width="2" marker-end="url(#arrow2)" />
+
+  <!-- Return arrows (subagents -> main), dashed, offset below each solid line -->
+  <line x1="578" y1="125" x2="260" y2="232" stroke="#9c9c9c" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow3)" />
+  <line x1="578" y1="295" x2="260" y2="342" stroke="#9c9c9c" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow3)" />
+  <line x1="578" y1="465" x2="260" y2="452" stroke="#9c9c9c" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow3)" />
+
+  <text x="480" y="535" font-size="12.5" fill="#606060" font-style="italic" text-anchor="middle">returns: a result, or a summary &#8212; never the full internal history</text>
+
+  <!-- Isolation note -->
+  <rect x="30" y="560" width="500" height="110" rx="10" fill="#ffffff" stroke="#dedede" stroke-dasharray="6 4" />
+  <text x="48" y="588" font-size="12.5" font-weight="700" fill="#42210b">Isolated context</text>
+  <text x="48" y="608" font-size="12" fill="#404040">Each subagent's internal history stays inside its</text>
+  <text x="48" y="628" font-size="12" fill="#404040">own context window &#8212; the main agent never sees it.</text>
+  <text x="48" y="648" font-size="12" fill="#404040">It only gets back a result, or a useful summary.</text>
+</svg>

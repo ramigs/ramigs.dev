@@ -19,7 +19,9 @@ precise structure. Here's how the pieces actually fit together.
 ## Anatomy of an agent
 
 Claude Code is the **harness**: it defines the environment, provides tools, and
-decides which agent to instantiate.
+exposes the mechanism for instantiating agents. It doesn't decide which agent
+runs, though — that call is made by the agent itself (the model), based on the
+task at hand.
 
 An **agent** is made up of three things:
 
@@ -41,8 +43,6 @@ There are two ways an agent comes into existence:
 > The harness defines the environment. The agent follows instructions, uses its
 > own context, and calls the model.
 
-![Diagram showing the harness instantiating an agent, which is made up of user instructions, predefined behavior, and its own context window, and which calls the model and uses tools](/img/articles/agents-and-subagents-in-claude-code-anatomy.svg)
-
 ## Subagents: delegation with isolated context
 
 A **subagent** is a specialized agent, instantiated by the main agent, to
@@ -55,25 +55,30 @@ The main agent:
 - sends a specific task to a subagent (or several, **in parallel**),
 - consolidates the results.
 
+Which subagent gets picked isn't hardcoded, either: Claude matches the task
+against each subagent's own `description` field and delegates accordingly.
+
 Each subagent gets a task, a prompt from the main agent, its own tools, and —
 critically — **its own context window**. It doesn't share the main agent's
 context, and the main agent doesn't automatically see the subagent's internal
-history back. It only gets the **result, or a useful summary**.
-
-![Diagram showing a main agent delegating tasks to three subagents in parallel, each with its own isolated context window, returning only a result or summary back to the main agent](/img/articles/agents-and-subagents-in-claude-code-subagents.svg)
+history back — only the **result, or a useful summary**, lands in its context
+window. The full transcript isn't gone; it's just parked outside the main thread
+unless you go pull it back up.
 
 ## Why the isolation matters
 
-This isn't an implementation detail — it's the whole point:
+This isn't an implementation detail — it's the whole point.
 
-- The main agent's context stays clean no matter how much a subagent had to dig
-  around to get an answer. All that exploration cost is paid out of the
-  subagent's own budget, not the main thread's.
-- Multiple subagents can run **in parallel**, each burning its own tokens
-  independently, instead of serializing everything through one context window.
-- A custom subagent lets you pre-bake scope and behavior for a repeated kind of
-  task (e.g. "review this diff," "explore this codebase") so you're not
-  re-explaining it every time.
+The main agent's context stays clean no matter how much a subagent had to dig
+around to get an answer. All that exploration cost is paid out of the subagent's
+own budget, not the main thread's.
+
+Multiple subagents can run **in parallel**, each burning its own tokens
+independently, instead of serializing everything through one context window.
+
+A custom subagent lets you pre-bake scope and behavior for a repeated kind of
+task (e.g. "review this diff," "explore this codebase") so you're not
+re-explaining it every time.
 
 ## Takeaway
 

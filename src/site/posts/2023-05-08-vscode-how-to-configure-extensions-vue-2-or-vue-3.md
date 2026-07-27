@@ -43,6 +43,9 @@ two versions of the same extension active at once, I achieved this using
 separate [VSCode profiles](https://code.visualstudio.com/docs/editor/profiles),
 one per Vue version, each with its own pinned ESLint version.
 
+Vetur itself is also pinned, at `0.37.3`, since it's the legacy Vue 2
+language-tooling extension and hasn't seen further releases.
+
 Also, for Vetur to actually handle formatting in Vue 2 projects, I had to set it
 as the default formatter for `.vue` files in my `settings.json`:
 

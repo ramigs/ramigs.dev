@@ -1,5 +1,12 @@
 ---
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'sample-post-one' } },
+    { params: { slug: 'sample-post-two' } },
+  ];
+}
 
+const { slug } = Astro.params;
 ---
 
 <html lang="en">
@@ -9,12 +16,12 @@
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>ramigs.dev</title>
+    <title>{slug} | ramigs.dev</title>
   </head>
   <body>
-    <h1>Homepage placeholder</h1>
+    <h1>Blog post placeholder: {slug}</h1>
     <p>
-      Placeholder route — real design arrives in Phase 3, real copy in Phase 5.
+      Placeholder route — real content arrives in Phase 4 (Content Collection).
     </p>
   </body>
 </html>

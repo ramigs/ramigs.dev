@@ -89,14 +89,13 @@ below:
 Use plan mode for changes under `src/payment/`.
 ```
 
-One gotcha of its own: `@file.md` imports that file's _entire_ content into
-context. Fine for something small; avoid it for large docs — link to them
-instead and let the agent read them on demand.
-
 This works cross-platform with no symlink permissions to worry about, and lets
-you layer tool-specific instructions on top of one shared base. Two gotchas:
+you layer tool-specific instructions on top of one shared base.
+
+Three things to watch for: `@file.md` pulls in the file's _entire_ content
+(avoid it for large docs — link instead and let the agent read on demand),
 imports inside fenced code blocks aren't resolved, and imported headings aren't
-auto-nested under the ones around them.
+renested under the section that references them.
 
 **Bottom line:** symlink if you want strictly identical files and don't need
 Windows support; `@import` if you want one shared source plus room for

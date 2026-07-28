@@ -38,7 +38,11 @@ There are two ways an agent comes into existence:
    `general-purpose`.
 2. **Custom agents**, defined by you in `.claude/agents/my-agent.md`. You write
    the behavior and specialty; Claude Code creates, registers, and provides the
-   environment for it.
+   environment for it. The file is Markdown with YAML frontmatter (`name`,
+   `description`, optionally `tools` and `model`) followed by the subagent's
+   system prompt in the body — and it can live at the project level
+   (`.claude/agents/`, shared with your team) or the user level
+   (`~/.claude/agents/`, available across all your projects).
 
 > The harness defines the environment. The agent follows instructions, uses its
 > own context, and calls the model.

@@ -9,6 +9,18 @@ tags:
   - typescript
 ---
 
+**Important update:** the settings mentioned below have since been deprecated in
+favor of new ones, as documented in VSCode's [`package.nls.json`
+file](https://github.com/microsoft/vscode/blob/main/extensions/typescript-language-features/package.nls.json):
+
+```yaml
+# Deprecated in favor of the two settings below
+# "typescript.tsdk": "node_modules/typescript/lib",
+# "typescript.enablePromptUseWorkspaceTsdk": true,
+"js/ts.tsdk.path": "node_modules/typescript/lib",
+"js/ts.tsdk.promptToUseWorkspaceVersion": true,
+```
+
 Mystery solved! I finally discovered why sometimes I'd notice inconsistencies in
 terms of the TypeScript errors between the terminal and VSCode.
 

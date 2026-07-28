@@ -6,6 +6,7 @@ import checker from 'vite-plugin-checker';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://ramigs.dev',
   integrations: [vue()],
   vite: {
     plugins: [

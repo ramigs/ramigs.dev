@@ -8,7 +8,7 @@ import eslintConfigPrettier from 'eslint-config-prettier/flat';
 
 export default defineConfig([
   {
-    ignores: ['dist/', '.astro/'],
+    ignores: ['dist/', '.astro/', 'public/'],
   },
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts}'],

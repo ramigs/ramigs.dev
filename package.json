@@ -7,17 +7,19 @@
   },
   "scripts": {
     "dev": "astro dev --open",
-    "build": "astro check && astro build",
+    "build": "astro check && vue-tsc --noEmit && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "astro check",
+    "check": "astro check && vue-tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
   "dependencies": {
-    "astro": "^7.1.4"
+    "@astrojs/vue": "^7.0.1",
+    "astro": "^7.1.4",
+    "vue": "^3.5.40"
   },
   "packageManager": "pnpm@10.20.0+sha512.cf9998222162dd85864d0a8102e7892e7ba4ceadebbf5a31f9c2fce48dfce317a9c53b9f6464d1ef9042cba2e02ae02a9f7c143a2b438cd93c91840f0192b9dd",
   "devDependencies": {
@@ -26,9 +28,12 @@
     "eslint": "^10.8.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-astro": "^3.0.1",
+    "eslint-plugin-vue": "^10.10.0",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
     "typescript": "6.0.3",
-    "typescript-eslint": "^8.65.0"
+    "typescript-eslint": "^8.65.0",
+    "vite-plugin-checker": "^0.14.5",
+    "vue-tsc": "^3.3.8"
   }
 }

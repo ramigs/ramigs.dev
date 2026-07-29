@@ -1,0 +1,163 @@
+---
+// Internal design-token reference. Not served in production — see the DEV check below.
+if (!import.meta.env.DEV) {
+  return new Response(null, { status: 404 });
+}
+
+import Layout from '../layouts/Layout.astro';
+
+const colorTokens = [
+  '--color-background',
+  '--color-background-subtle',
+  '--color-text',
+  '--color-text-muted',
+  '--color-border',
+  '--color-accent',
+  '--color-accent-text',
+];
+
+const spaceTokens = [
+  { name: '--space-xs', value: '0.25rem' },
+  { name: '--space-sm', value: '0.5rem' },
+  { name: '--space-md', value: '1rem' },
+  { name: '--space-lg', value: '1.5rem' },
+  { name: '--space-xl', value: '2rem' },
+  { name: '--space-2xl', value: '3rem' },
+  { name: '--space-3xl', value: '4rem' },
+];
+---
+
+<Layout title="Style guide (dev only) | ramigs.dev">
+  <main class="style-guide">
+    <h1>Style guide</h1>
+    <p>Internal reference for design tokens — not served in production.</p>
+
+    <section>
+      <h2>Colors</h2>
+      <div class="swatches">
+        {
+          colorTokens.map((token) => (
+            <div class="swatch">
+              <div
+                class="swatch-color"
+                style={`background-color: var(${token});`}
+              />
+              <code>{token}</code>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section>
+      <h2>Typography</h2>
+      <h1>Heading 1</h1>
+      <h2>Heading 2</h2>
+      <h3>Heading 3</h3>
+      <h4>Heading 4</h4>
+      <h5>Heading 5</h5>
+      <h6>Heading 6</h6>
+      <p>
+        Body paragraph text. This includes <strong>bold text</strong> and <em
+          >italic text</em
+        >, plus a <a href="#">link</a> for good measure.
+      </p>
+      <small
+        >Small/muted text, used for dates, captions, and similar de-emphasized
+        content.</small
+      >
+      <ul>
+        <li>Unordered list item one</li>
+        <li>Unordered list item two</li>
+      </ul>
+      <ol>
+        <li>Ordered list item one</li>
+        <li>Ordered list item two</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Spacing</h2>
+      <div class="space-swatches">
+        {
+          spaceTokens.map((token) => (
+            <div class="space-swatch">
+              <div class="space-bar" style={`width: var(${token.name});`} />
+              <code>
+                {token.name} ({token.value})
+              </code>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .style-guide {
+    max-width: 60rem;
+    margin-inline: auto;
+    padding: var(--space-lg);
+  }
+
+  .style-guide > h1 {
+    margin-block-end: var(--space-sm);
+  }
+
+  section {
+    margin-block-start: var(--space-2xl);
+    padding-block-start: var(--space-lg);
+    border-block-start: 1px solid var(--color-border);
+  }
+
+  section > h2:first-child {
+    margin-block-end: var(--space-lg);
+  }
+
+  section p,
+  section small,
+  section ul,
+  section ol {
+    display: block;
+    margin-block-start: var(--space-md);
+  }
+
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+    gap: var(--space-md);
+  }
+
+  .swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-xs);
+  }
+
+  .swatch-color {
+    width: 100%;
+    aspect-ratio: 1;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+  }
+
+  .space-swatches {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .space-swatch {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .space-bar {
+    height: 1rem;
+    background-color: var(--color-accent);
+  }
+</style>

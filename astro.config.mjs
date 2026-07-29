@@ -19,7 +19,7 @@ export default defineConfig({
           lintCommand: 'eslint .',
         },
         stylelint: {
-          lintCommand: 'stylelint "**/*.css"',
+          lintCommand: 'stylelint "**/*.{css,vue,astro}"',
         },
       }),
     ],

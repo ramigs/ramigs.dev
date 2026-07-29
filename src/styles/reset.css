@@ -9,6 +9,8 @@
 }
 
 html {
+  /* stylelint-disable-next-line property-no-vendor-prefix -- Safari only ever
+  supported the prefixed version, never adopted unprefixed text-size-adjust */
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }

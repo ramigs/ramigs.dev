@@ -18,6 +18,9 @@ export default defineConfig({
         eslint: {
           lintCommand: 'eslint .',
         },
+        stylelint: {
+          lintCommand: 'stylelint "**/*.css"',
+        },
       }),
     ],
   },

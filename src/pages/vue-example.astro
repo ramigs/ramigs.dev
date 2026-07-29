@@ -1,10 +1,9 @@
 ---
+import Layout from '../layouts/Layout.astro';
 import VueCounterExample from '../components/VueCounterExample.vue';
 ---
 
-<html lang="en">
-  <body>
-    <h1>Vue island example</h1>
-    <VueCounterExample client:load />
-  </body>
-</html>
+<Layout title="Vue island example | ramigs.dev">
+  <h1>Vue island example</h1>
+  <VueCounterExample client:load />
+</Layout>

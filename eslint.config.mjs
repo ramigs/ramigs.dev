@@ -5,6 +5,7 @@ import tseslint from 'typescript-eslint';
 import eslintPluginAstro from 'eslint-plugin-astro';
 import eslintPluginVue from 'eslint-plugin-vue';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
+import globals from 'globals';
 
 export default defineConfig([
   {
@@ -25,6 +26,12 @@ export default defineConfig([
         parser: tseslint.parser,
         extraFileExtensions: ['.astro'],
       },
+    },
+  },
+  {
+    files: ['**/*.astro/*.js', '**/*.astro/*.ts'],
+    languageOptions: {
+      globals: globals.browser,
     },
   },
   {

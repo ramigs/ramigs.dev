@@ -37,3 +37,15 @@ h6 {
 small {
   font-size: var(--font-size-small);
 }
+
+a {
+  color: var(--color-accent-text);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentcolor 40%, transparent);
+  text-underline-offset: var(--space-xs);
+  transition: text-decoration-color 0.2s ease;
+}
+
+a:hover {
+  text-decoration-color: currentcolor;
+}

@@ -3,7 +3,9 @@
   --color-gray-50: #f7f7f7;
   --color-gray-100: #eaeaea;
   --color-gray-200: #d8d8d8;
+  --color-gray-300: #dcdcdc;
   --color-gray-400: #8a8a8a;
+  --color-gray-600: #4d4d4d;
   --color-gray-700: #3d3d3d;
   --color-gray-800: #262626;
   --color-gray-900: #171717;
@@ -32,6 +34,10 @@
   --font-size-h1: clamp(2rem, 1.729rem + 1.354vw, 2.8125rem);
   --line-height-body: 1.5;
   --line-height-heading: 1.2;
+
+  /* Layout */
+  --content-max-width: 60rem;
+  --header-max-width: 100rem;
 }
 
 /* Semantic color tokens — light (default, and explicit override) */
@@ -42,27 +48,31 @@
   --color-background: var(--color-gray-50);
   --color-background-subtle: var(--color-gray-100);
   --color-text: var(--color-gray-900);
-  --color-text-muted: var(--color-gray-400);
+  --color-text-muted: var(--color-gray-600);
   --color-border: var(--color-gray-200);
   --color-accent: var(--color-gold);
   --color-accent-text: var(--color-gold-text-safe);
 }
 
-/* Semantic color tokens — dark */
+/* Semantic color tokens — dark
+   KEEP IN SYNC with the @media fallback block below — CSS custom properties
+   can't be shared/mixed-in across selectors, so these values are necessarily
+   duplicated. Any change here must be mirrored there too, and vice versa. */
 [data-color-mode='dark'] {
   color-scheme: dark;
 
   --color-background: var(--color-gray-900);
   --color-background-subtle: var(--color-gray-800);
   --color-text: var(--color-white);
-  --color-text-muted: var(--color-gray-400);
+  --color-text-muted: var(--color-gray-300);
   --color-border: var(--color-gray-700);
   --color-accent: var(--color-gold-dark-mode);
   --color-accent-text: var(--color-gold-dark-mode);
 }
 
 /* No manual override yet — follow system preference.
-   Only applies while nothing's been explicitly chosen via the toggle. */
+   Only applies while nothing's been explicitly chosen via the toggle.
+   KEEP IN SYNC with the [data-color-mode='dark'] block above — see note there. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-color-mode='light']) {
     color-scheme: dark;
@@ -70,7 +80,7 @@
     --color-background: var(--color-gray-900);
     --color-background-subtle: var(--color-gray-800);
     --color-text: var(--color-white);
-    --color-text-muted: var(--color-gray-400);
+    --color-text-muted: var(--color-gray-300);
     --color-border: var(--color-gray-700);
     --color-accent: var(--color-gold-dark-mode);
     --color-accent-text: var(--color-gold-dark-mode);

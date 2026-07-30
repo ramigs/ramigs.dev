@@ -8,6 +8,10 @@ astro dev --background
 
 Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
 
+If starting the dev server fails or behaves unexpectedly, check whether it's already running on the default port (4321) before troubleshooting further — the user may already have it running themselves.
+
+Don't run the dev server for every task by default — only when actually useful for verifying a specific change (e.g. visual/UI behavior that can't be confirmed via `pnpm build`/`check`/`lint` alone).
+
 ## Linting & formatting
 
 Run `pnpm lint` / `pnpm format:check` / `pnpm check` after substantive code changes. Skip them for trivial edits — documentation-only changes, comment tweaks, or other non-functional edits — where running the full check suite adds noise without value. Use judgment rather than mechanically running the full suite after every single edit.

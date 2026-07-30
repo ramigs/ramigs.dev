@@ -12,24 +12,24 @@
   --color-gold-dark-mode: #fad24a;
   --color-gold-text-safe: #8a6200;
 
-  /* Spacing */
-  --space-xs: 0.25rem;
-  --space-sm: 0.5rem;
-  --space-md: 1rem;
-  --space-lg: 1.5rem;
-  --space-xl: 2rem;
-  --space-2xl: 3rem;
-  --space-3xl: 4rem;
+  /* Spacing (scaled 1.125x alongside the type scale below, to stay proportional) */
+  --space-xs: 0.2813rem;
+  --space-sm: 0.5625rem;
+  --space-md: 1.125rem;
+  --space-lg: 1.6875rem;
+  --space-xl: 2.25rem;
+  --space-2xl: 3.375rem;
+  --space-3xl: 4.5rem;
 
   /* Typography */
   --font-body: var(--font-ibm-plex-sans);
   --font-weight-heading: 600;
-  --font-size-small: 0.875rem;
-  --font-size-body: 1rem;
-  --font-size-h4: clamp(1.125rem, 1.083rem + 0.208vw, 1.25rem);
-  --font-size-h3: clamp(1.25rem, 1.167rem + 0.417vw, 1.5rem);
-  --font-size-h2: clamp(1.5rem, 1.375rem + 0.625vw, 1.875rem);
-  --font-size-h1: clamp(1.75rem, 1.5rem + 1.25vw, 2.5rem);
+  --font-size-small: 1rem;
+  --font-size-body: 1.125rem;
+  --font-size-h4: clamp(1.25rem, 1.208rem + 0.208vw, 1.375rem);
+  --font-size-h3: clamp(1.375rem, 1.271rem + 0.521vw, 1.6875rem);
+  --font-size-h2: clamp(1.6875rem, 1.542rem + 0.729vw, 2.125rem);
+  --font-size-h1: clamp(2rem, 1.729rem + 1.354vw, 2.8125rem);
   --line-height-body: 1.5;
   --line-height-heading: 1.2;
 }

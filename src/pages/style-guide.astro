@@ -5,6 +5,13 @@ if (!import.meta.env.DEV) {
 }
 
 import Layout from '../layouts/Layout.astro';
+import SunIcon from '../assets/icons/tabler/sun.svg';
+import MoonIcon from '../assets/icons/tabler/moon.svg';
+
+const icons = [
+  { name: 'sun', Component: SunIcon },
+  { name: 'moon', Component: MoonIcon },
+];
 
 const colorTokens = [
   '--color-background',
@@ -91,6 +98,22 @@ const spaceTokens = [
         }
       </div>
     </section>
+
+    <section>
+      <h2>Icons</h2>
+      <div class="icons">
+        {
+          icons.map(({ name, Component }) => (
+            <div class="icon-swatch">
+              <div class="icon-box">
+                <Component class="icon" width="24" height="24" />
+              </div>
+              <code>{name}</code>
+            </div>
+          ))
+        }
+      </div>
+    </section>
   </main>
 </Layout>
 
@@ -159,5 +182,31 @@ const spaceTokens = [
   .space-bar {
     height: 1rem;
     background-color: var(--color-accent);
+  }
+
+  .icons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+    gap: var(--space-md);
+  }
+
+  .icon-swatch {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .icon-box {
+    display: flex;
+    width: 5rem;
+    aspect-ratio: 1;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+  }
+
+  .icon {
+    color: var(--color-accent);
   }
 </style>

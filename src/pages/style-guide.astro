@@ -7,6 +7,7 @@ if (!import.meta.env.DEV) {
 import Layout from '../layouts/Layout.astro';
 import SunIcon from '../assets/icons/tabler/sun.svg';
 import MoonIcon from '../assets/icons/tabler/moon.svg';
+import ColorModeToggle from '../components/ColorModeToggle.vue';
 
 const icons = [
   { name: 'sun', Component: SunIcon },
@@ -106,12 +107,22 @@ const spaceTokens = [
           icons.map(({ name, Component }) => (
             <div class="icon-swatch">
               <div class="icon-box">
-                <Component class="icon" width="24" height="24" />
+                <Component class="icon" />
               </div>
               <code>{name}</code>
             </div>
           ))
         }
+      </div>
+    </section>
+
+    <section>
+      <h2>Components</h2>
+      <div class="components">
+        <div class="component">
+          <h3>Color mode toggle</h3>
+          <ColorModeToggle client:load />
+        </div>
       </div>
     </section>
   </main>
@@ -207,6 +218,18 @@ const spaceTokens = [
   }
 
   .icon {
-    color: var(--color-accent);
+    width: var(--space-lg);
+    height: var(--space-lg);
+    color: var(--color-text);
+  }
+
+  .components {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .component h3 {
+    margin-block-end: var(--space-md);
   }
 </style>

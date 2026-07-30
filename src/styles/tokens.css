@@ -36,7 +36,7 @@
 
 /* Semantic color tokens — light (default, and explicit override) */
 :root,
-[data-theme='light'] {
+[data-color-mode='light'] {
   color-scheme: light;
 
   --color-background: var(--color-gray-50);
@@ -49,7 +49,7 @@
 }
 
 /* Semantic color tokens — dark */
-[data-theme='dark'] {
+[data-color-mode='dark'] {
   color-scheme: dark;
 
   --color-background: var(--color-gray-900);
@@ -61,10 +61,10 @@
   --color-accent-text: var(--color-gold-dark-mode);
 }
 
-/* No manual override yet (toggle not built) — follow system preference.
-   Will become the "auto" case once the toggle sets data-theme explicitly. */
+/* No manual override yet — follow system preference.
+   Only applies while nothing's been explicitly chosen via the toggle. */
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
+  :root:not([data-color-mode='light']) {
     color-scheme: dark;
 
     --color-background: var(--color-gray-900);

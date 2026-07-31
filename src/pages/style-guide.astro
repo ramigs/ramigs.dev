@@ -7,11 +7,19 @@ if (!import.meta.env.DEV) {
 import Layout from '../layouts/Layout.astro';
 import SunIcon from '../assets/icons/tabler/sun.svg';
 import MoonIcon from '../assets/icons/tabler/moon.svg';
+import MailIcon from '../assets/icons/tabler/mail.svg';
+import GithubIcon from '../assets/icons/tabler/brand-github.svg';
+import LinkedinIcon from '../assets/icons/tabler/brand-linkedin.svg';
+import RssIcon from '../assets/icons/tabler/rss.svg';
 import ColorModeToggle from '../components/ColorModeToggle.vue';
 
 const icons = [
   { name: 'sun', Component: SunIcon },
   { name: 'moon', Component: MoonIcon },
+  { name: 'mail', Component: MailIcon },
+  { name: 'brand-github', Component: GithubIcon },
+  { name: 'brand-linkedin', Component: LinkedinIcon },
+  { name: 'rss', Component: RssIcon },
 ];
 
 const colorTokens = [

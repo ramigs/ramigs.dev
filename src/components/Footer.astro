@@ -1,0 +1,94 @@
+---
+import pkg from '../../package.json';
+import MailIcon from '../assets/icons/tabler/mail.svg';
+import GithubIcon from '../assets/icons/tabler/brand-github.svg';
+import LinkedinIcon from '../assets/icons/tabler/brand-linkedin.svg';
+import RssIcon from '../assets/icons/tabler/rss.svg';
+
+const currentYear = new Date().getFullYear();
+
+const socialLinks = [
+  { href: 'mailto:ramigs@gmail.com', label: 'Email', Icon: MailIcon },
+  { href: 'https://github.com/ramigs', label: 'GitHub', Icon: GithubIcon },
+  {
+    href: 'https://www.linkedin.com/in/ramigs/',
+    label: 'LinkedIn',
+    Icon: LinkedinIcon,
+  },
+  { href: '/rss.xml', label: 'RSS feed', Icon: RssIcon },
+];
+---
+
+<footer class="site-footer">
+  <p class="colophon">
+    &copy; 2019–{currentYear} Rami Shashati. Built with <a
+      href="https://astro.build/">Astro</a
+    > and hosted on <a href="https://www.netlify.com/">Netlify</a> — source on{
+      ' '
+    }
+    <a href={pkg.repository.url}>GitHub</a>.
+  </p>
+  <ul class="social-links" role="list">
+    {
+      socialLinks.map(({ href, label, Icon }) => (
+        <li>
+          <a
+            href={href}
+            aria-label={label}
+            target={href.startsWith('http') ? '_blank' : undefined}
+            rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+          >
+            <Icon class="icon" aria-hidden="true" />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</footer>
+
+<style>
+  .site-footer {
+    max-width: var(--content-max-width);
+    margin-inline: auto;
+    margin-block-start: var(--space-2xl);
+    padding: var(--space-lg);
+    border-block-start: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+    text-align: center;
+  }
+
+  .colophon {
+    margin-block-end: var(--space-md);
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+  }
+
+  .social-links a {
+    display: inline-flex;
+    color: var(--color-text-muted);
+    text-decoration: none;
+  }
+
+  .colophon a {
+    color: inherit;
+    text-decoration-color: color-mix(in srgb, currentcolor 40%, transparent);
+  }
+
+  .social-links a:hover {
+    color: var(--color-text);
+  }
+
+  .colophon a:hover {
+    text-decoration-color: currentcolor;
+  }
+
+  .social-links .icon {
+    width: var(--space-lg);
+    height: var(--space-lg);
+  }
+</style>

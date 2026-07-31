@@ -10,5 +10,8 @@
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
-  "stylelint.validate": ["css", "postcss", "vue", "astro"]
+  "stylelint.validate": ["css", "postcss", "vue", "astro"],
+  "editor.unicodeHighlight.allowedCharacters": {
+    "–": true
+  }
 }

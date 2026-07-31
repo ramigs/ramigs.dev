@@ -1,4 +1,5 @@
 ---
+import { Font } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import ClockIcon from '../../assets/icons/tabler/clock.svg';
@@ -23,6 +24,7 @@ const readingMinutes = Math.max(1, Math.round(wordCount / WORDS_PER_MINUTE));
 ---
 
 <Layout title={`${title} | ramigs.dev`} description={description}>
+  <Font cssVariable="--font-ibm-plex-mono" />
   <article class="post-content">
     <h1>{title}</h1>
     <p class="meta">
@@ -110,13 +112,40 @@ const readingMinutes = Math.max(1, Math.round(wordCount / WORDS_PER_MINUTE));
     color: var(--color-text-muted);
   }
 
+  .post-content pre {
+    padding: var(--space-md);
+    border-radius: 4px;
+
+    /* Long lines scroll horizontally within the block rather than
+       overflowing the page or wrapping mid-token — the standard approach,
+       and independent of the Shiki theme/colors, which come later. */
+    overflow-x: auto;
+  }
+
   .post-content ul:not(:first-child),
   .post-content ol:not(:first-child),
-  .post-content blockquote:not(:first-child) {
+  .post-content blockquote:not(:first-child),
+  .post-content pre:not(:first-child) {
     margin-block-start: var(--space-md);
   }
 
   .post-content li:not(:first-child) {
     margin-block-start: var(--space-sm);
+  }
+
+  .post-content code {
+    font-family: var(--font-ibm-plex-mono);
+
+    /* Monospace fonts read visually larger than proportional text at the
+       same declared size, so scaling down keeps inline code from feeling
+       oversized next to surrounding prose — same reasoning Lea Verou's
+       actual CSS uses (89% there; close enough here to matter). */
+    font-size: 0.875em;
+  }
+
+  .post-content :not(pre) > code {
+    padding: 0.15em 0.35em;
+    border-radius: 4px;
+    background-color: var(--color-background-subtle);
   }
 </style>

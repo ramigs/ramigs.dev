@@ -3,12 +3,34 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 import vue from '@astrojs/vue';
 import checker from 'vite-plugin-checker';
+import expressiveCode from 'astro-expressive-code';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://ramigs.dev',
   trailingSlash: 'always',
-  integrations: [vue()],
+  integrations: [
+    expressiveCode({
+      themes: ['github-light', 'github-dark'],
+      // Renaming to plain 'light'/'dark' lets themeCssSelector below target
+      // our own existing `data-color-mode` attribute (set by the
+      // color-mode toggle) directly, instead of expressive-code's default
+      // `data-theme="github-light"`-style selector — no changes needed to
+      // the toggle or tokens.css. useDarkModeMediaQuery (on by default for
+      // a light+dark pair) still generates the prefers-color-scheme
+      // fallback alongside this, mirroring the same explicit-attribute +
+      // system-preference-fallback structure already used in tokens.css.
+      customizeTheme: (theme) => {
+        if (theme.name === 'github-light') theme.name = 'light';
+        if (theme.name === 'github-dark') theme.name = 'dark';
+      },
+      themeCssSelector: (theme) => `[data-color-mode='${theme.name}']`,
+      defaultProps: {
+        frame: 'none',
+      },
+    }),
+    vue(),
+  ],
   fonts: [
     {
       provider: fontProviders.local(),
@@ -33,6 +55,21 @@ export default defineConfig({
             weight: 700,
             style: 'normal',
             src: ['./src/assets/fonts/ibm-plex-sans/IBMPlexSans-Bold.woff2'],
+          },
+        ],
+      },
+    },
+    {
+      provider: fontProviders.local(),
+      name: 'IBM Plex Mono',
+      cssVariable: '--font-ibm-plex-mono',
+      fallbacks: ['monospace'],
+      options: {
+        variants: [
+          {
+            weight: 400,
+            style: 'normal',
+            src: ['./src/assets/fonts/ibm-plex-mono/IBMPlexMono-Regular.woff2'],
           },
         ],
       },

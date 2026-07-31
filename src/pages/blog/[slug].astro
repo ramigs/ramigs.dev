@@ -1,19 +1,122 @@
 ---
+import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import ClockIcon from '../../assets/icons/tabler/clock.svg';
+import ScrollUpButton from '../../components/ScrollUpButton.astro';
 
-export function getStaticPaths() {
-  return [
-    { params: { slug: 'sample-post-one' } },
-    { params: { slug: 'sample-post-two' } },
-  ];
+const WORDS_PER_MINUTE = 200;
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
 }
 
-const { slug } = Astro.params;
+const { post } = Astro.props;
+const { title, description, date, tags } = post.data;
+const { Content } = await render(post);
+
+const wordCount = post.body?.trim().split(/\s+/).length ?? 0;
+const readingMinutes = Math.max(1, Math.round(wordCount / WORDS_PER_MINUTE));
 ---
 
-<Layout title={`${slug} | ramigs.dev`}>
-  <h1>Blog post placeholder: {slug}</h1>
-  <p>
-    Placeholder route — real content arrives in Phase 4 (Content Collection).
-  </p>
+<Layout title={`${title} | ramigs.dev`} description={description}>
+  <article class="post-content">
+    <h1>{title}</h1>
+    <p class="meta">
+      <time datetime={date.toISOString()}>
+        {
+          date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })
+        }
+      </time>
+      <span class="meta-separator" aria-hidden="true">·</span>
+      <span class="reading-time" title={`${wordCount} words`}>
+        <ClockIcon class="icon" aria-hidden="true" />
+        {readingMinutes} min read
+      </span>
+      <span class="tags">{tags.join(', ')}</span>
+    </p>
+    <Content />
+  </article>
+  <ScrollUpButton />
 </Layout>
+
+<style>
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-xs);
+    margin-block-end: var(--space-lg);
+    padding-block-end: var(--space-sm);
+    border-block-end: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+  }
+
+  .meta-separator {
+    color: var(--color-border);
+  }
+
+  .reading-time {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .icon {
+    width: 1em;
+    height: 1em;
+  }
+
+  .tags {
+    margin-inline-start: auto;
+  }
+
+  @media (width <= 640px) {
+    .tags {
+      flex-basis: 100%;
+      margin-inline-start: 0;
+    }
+  }
+</style>
+
+<style is:global>
+  .post-content p:not(:first-child) {
+    margin-block-start: var(--space-md);
+  }
+
+  .post-content h2:not(:first-child) {
+    margin-block-start: var(--space-2xl);
+  }
+
+  .post-content h3:not(:first-child) {
+    margin-block-start: var(--space-xl);
+  }
+
+  .post-content h4:not(:first-child) {
+    margin-block-start: var(--space-lg);
+  }
+
+  .post-content blockquote {
+    padding-inline-start: var(--space-md);
+    border-inline-start: 2px solid var(--color-border);
+    color: var(--color-text-muted);
+  }
+
+  .post-content ul:not(:first-child),
+  .post-content ol:not(:first-child),
+  .post-content blockquote:not(:first-child) {
+    margin-block-start: var(--space-md);
+  }
+
+  .post-content li:not(:first-child) {
+    margin-block-start: var(--space-sm);
+  }
+</style>

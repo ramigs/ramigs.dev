@@ -22,6 +22,8 @@ Run `pnpm lint` / `pnpm format:check` / `pnpm check` after substantive code chan
 
 `tokens.css`'s dark-mode values are also duplicated across two rule blocks — the explicit `[data-color-mode='dark']` block and the `@media (prefers-color-scheme: dark)` fallback block (for before an explicit choice is made). CSS custom properties can't be shared/mixed-in across selectors, so this duplication is structural, not accidental — both blocks are commented to point at each other, but when changing a dark-mode token value, check both.
 
+Whenever a new icon gets vendored into `src/assets/icons/tabler/`, add it to the `icons` array in `style-guide.astro`'s Icons section too — it should stay a complete reference of every icon actually in use on the site, not just some of them.
+
 ## Documentation
 
 Full documentation: https://docs.astro.build

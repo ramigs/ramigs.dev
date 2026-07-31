@@ -49,3 +49,8 @@ a {
 a:hover {
   text-decoration-color: currentcolor;
 }
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-gray-900);
+}

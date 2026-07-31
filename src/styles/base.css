@@ -54,3 +54,12 @@ a:hover {
   background-color: var(--color-accent);
   color: var(--color-gray-900);
 }
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}

@@ -2,6 +2,7 @@
 import ChevronUpIcon from '../assets/icons/tabler/chevron-up.svg';
 ---
 
+<div id="scroll-up-sentinel" aria-hidden="true"></div>
 <button hidden type="button" class="scroll-up" aria-label="Scroll to top">
   <ChevronUpIcon class="icon" aria-hidden="true" />
 </button>
@@ -40,35 +41,45 @@ import ChevronUpIcon from '../assets/icons/tabler/chevron-up.svg';
   }
 
   const button = document.querySelector<HTMLButtonElement>('.scroll-up');
-  const anchor = document.querySelector<HTMLElement>('.post-content');
+  const sentinel = document.getElementById('scroll-up-sentinel');
 
-  if (button && anchor) {
+  if (button && sentinel) {
     button.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     const buttonVisibility = transitionHiddenElement(button, 'opacity', 'active');
 
-    // The article is a tall element, so it keeps intersecting this shrunk
-    // top-5%-of-viewport band throughout most of the scroll — show the
-    // button while any part of it is passing through that band, hide it
-    // before you've reached the article and after you've scrolled past it.
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          buttonVisibility.show();
-        } else {
-          buttonVisibility.hide();
-        }
-      },
-      { rootMargin: '0px 0px -95% 0px' },
-    );
+    // Page-agnostic (no dependency on any specific page's content, e.g.
+    // `.post-content`): the sentinel sits one viewport-height down from the
+    // very top of the page. Show the button once scrolled far enough that
+    // the sentinel has passed above the viewport; hide it again once
+    // scrolled back up near the top. On a page shorter than one viewport,
+    // the sentinel is simply never reachable, so the button never shows —
+    // no separate "is this page long enough" check needed.
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        buttonVisibility.hide();
+      } else if (entry.boundingClientRect.top < 0) {
+        buttonVisibility.show();
+      } else {
+        buttonVisibility.hide();
+      }
+    });
 
-    observer.observe(anchor);
+    observer.observe(sentinel);
   }
 </script>
 
 <style>
+  #scroll-up-sentinel {
+    position: absolute;
+    top: 100vh;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+  }
+
   .scroll-up {
     position: fixed;
     right: var(--space-lg);

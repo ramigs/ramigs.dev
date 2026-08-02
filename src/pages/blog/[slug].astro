@@ -3,7 +3,6 @@ import { Font } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import ClockIcon from '../../assets/icons/tabler/clock.svg';
-import ScrollUpButton from '../../components/ScrollUpButton.astro';
 
 const WORDS_PER_MINUTE = 200;
 
@@ -18,6 +17,10 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { title, description, date, tags } = post.data;
 const { Content } = await render(post);
+
+// The `til` tag is redundant to display — every such post already says
+// "[TIL] ..." in its own title.
+const visibleTags = tags.filter((tag) => tag !== 'til');
 
 const wordCount = post.body?.trim().split(/\s+/).length ?? 0;
 const readingMinutes = Math.max(1, Math.round(wordCount / WORDS_PER_MINUTE));
@@ -42,11 +45,12 @@ const readingMinutes = Math.max(1, Math.round(wordCount / WORDS_PER_MINUTE));
         <ClockIcon class="icon" aria-hidden="true" />
         {readingMinutes} min read
       </span>
-      <span class="tags">{tags.join(', ')}</span>
+      {visibleTags.length > 0 && (
+        <span class="tags">{visibleTags.join(', ')}</span>
+      )}
     </p>
     <Content />
   </article>
-  <ScrollUpButton />
 </Layout>
 
 <style>

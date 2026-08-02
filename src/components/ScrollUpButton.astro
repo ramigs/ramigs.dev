@@ -44,8 +44,7 @@ import ChevronUpIcon from '../assets/icons/tabler/chevron-up.svg';
 
   if (button && anchor) {
     button.addEventListener('click', () => {
-      const heading = document.querySelector<HTMLElement>('h1');
-      window.scrollTo({ top: heading?.offsetTop ?? 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     const buttonVisibility = transitionHiddenElement(button, 'opacity', 'active');

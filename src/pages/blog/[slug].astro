@@ -122,10 +122,25 @@ const readingMinutes = Math.max(1, Math.round(wordCount / WORDS_PER_MINUTE));
     overflow-x: auto;
   }
 
+  .post-content table {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .post-content th,
+  .post-content td {
+    padding: var(--space-xs) var(--space-sm);
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+  }
+
   .post-content ul:not(:first-child),
   .post-content ol:not(:first-child),
   .post-content blockquote:not(:first-child),
-  .post-content pre:not(:first-child) {
+  .post-content pre:not(:first-child),
+  .post-content table:not(:first-child) {
     margin-block-start: var(--space-md);
   }
 
@@ -138,8 +153,7 @@ const readingMinutes = Math.max(1, Math.round(wordCount / WORDS_PER_MINUTE));
 
     /* Monospace fonts read visually larger than proportional text at the
        same declared size, so scaling down keeps inline code from feeling
-       oversized next to surrounding prose — same reasoning Lea Verou's
-       actual CSS uses (89% there; close enough here to matter). */
+       oversized next to surrounding prose. */
     font-size: 0.875em;
   }
 

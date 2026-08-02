@@ -2,7 +2,6 @@
 date: 2019-08-21
 title: How the JAMstack inspired me to start blogging
 description: Blogging with traditional monolithic CMSs vs. modern JAMstack web architectures
-slug: how-the-JAMstack-inspired-me-to-start-blogging
 tags:
     - JAMstack
     - 11ty

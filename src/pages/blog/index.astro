@@ -2,28 +2,62 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+// Migration-review aid only — remove this batching once all posts are
+// migrated and the index gets real design (see PLAN.md). Chunking oldest-
+// first in groups of 10 mirrors the order posts were actually copied over,
+// making it easy to spot-check one migration batch at a time.
+const BATCH_SIZE = 10;
+
+// Manually updated as each batch gets spot-checked and confirmed good.
+const reviewedBatches = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+
+const postsOldestFirst = (await getCollection('blog')).sort(
+  (a, b) => a.data.date.valueOf() - b.data.date.valueOf(),
 );
+
+const batches = [];
+for (let i = 0; i < postsOldestFirst.length; i += BATCH_SIZE) {
+  batches.push(postsOldestFirst.slice(i, i + BATCH_SIZE));
+}
 ---
 
 <Layout title="Blog | ramigs.dev">
   <h1>Blog</h1>
-  <ul role="list">
-    {
-      posts.map((post) => (
-        <li>
-          <a href={`/blog/${post.id}/`}>{post.data.title}</a>
-          {' — '}
-          <time datetime={post.data.date.toISOString()}>
-            {post.data.date.toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
-          </time>
-        </li>
-      ))
-    }
-  </ul>
+  {
+    batches.map((batch, i) => (
+      <section>
+        <h2>
+          Batch {i + 1} (posts {i * BATCH_SIZE + 1}–
+          {i * BATCH_SIZE + batch.length})
+          {reviewedBatches.has(i + 1) && (
+            <span class="reviewed" title="Reviewed">
+              ✓
+            </span>
+          )}
+        </h2>
+        <ul role="list">
+          {batch.map((post) => (
+            <li>
+              <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+              {' — '}
+              <time datetime={post.data.date.toISOString()}>
+                {post.data.date.toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </time>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
 </Layout>
+
+<style>
+  /* Migration-review aid only, see comment in frontmatter above. */
+  .reviewed {
+    color: #2e7d32;
+  }
+</style>

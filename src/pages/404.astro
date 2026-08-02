@@ -2,7 +2,23 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="404 | ramigs.dev">
-  <h1>Page not found</h1>
-  <p>Placeholder 404 page — real design arrives in Phase 3.</p>
+<Layout title="Page Not Found | ramigs.dev">
+  <section class="not-found">
+    <h1>Page not found</h1>
+    <p>
+      The page you were looking for doesn't exist. It may have been removed,
+      renamed, or the link might just be wrong.
+    </p>
+    <p>
+      If you followed an old bookmark or link, the page may have been
+      renamed — try browsing the <a href="/blog/">blog</a>, or head back to
+      the <a href="/">homepage</a>.
+    </p>
+  </section>
 </Layout>
+
+<style>
+  .not-found p {
+    margin-block-start: var(--space-md);
+  }
+</style>

@@ -10,11 +10,27 @@ interface Props {
   description?: string;
   canonicalURL?: string;
   noindex?: boolean;
+  ogType?: 'website' | 'article';
+  publishedTime?: Date;
 }
 
-const { title, description, canonicalURL, noindex } = Astro.props;
+const {
+  title,
+  description,
+  canonicalURL,
+  noindex,
+  ogType = 'website',
+  publishedTime,
+} = Astro.props;
+
 const resolvedCanonicalURL =
   canonicalURL ?? new URL(Astro.url.pathname, Astro.site).toString();
+
+// og:url is deliberately always self-referencing (unlike the canonical
+// override above) — if this page's own URL gets shared, the preview card
+// should represent this page, not silently point elsewhere.
+const ogURL = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImageURL = new URL('/social-card.png', Astro.site).toString();
 ---
 
 <html lang="en">
@@ -45,6 +61,29 @@ const resolvedCanonicalURL =
       )
     }
     <title>{title}</title>
+
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={ogURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="ramigs.dev" />
+    {ogType === 'article' && publishedTime && (
+      <meta
+        property="article:published_time"
+        content={publishedTime.toISOString()}
+      />
+    )}
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    {description && (
+      <meta name="twitter:description" content={description} />
+    )}
+    <meta name="twitter:image" content={ogImageURL} />
+
     <Font cssVariable="--font-ibm-plex-sans" preload />
   </head>
   <body>

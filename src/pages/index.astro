@@ -1,10 +1,181 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import RssIcon from '../assets/icons/tabler/rss.svg';
+import MailIcon from '../assets/icons/tabler/mail.svg';
+import GithubIcon from '../assets/icons/tabler/brand-github.svg';
+import LinkedinIcon from '../assets/icons/tabler/brand-linkedin.svg';
+
+const RECENT_POSTS_COUNT = 6;
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+const recentPosts = posts.slice(0, RECENT_POSTS_COUNT);
+
+// Same links as Footer.astro's social row, minus RSS — that already has its
+// own dedicated spot next to "Recent Posts" below, no need for a second one.
+const socialLinks = [
+  { href: 'mailto:ramigs@gmail.com', label: 'Email', Icon: MailIcon },
+  { href: 'https://github.com/ramigs', label: 'GitHub', Icon: GithubIcon },
+  {
+    href: 'https://www.linkedin.com/in/ramigs/',
+    label: 'LinkedIn',
+    Icon: LinkedinIcon,
+  },
+];
 ---
 
-<Layout title="ramigs.dev">
-  <h1>Homepage placeholder</h1>
-  <p>
-    Placeholder route — real design arrives in Phase 3, real copy in Phase 5.
-  </p>
+<Layout
+  title="ramigs.dev"
+  description="Rami Shashati — frontend engineer specializing in Vue, Nuxt, and TypeScript, building secure, PCI-compliant checkout flows for fintech payments."
+>
+  <section class="intro">
+    <p>
+      👋 I'm Rami, a frontend engineer specializing in Vue, Nuxt, and
+      TypeScript. I help fintech companies build secure, PCI-compliant checkout
+      flows that customers actually trust.
+    </p>
+    <p>
+      I write about frontend engineering, AI-assisted development, and the tools
+      I use day to day — from quick TILs to longer deep dives.{' '}
+      <a href="/about/">More about me</a>.
+    </p>
+    <div class="social-row">
+      <span class="social-label">Find me on</span>
+      <ul class="social-links" role="list">
+        {
+          socialLinks.map(({ href, label, Icon }) => (
+            <li>
+              <a
+                href={href}
+                aria-label={label}
+                target={href.startsWith('http') ? '_blank' : undefined}
+                rel={
+                  href.startsWith('http') ? 'noopener noreferrer' : undefined
+                }
+              >
+                <Icon class="icon" aria-hidden="true" />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="recent-posts">
+    <h2>
+      Recent Posts
+      <a href="/rss.xml" class="rss-link" aria-label="RSS feed">
+        <RssIcon class="icon" aria-hidden="true" />
+      </a>
+    </h2>
+    <ul role="list">
+      {
+        recentPosts.map((post) => (
+          <li>
+            <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+            <time class="post-date" datetime={post.data.date.toISOString()}>
+              {post.data.date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </time>
+          </li>
+        ))
+      }
+    </ul>
+    <a href="/blog/" class="view-all">View all posts</a>
+  </section>
 </Layout>
+
+<style>
+  .intro p:not(:first-child) {
+    margin-block-start: var(--space-md);
+  }
+
+  .social-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-sm) var(--space-md);
+    margin-block-start: var(--space-xl);
+  }
+
+  .social-label {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+  }
+
+  .social-links {
+    display: flex;
+    gap: var(--space-md);
+    padding-inline-start: 0;
+  }
+
+  .social-links a {
+    display: inline-flex;
+    color: var(--color-text-muted);
+  }
+
+  .social-links a:hover {
+    color: var(--color-text);
+  }
+
+  .social-links .icon {
+    width: var(--space-lg);
+    height: var(--space-lg);
+  }
+
+  .recent-posts {
+    margin-block-start: var(--space-2xl);
+  }
+
+  .recent-posts h2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block-end: var(--space-sm);
+    border-block-end: 1px solid var(--color-border);
+  }
+
+  .rss-link {
+    display: inline-flex;
+    color: var(--color-text-muted);
+  }
+
+  .rss-link:hover {
+    color: var(--color-text);
+  }
+
+  .rss-link .icon {
+    width: var(--space-lg);
+    height: var(--space-lg);
+  }
+
+  .recent-posts ul {
+    padding-inline-start: 0;
+  }
+
+  .recent-posts li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-xs) var(--space-lg);
+    padding-block: var(--space-sm);
+  }
+
+  .post-date {
+    flex-shrink: 0;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+  }
+
+  .view-all {
+    display: inline-block;
+    margin-block-start: var(--space-md);
+  }
+</style>

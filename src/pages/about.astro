@@ -1,10 +1,130 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// Placeholder entries — real projects written in Phase 6.
+const projects = [
+  {
+    name: 'Project Name',
+    description:
+      'Placeholder — short description of the project, the problem it solved, and the technologies used.',
+  },
+  {
+    name: 'Project Name',
+    description:
+      'Placeholder — short description of the project, the problem it solved, and the technologies used.',
+  },
+  {
+    name: 'Project Name',
+    description:
+      'Placeholder — short description of the project, the problem it solved, and the technologies used.',
+  },
+];
+
+const toolsAndTech = [
+  { category: 'Frontend', items: ['Vue.js', 'Nuxt.js', 'TypeScript', 'JavaScript'] },
+  {
+    category: 'Payments',
+    items: [
+      'Apple Pay',
+      'Google Pay',
+      'Volt',
+      'Trustly',
+      'Evervault',
+      'PCI-Proxy',
+    ],
+  },
+];
 ---
 
-<Layout title="About | ramigs.dev">
-  <h1>About placeholder</h1>
-  <p>
-    Placeholder route — real design arrives in Phase 3, real copy in Phase 5.
-  </p>
+<Layout
+  title="About | ramigs.dev"
+  description="Rami Shashati — frontend engineer specializing in Vue, Nuxt, and TypeScript, with a focus on fintech payments."
+>
+  <section class="intro">
+    <h1>About</h1>
+    <p>
+      I'm a frontend engineer with a decade of experience building for the
+      web, currently focused on Vue, Nuxt, and TypeScript. Over the past
+      several years I've specialized in fintech payments — designing and
+      shipping secure, PCI-compliant checkout flows across a range of
+      payment providers and methods.
+    </p>
+  </section>
+
+  <section class="projects">
+    <h2>Recent Projects</h2>
+    <ul role="list">
+      {
+        projects.map((project) => (
+          <li>
+            <h3>{project.name}</h3>
+            <p>{project.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="tools">
+    <h2>Tools &amp; Tech</h2>
+    <ul role="list">
+      {
+        toolsAndTech.map(({ category, items }) => (
+          <li>
+            <strong>{category}:</strong> {items.join(', ')}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="contact">
+    <h2>Contact</h2>
+    <p>
+      Have a project in mind or want to talk shop? Feel free to{' '}
+      <a href="mailto:ramigs@gmail.com">get in touch</a>.
+    </p>
+  </section>
 </Layout>
+
+<style>
+  section:not(:first-child) {
+    margin-block-start: var(--space-2xl);
+  }
+
+  section h2 {
+    padding-block-end: var(--space-sm);
+    border-block-end: 1px solid var(--color-border);
+  }
+
+  .intro p {
+    margin-block-start: var(--space-md);
+  }
+
+  .projects ul,
+  .tools ul {
+    padding-inline-start: 0;
+    margin-block-start: var(--space-md);
+  }
+
+  .projects li:not(:first-child) {
+    margin-block-start: var(--space-lg);
+  }
+
+  .projects h3 {
+    font-size: var(--font-size-h4);
+  }
+
+  .projects p {
+    margin-block-start: var(--space-xs);
+    color: var(--color-text-muted);
+  }
+
+  .tools li:not(:first-child) {
+    margin-block-start: var(--space-sm);
+  }
+
+  .contact p {
+    margin-block-start: var(--space-md);
+  }
+</style>

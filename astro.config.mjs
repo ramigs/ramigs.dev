@@ -4,6 +4,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 import vue from '@astrojs/vue';
 import checker from 'vite-plugin-checker';
 import expressiveCode from 'astro-expressive-code';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
@@ -30,6 +31,12 @@ export default defineConfig({
       },
     }),
     vue(),
+    // style-guide is dev-only (404s in production via its own runtime
+    // check) — the sitemap integration only sees it exists at build time,
+    // so it has to be excluded explicitly here.
+    sitemap({
+      filter: (page) => !page.includes('/style-guide/'),
+    }),
   ],
   fonts: [
     {

@@ -20,6 +20,11 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string(),
     tags: z.array(z.string()),
+    // Only set on posts originally published elsewhere and cross-posted
+    // here — points the canonical tag at the original instead of self.
+    // Field name matches what's already in the source frontmatter (carried
+    // over from the old site, previously unused/dropped by this schema).
+    canonical: z.url().optional(),
   }),
 });
 

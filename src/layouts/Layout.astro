@@ -8,9 +8,13 @@ import ScrollUpButton from '../components/ScrollUpButton.astro';
 interface Props {
   title: string;
   description?: string;
+  canonicalURL?: string;
+  noindex?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, canonicalURL, noindex } = Astro.props;
+const resolvedCanonicalURL =
+  canonicalURL ?? new URL(Astro.url.pathname, Astro.site).toString();
 ---
 
 <html lang="en">
@@ -33,6 +37,13 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     {description && <meta name="description" content={description} />}
+    {
+      noindex ? (
+        <meta name="robots" content="noindex" />
+      ) : (
+        <link rel="canonical" href={resolvedCanonicalURL} />
+      )
+    }
     <title>{title}</title>
     <Font cssVariable="--font-ibm-plex-sans" preload />
   </head>

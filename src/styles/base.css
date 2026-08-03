@@ -1,6 +1,7 @@
 body {
   display: grid;
   grid-template-rows: auto 1fr auto;
+  grid-template-columns: minmax(0, 1fr);
   background-color: var(--color-background);
   color: var(--color-text);
   font-family: var(--font-body);

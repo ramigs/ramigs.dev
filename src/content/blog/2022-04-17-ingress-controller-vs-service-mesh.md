@@ -16,4 +16,4 @@ application (North-South traffic).
 The latter is used to mediate and secure service-to-service communication within
 the cluster (East-West traffic).
 
-![Diagram of ingress controller and service mesh](/img/articles/2022-04-17-ingress-controller-vs-service-mesh.png)
+![Diagram of ingress controller and service mesh](../../assets/img/articles/2022-04-17-ingress-controller-vs-service-mesh.png)

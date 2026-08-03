@@ -12,7 +12,7 @@ tags:
 TIL about [Ventoy](https://www.ventoy.net/), an amazing open source tool which
 allows to create bootable USB drives with multiple ISOs.
 
-![Ventoy](/img/articles/ventoy.png)
+![Ventoy](../../assets/img/articles/ventoy.png)
 
 No need anymore to format the USB drive every time I need to install a new
 operating system. The same USB stick can store more than one ISO.

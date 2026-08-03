@@ -28,6 +28,12 @@ canvas,
 svg {
   display: block;
   max-width: 100%;
+
+  /* Elements with explicit width/height attributes (Astro's optimized
+  images set these to prevent CLS) would otherwise scale width down via
+  max-width while height stays pinned at its absolute attribute value,
+  distorting the aspect ratio. */
+  height: auto;
 }
 
 input,

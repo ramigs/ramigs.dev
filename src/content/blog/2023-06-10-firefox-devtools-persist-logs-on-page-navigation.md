@@ -17,4 +17,4 @@ The default is for requests and logs to be cleared, so to instead have them
 persist, open up DevTools, click the settings cog wheel, and select **Persist
 Logs**:
 
-![Persist Logs](/img/articles/2023-06-10-persist-logs.png)
+![Persist Logs](../../assets/img/articles/2023-06-10-persist-logs.png)

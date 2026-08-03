@@ -15,7 +15,7 @@ a Nuxt.js app.
 
 Here's a preview of what we're setting to achieve:
 
-![Preview](/img/articles/nuxt-strapi-auth-preview.gif)
+![Preview](../../assets/img/articles/nuxt-strapi-auth-preview.gif)
 
 In essence, authentication is the process through which a website or app
 verifies the identity of its users.
@@ -122,7 +122,7 @@ browser, asking you to create an administrator account.
 To finish the setup and secure your app, go ahead and create a root/admin user,
 by filling-in the necessary information:
 
-![Strapi Admin](/img/articles/strapi-nuxt-admin.png)
+![Strapi Admin](../../assets/img/articles/strapi-nuxt-admin.png)
 
 From now on, you can access Strapi's local Admin interface by visiting
 [http://localhost:1337/admin](http://localhost:1337/admin).
@@ -136,7 +136,7 @@ To enable it, from the left sidebar of the Admin dashboard, click **Roles &
 Permissions**. Select the **Advanced Settings** tab, enable the "Enable email
 confirmation" option and save:
 
-![Enable email confirmation Strapi](/img/articles/strapi-nuxt-enable-email-confirmation.png)
+![Enable email confirmation Strapi](../../assets/img/articles/strapi-nuxt-enable-email-confirmation.png)
 
 ## Email console provider
 
@@ -201,7 +201,7 @@ Go through the guide and make sure to select following options:
 - axios and dotenv in the **Nuxt.js modules** step
 - Bulma CSS in the **UI framework** step, which we'll use to style our app
 
-![Create a Nuxt app](/img/articles/strapi-nuxt-create-nuxt-app-options.png)
+![Create a Nuxt app](../../assets/img/articles/strapi-nuxt-create-nuxt-app-options.png)
 
 Strapi's API URL will vary depending on the environment. So, we want to have it
 dynamically loaded from an environment variable.
@@ -460,7 +460,7 @@ Edit `./pages/index.vue` and replace its content with the following:
 
 This is what we have so far:
 
-![Nuxt Homepage](/img/articles/strapi-nuxt-homepage.png)
+![Nuxt Homepage](../../assets/img/articles/strapi-nuxt-homepage.png)
 
 ## Notification Component
 
@@ -613,7 +613,7 @@ To specify this link, from the left sidebar of the Admin dashboard, click
 **Roles & Permissions**. Select the **Advanced Settings** tab, paste
 `http://localhost:3000/login` in the "Redirection url" input, and save:
 
-![Strapi Redirect After Confirmation](/img/articles/strapi-nuxt-redirect-after-confirmation.png)
+![Strapi Redirect After Confirmation](../../assets/img/articles/strapi-nuxt-redirect-after-confirmation.png)
 
 ### Configure Strapi's Server URL
 
@@ -659,23 +659,23 @@ npm run dev
 Navigate to [http://localhost:3000/register](http://localhost:3000/register) and
 register a user:
 
-![Nuxt Register Page](/img/articles/strapi-nuxt-register-page.png)
+![Nuxt Register Page](../../assets/img/articles/strapi-nuxt-register-page.png)
 
 If the registration was successful, a success message is displayed by the
 Notification component, requesting that the user completes the registration
 process by clicking the confirmation link that was sent:
 
-![Strapi Register Success](/img/articles/strapi-nuxt-register-success.png)
+![Strapi Register Success](../../assets/img/articles/strapi-nuxt-register-success.png)
 
 If an error occurs, the error message is displayed by the Notification component
 we've created previously:
 
-![Strapi Register Error](/img/articles/strapi-nuxt-register-error.png)
+![Strapi Register Error](../../assets/img/articles/strapi-nuxt-register-error.png)
 
 Switch to the console where Strapi is running and confirm that you see the
 email:
 
-![Strapi Register Email Console](/img/articles/strapi-nuxt-register-email-console.png)
+![Strapi Register Email Console](../../assets/img/articles/strapi-nuxt-register-email-console.png)
 
 Copy the confirmation link and access it in your browser. This action completes
 the registration but you'll see a "This page could not be found" error in your
@@ -780,11 +780,11 @@ export default {
 Navigate to [http://localhost:3000/login](http://localhost:3000/login) and login
 with a previously registered user:
 
-![Nuxt Login](/img/articles/strapi-nuxt-login.png)
+![Nuxt Login](../../assets/img/articles/strapi-nuxt-login.png)
 
 Notice the changes in the Navbar:
 
-![Nuxt Login Navbar](/img/articles/strapi-nuxt-login-navbar.png)
+![Nuxt Login Navbar](../../assets/img/articles/strapi-nuxt-login-navbar.png)
 
 ## Logout
 
@@ -954,7 +954,7 @@ export default {
 > the success message, whether Strapi responds with an error or not - helping
 > the prevention of phishing attacks.
 
-![Nuxt Reset Password Page](/img/articles/strapi-nuxt-forgot-password-form.png)
+![Nuxt Reset Password Page](../../assets/img/articles/strapi-nuxt-forgot-password-form.png)
 
 The method `forgotPassword` sends a request to Strapi's `auth/forgot-password`
 endpoint. If the email address exists in Strapi's user database, an email is
@@ -965,7 +965,7 @@ To specify this link, from the left sidebar of the Admin dashboard, click
 `http://localhost:3000/reset-password` in the "Reset password page" input, and
 save:
 
-![Strapi Reset Password Page Config](/img/articles/strapi-nuxt-reset-password-page-config.png)
+![Strapi Reset Password Page Config](../../assets/img/articles/strapi-nuxt-reset-password-page-config.png)
 
 Strapi will attach to it a URL parameter with the code that's required to
 successfully reset the user password.
@@ -1081,7 +1081,7 @@ Permissions**. Click **Public** and under **Permissions** expand the
 **USERS-PERMISSIONS** plugin. Under **Auth** check the option "resetpassword"
 and save:
 
-![Strapi Reset Password](/img/articles/strapi-nuxt-reset-password.png)
+![Strapi Reset Password](../../assets/img/articles/strapi-nuxt-reset-password.png)
 
 ### Testing Password Reset
 
@@ -1089,21 +1089,21 @@ Visit `http://localhost:3000/forgot-password` in your browser, fill-in the
 "Email" input with an email that has been registered before and click **Email me
 a reset link**.
 
-![Strapi Reset Password Email Sent](/img/articles/strapi-nuxt-reset-password-email-sent.png)
+![Strapi Reset Password Email Sent](../../assets/img/articles/strapi-nuxt-reset-password-email-sent.png)
 
 Switch to the terminal where Strapi is running and confirm that the mock email
 is there:
 
-![Strapi Reset Password Email Console](/img/articles/strapi-nuxt-reset-password-email-console.png)
+![Strapi Reset Password Email Console](../../assets/img/articles/strapi-nuxt-reset-password-email-console.png)
 
 Copy the entire link and access it in your browser:
 
-![Strapi Reset Password Form](/img/articles/strapi-nuxt-reset-password-form.png)
+![Strapi Reset Password Form](../../assets/img/articles/strapi-nuxt-reset-password-form.png)
 
 Fill-in the form and click "Reset Password". This action will reset the user
 password:
 
-![Strapi Reset Password Success](/img/articles/strapi-nuxt-reset-password-success.png)
+![Strapi Reset Password Success](../../assets/img/articles/strapi-nuxt-reset-password-success.png)
 
 ## Token Expiration
 

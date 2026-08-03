@@ -22,7 +22,7 @@ requirements.
 
 Here's what we'll be setting to achieve:
 
-![html elements order change based on layout](/img/articles/2020-05-08-dynamic-order-change-html.png)
+![html elements order change based on layout](../../assets/img/articles/2020-05-08-dynamic-order-change-html.png)
 
 ## Before we begin
 

@@ -14,7 +14,7 @@ B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/), together with
 its official [Case](https://www.raspberrypi.com/products/raspberry-pi-4-case/)
 and [Case Fan](https://www.raspberrypi.com/products/raspberry-pi-4-case-fan/).
 
-![Raspberry 4 Case Fan](/img/articles/raspberry-case-fan.webp)
+![Raspberry 4 Case Fan](../../assets/img/articles/raspberry-case-fan.webp)
 
 After installing Ubuntu Server, noticed that the fan was always running
 non-stop. The fan has an annoying noise, and it should only run when needed,

@@ -202,7 +202,7 @@ The webhook configuration panel is accessible from the Admin Panel, from the sid
 
 To create a new webhook, click the **Add new webhook** button in the top-right of the panel:
 
-![Admin Panel](/img/articles/strapi-hooks-admin-panel-webhooks.png)
+![Admin Panel](../../assets/img/articles/strapi-hooks-admin-panel-webhooks.png)
 
 Next, you'll need to fill in the **Create a webhook** form with the following fields:
 
@@ -211,7 +211,7 @@ Next, you'll need to fill in the **Create a webhook** form with the following fi
 - Request headers
 - Trigger events
 
-![Create a Webhook](/img/articles/strapi-hooks-create-a-webhook.png)
+![Create a Webhook](../../assets/img/articles/strapi-hooks-create-a-webhook.png)
 
 By default, Strapi provides a set of events that can trigger a webhook.
 These events are related to either a **Content-Type entry** or to a **media asset**.

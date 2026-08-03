@@ -31,7 +31,7 @@ request on GitHub.
 Sign-in to your GitHub account and fork the repository of the project you'd like
 to contribute to:
 
-![Fork the repository](/img/articles/2019-11-01-fork_repo.png)
+![Fork the repository](../../assets/img/articles/2019-11-01-fork_repo.png)
 
 This creates a new repository copy, separate from the original codebase, owned
 by you. Modify it as you please, it will not interfere with the original
@@ -47,7 +47,7 @@ git clone https://github.com/ramigs/JavaScript30-1.git
 
 You can get the URL from here:
 
-![Clone the repository](/img/articles/2019-11-01-clone_url.png)
+![Clone the repository](../../assets/img/articles/2019-11-01-clone_url.png)
 
 Navigate to the project folder:
 
@@ -116,14 +116,14 @@ recognize the branch you've just pulled.
 
 Go ahead and click **Compare & Pull Request**:
 
-![Push your branch to GitHub](/img/articles/2019-11-01-compare_and_pull_request.png)
+![Push your branch to GitHub](../../assets/img/articles/2019-11-01-compare_and_pull_request.png)
 
 ## Open pull request
 
 One last confirmation to the changes you're adding, to the subject and body of
 your message, and you're ready to open your pull request:
 
-![Create Pull Request](/img/articles/2019-11-01-create_pull_request.png)
+![Create Pull Request](../../assets/img/articles/2019-11-01-create_pull_request.png)
 
 Congratulations 🎉! You've just submitted your pull request.
 

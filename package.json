@@ -43,6 +43,7 @@
     "globals": "^17.8.0",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
+    "sharp": "^0.35.3",
     "stylelint": "^17.14.1",
     "stylelint-config-astro": "^2.0.0",
     "stylelint-config-recommended-vue": "^1.6.1",

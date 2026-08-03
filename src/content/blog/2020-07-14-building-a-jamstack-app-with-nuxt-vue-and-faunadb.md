@@ -293,7 +293,7 @@ Log in to your Fauna account.
 Visit the [dashboard](https://dashboard.fauna.com/) and create a new database,
 named `repos`:
 
-![Create a new FaunaDB database](/img/articles/2020-07-14-fauna-new-database.png)
+![Create a new FaunaDB database](../../assets/img/articles/2020-07-14-fauna-new-database.png)
 
 ## Importing the schema
 
@@ -306,7 +306,7 @@ collections and indexes for you to support your queries and provide you with an
 We can upload our `schema.gql` file, via FaunaDB Console by clicking "GraphQL"
 on the left sidebar:
 
-![Fauna GraphQL Playground](/img/articles/2020-07-14-fauna-graphql-playground.png)
+![Fauna GraphQL Playground](../../assets/img/articles/2020-07-14-fauna-graphql-playground.png)
 
 Then click the "Import Schema" button, which opens your browser’s file upload,
 and select the `schema.gql` file:
@@ -316,7 +316,7 @@ FaunaDB automatically created the necessary collection for the `Repo` entity.
 Additionally, it also created the indexes that support the schema and interact
 with the collection:
 
-![Fauna Database Overview](/img/articles/2020-07-14-fauna-db-overview.png)
+![Fauna Database Overview](../../assets/img/articles/2020-07-14-fauna-db-overview.png)
 
 At this point we have an empty database, ready to be populated with some repo
 data.
@@ -355,7 +355,7 @@ write data in the `repos` database.
 From the database's dashboard, go to "Security" on the left-hand sidebar, and
 create a new key with "Admin" Role:
 
-![Create a Fauna Admin Key](/img/articles/2020-07-14-fauna-new-admin-key.png)
+![Create a Fauna Admin Key](../../assets/img/articles/2020-07-14-fauna-new-admin-key.png)
 
 Copy the generated key and save it somewhere safe, as after you navigate away
 from this page it will not be displayed again.
@@ -511,7 +511,7 @@ node seed.js
 Navigate to "Collections" from the sidebar menu, and confirm that the data was
 written successfully:
 
-![Fauna database seeded successfully](/img/articles/2020-07-14-fauna-seeded-success.png)
+![Fauna database seeded successfully](../../assets/img/articles/2020-07-14-fauna-seeded-success.png)
 
 ## Nuxt Repo Catalogue
 
@@ -529,7 +529,7 @@ Go through the guide and select the following options:
 - axios and dotenv in the **Nuxt.js modules** step
 - Bulma in the **UI framework** step, to style our app
 
-![Create Nuxt app](/img/articles/2020-07-14-create-nuxt-app-options.png)
+![Create Nuxt app](../../assets/img/articles/2020-07-14-create-nuxt-app-options.png)
 
 Once the tool finishes creating our Nuxt app, install also the other required
 dependencies:
@@ -547,7 +547,7 @@ npm install faunadb slugify
 The same way we did for the `fauna-seeder` app, let's create a new Fauna key -
 this time with "Server" Role:
 
-![Create a Fauna Server Key](/img/articles/2020-07-14-fauna-new-server-key.png)
+![Create a Fauna Server Key](../../assets/img/articles/2020-07-14-fauna-new-server-key.png)
 
 Edit the `.env` file and paste the key you've just generated.
 
@@ -772,7 +772,7 @@ npm run generate
 And that's it! 👏 You have now a working static site in the `dist` folder, that
 can be served directly from a CDN.
 
-![Repo Catalogue](/img/articles/2020-07-14-fauna-repo-catalogue.png)
+![Repo Catalogue](../../assets/img/articles/2020-07-14-fauna-repo-catalogue.png)
 
 To test it locally run:
 
@@ -855,7 +855,7 @@ npm run generate
 
 And we’re done! 🎉
 
-![Nuxt.js detail page](/img/articles/2020-07-14-fauna-nuxt-detail-page.png)
+![Nuxt.js detail page](../../assets/img/articles/2020-07-14-fauna-nuxt-detail-page.png)
 
 A dynamic website that loads data in the frontend as the user visits the repo
 detail page.

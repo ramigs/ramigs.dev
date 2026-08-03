@@ -37,12 +37,12 @@ being included are breaking something or not.
 You may have also opted to configure a branch protection rule for `main`,
 requiring status checks (in this case, tests) to pass before merging is allowed:
 
-![Require status checks](/img/articles/2023-04-24-require-status-checks.png)
+![Require status checks](../../assets/img/articles/2023-04-24-require-status-checks.png)
 
 By using this configuration, the workflow's jobs will be executed and reported
 in the pull request (visible in the **Checks** tab and near the merge button):
 
-![PR checks](/img/articles/2023-04-24-pr-checks.png)
+![PR checks](../../assets/img/articles/2023-04-24-pr-checks.png)
 
 The downside of this setup is that tests will have to run and pass on each and
 every PR, even when changed files are not source code (such as `README` updates

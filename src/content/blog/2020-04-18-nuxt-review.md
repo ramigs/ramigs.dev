@@ -298,7 +298,7 @@ This schema from the [official docs](https://nuxtjs.org/guide) is an essential
 resource to learn the sequence of steps that take place after the server
 receives a request:
 
-![Nuxt.js schema](/img/articles/2020-03-21-nuxt-schema.svg)
+![Nuxt.js schema](../../assets/img/articles/2020-03-21-nuxt-schema.svg)
 
 Something I came to discover, while trying to fix the previously mentioned
 errors, was that we were writing some invalid HTML in our code, such as `<p>`

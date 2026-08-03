@@ -56,7 +56,7 @@ had to go with a custom solution.
 Let's now examine the following diagram, an overview of the infrastructure and
 tools involved in the setup:
 
-![Diagram of automated backup procedure](/img/articles/2021-06-12-automating-database-backups.png)
+![Diagram of automated backup procedure](../../assets/img/articles/2021-06-12-automating-database-backups.png)
 
 We're working with two Linux servers:
 

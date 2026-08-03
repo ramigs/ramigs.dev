@@ -1,38 +1,30 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// Placeholder entries — real projects written in Phase 6.
 const projects = [
   {
-    name: 'Project Name',
+    name: 'Merchant Payments Platform',
     description:
-      'Placeholder — short description of the project, the problem it solved, and the technologies used.',
+      'Owned the frontend for a payments platform used by merchants across many countries to offer multiple payment methods to their own customers — card payments, Apple Pay, Google Pay, Pix, Boleto, Trustly, and Volt — with per-merchant control over which methods to expose. The core challenge was unifying fundamentally different integration models (redirect-based regional methods, card flows, wallet APIs) behind one consistent, embeddable interface.',
   },
   {
-    name: 'Project Name',
+    name: 'White-Label Bitcoin Exchange Platform',
     description:
-      'Placeholder — short description of the project, the problem it solved, and the technologies used.',
+      'Owned the frontend for the end-customer application of a white-label Bitcoin exchange platform — user authentication (email and e-ID), compliance onboarding, and buying, selling, and transferring Bitcoin — sold and customized across up to four brands from one shared codebase. The core challenge was a design system and feature-toggle architecture flexible enough for real per-brand differences, built and maintained under the strict compliance requirements of a regulated financial product.',
   },
   {
-    name: 'Project Name',
+    name: 'Card Payments SDK',
     description:
-      'Placeholder — short description of the project, the problem it solved, and the technologies used.',
+      'Designed and built a framework-agnostic TypeScript SDK abstracting card tokenization and 3D Secure behind a single interface, used as the underlying card-payments engine for consumer-facing frontend applications — supporting multiple tokenization and 3DS providers (PCI-Proxy, Evervault, Paysafe) interchangeably. The core challenge was normalizing genuinely different provider request/response shapes and 3DS challenge/redirect flows so consumer apps never needed to know which provider was active underneath.',
   },
 ];
 
 const toolsAndTech = [
-  { category: 'Frontend', items: ['Vue.js', 'Nuxt.js', 'TypeScript', 'JavaScript'] },
-  {
-    category: 'Payments',
-    items: [
-      'Apple Pay',
-      'Google Pay',
-      'Volt',
-      'Trustly',
-      'Evervault',
-      'PCI-Proxy',
-    ],
-  },
+  { category: 'Frontend', items: ['Vue.js', 'Nuxt.js', 'Astro'] },
+  { category: 'Backend', items: ['Node.js', 'AWS Lambda'] },
+  { category: 'Languages', items: ['TypeScript', 'JavaScript'] },
+  { category: 'Build & Deploy', items: ['Docker', 'GitHub Actions'] },
+  { category: 'AI Tools', items: ['Claude Code', 'GitHub Copilot'] },
 ];
 ---
 
@@ -43,11 +35,16 @@ const toolsAndTech = [
   <section class="intro">
     <h1>About</h1>
     <p>
-      I'm a frontend engineer with a decade of experience building for the
-      web, currently focused on Vue, Nuxt, and TypeScript. Over the past
-      several years I've specialized in fintech payments — designing and
-      shipping secure, PCI-compliant checkout flows across a range of
-      payment providers and methods.
+      I'm a frontend engineer with a decade of experience building for the web,
+      currently focused on Vue, Nuxt, and TypeScript. Over the past several
+      years I've specialized in fintech payments — designing and shipping
+      secure, PCI-compliant checkout flows across a range of payment providers
+      and methods.
+    </p>
+    <p>
+      The problems I find most interesting live where user experience and
+      compliance pull in different directions — keeping a flow simple without
+      cutting corners on security and regulation requirements.
     </p>
   </section>
 
@@ -81,8 +78,8 @@ const toolsAndTech = [
   <section class="contact">
     <h2>Contact</h2>
     <p>
-      Have a project in mind or want to talk shop? Feel free to{' '}
-      <a href="mailto:ramigs@gmail.com">get in touch</a>.
+      Have something in mind — a role, a project, or just want to talk shop?
+      Feel free to <a href="mailto:ramigs@gmail.com">get in touch</a>.
     </p>
   </section>
 </Layout>

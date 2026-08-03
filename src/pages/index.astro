@@ -35,7 +35,9 @@ const socialLinks = [
     <p>
       👋 I'm Rami, a frontend engineer who helps fintech companies build secure,
       PCI-compliant checkout flows using Vue, Nuxt, and TypeScript. Frontend
-      decisions affect approval rates and conversion, not just how things look.{' '}
+      decisions affect approval rates and conversion, not just how things look.{
+        ' '
+      }
       <a href="/about/">More about me</a>.
     </p>
     <p>
@@ -50,7 +52,11 @@ const socialLinks = [
             <li>
               <a
                 href={href}
-                aria-label={label}
+                aria-label={
+                  href.startsWith('http')
+                    ? `${label} (opens in new tab)`
+                    : label
+                }
                 target={href.startsWith('http') ? '_blank' : undefined}
                 rel={
                   href.startsWith('http') ? 'noopener noreferrer' : undefined

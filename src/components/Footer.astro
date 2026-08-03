@@ -42,7 +42,9 @@ const socialLinks = [
         <li>
           <a
             href={href}
-            aria-label={label}
+            aria-label={
+              href.startsWith('http') ? `${label} (opens in new tab)` : label
+            }
             target={href.startsWith('http') ? '_blank' : undefined}
             rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
           >

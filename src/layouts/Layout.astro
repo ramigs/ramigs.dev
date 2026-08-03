@@ -87,16 +87,34 @@ const ogImageURL = new URL('/social-card.png', Astro.site).toString();
     <Font cssVariable="--font-ibm-plex-sans" preload />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <Header />
-    <main class="page-content">
+    <ScrollUpButton />
+    <main id="main-content" class="page-content" tabindex="-1">
       <slot />
     </main>
     <Footer />
-    <ScrollUpButton />
   </body>
 </html>
 
 <style>
+  .skip-link {
+    position: absolute;
+    top: -3rem;
+    left: var(--space-lg);
+    z-index: 100;
+    padding: var(--space-sm) var(--space-md);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    text-decoration: none;
+  }
+
+  .skip-link:focus-visible {
+    top: var(--space-sm);
+  }
+
   .page-content {
     width: 100%;
     max-width: var(--content-max-width);

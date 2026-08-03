@@ -38,6 +38,17 @@
   /* Layout */
   --content-max-width: 60rem;
   --header-max-width: 100rem;
+
+  /* Focus ring — shared by the global :focus-visible rule and any custom
+  focus indicator needed for a visually-hidden control (native focus can't
+  render visibly on a 1px clipped element, so the visible wrapper needs its
+  own copy of this same style). */
+  --focus-ring: 2px solid var(--color-accent);
+  --focus-ring-offset: 2px;
+
+  /* Corner radius — the site's one small-rounding convention (distinct from
+  ScrollUpButton's 50%, which makes a circular button, not a rounded box). */
+  --radius: 4px;
 }
 
 /* Semantic color tokens — light (default, and explicit override) */

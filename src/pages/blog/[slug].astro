@@ -124,7 +124,7 @@ const readingMinutes = Math.max(1, Math.round(wordCount / WORDS_PER_MINUTE));
 
   .post-content pre {
     padding: var(--space-md);
-    border-radius: 4px;
+    border-radius: var(--radius);
 
     /* Long lines scroll horizontally within the block rather than
        overflowing the page or wrapping mid-token — the standard approach,
@@ -169,7 +169,7 @@ const readingMinutes = Math.max(1, Math.round(wordCount / WORDS_PER_MINUTE));
 
   .post-content :not(pre) > code {
     padding: 0.15em 0.35em;
-    border-radius: 4px;
+    border-radius: var(--radius);
     background-color: var(--color-background-subtle);
   }
 </style>

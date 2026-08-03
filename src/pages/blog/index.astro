@@ -164,6 +164,11 @@ for (const yearPosts of postsByYear.values()) {
     text-underline-offset: var(--space-xs);
   }
 
+  .type-filter label:has(:focus-visible) {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+  }
+
   .year-group {
     margin-block-start: var(--space-2xl);
   }

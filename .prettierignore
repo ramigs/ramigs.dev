@@ -2,3 +2,7 @@ dist/
 .astro/
 node_modules/
 pnpm-lock.yaml
+
+# Migrated blog post content — preserved byte-for-byte from the original
+# source (verified via SHA-256 during migration), not reformatted.
+src/content/blog/

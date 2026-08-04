@@ -17,7 +17,10 @@ import ChevronUpIcon from '../assets/icons/tabler/chevron-up.svg';
     transitionClass: string,
   ) {
     const onTransitionEnd = (event: TransitionEvent) => {
-      if (event.target === element && event.propertyName === transitionProperty) {
+      if (
+        event.target === element &&
+        event.propertyName === transitionProperty
+      ) {
         element.setAttribute('hidden', 'true');
         element.removeEventListener('transitionend', onTransitionEnd);
       }
@@ -48,7 +51,11 @@ import ChevronUpIcon from '../assets/icons/tabler/chevron-up.svg';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    const buttonVisibility = transitionHiddenElement(button, 'opacity', 'active');
+    const buttonVisibility = transitionHiddenElement(
+      button,
+      'opacity',
+      'active',
+    );
 
     // Page-agnostic (no dependency on any specific page's content, e.g.
     // `.post-content`): the sentinel sits one viewport-height down from the

@@ -32,7 +32,10 @@ export default defineConfig([
     rules: {
       // `role="list"` on `<ul>`/`<ol>` restores list semantics that
       // `list-style: none` strips in Safari/VoiceOver — not redundant.
-      'astro/jsx-a11y/no-redundant-roles': ['error', { ul: ['list'], ol: ['list'] }],
+      'astro/jsx-a11y/no-redundant-roles': [
+        'error',
+        { ul: ['list'], ol: ['list'] },
+      ],
     },
   },
   {

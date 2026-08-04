@@ -51,9 +51,11 @@ const readingMinutes = Math.max(1, Math.round(wordCount / WORDS_PER_MINUTE));
         <ClockIcon class="icon" aria-hidden="true" />
         {readingMinutes} min read
       </span>
-      {visibleTags.length > 0 && (
-        <span class="tags">{visibleTags.join(', ')}</span>
-      )}
+      {
+        visibleTags.length > 0 && (
+          <span class="tags">{visibleTags.join(', ')}</span>
+        )
+      }
     </p>
     <Content />
   </article>

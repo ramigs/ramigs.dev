@@ -16,7 +16,7 @@ Now that the project is approaching the finish line, it's time to pause and
 review its centerpiece tool and how it contributed to its successful completion.
 
 This won't be a Nuxt.js technical tutorial. There are lot of excellent resources
-around. I’m not going to examine it in depths, I just want to focus on my
+around. I'm not going to examine it in depths, I just want to focus on my
 journey as a developer, experimenting with the framework for the first time and
 using it right away in a _real-world_ project.
 
@@ -172,7 +172,7 @@ session.
 
 > "Part of the bargain we struck when we switched from building server-rendered
 > websites to client-rendered SPAs is that we suddenly had to take a lot more
-> care with the resources on the user’s device." - _[Nolan
+> care with the resources on the user's device." - _[Nolan
 > Lawson](https://nolanlawson.com/2020/02/19/fixing-memory-leaks-in-web-applications/)_
 
 One last point about performance. SPAs will usually ship the bundle for the
@@ -211,7 +211,7 @@ Vuex **state management** also comes installed by default. Add your modules
 under `store` and you're good to go. Finally, HTML **metadata** management is
 also available, with `vue-meta` operating under the hood.
 
-With these extra features in mind, even if you don’t need a SSR website, these
+With these extra features in mind, even if you don't need a SSR website, these
 are still benefits of using Nuxt. I'd probably almost always go with Nuxt,
 unless it was a really small-sized SPA (couple of routes only) with no SEO
 requirements.
@@ -222,10 +222,10 @@ infrastructure and the potential costs of running a a Node.js server. Vue CLI
 apps can be considered easier to deploy, since they typically compile down to
 static assets, and thus be served from any common HTTP server or CDN.
 
-This being said, both have their own set of more appropriate use cases, so it’s
+This being said, both have their own set of more appropriate use cases, so it's
 not so much as Vue CLI vs. Nuxt, but more about choosing which will best suit
 your requirements. If you need faster initial rendering on first-load or SEO,
-then Nuxt is for you. If you don’t need to worry about SEO and your app is
+then Nuxt is for you. If you don't need to worry about SEO and your app is
 light, then Vue CLI will work perfectly.
 
 ## Developer Experience
@@ -358,7 +358,7 @@ available plugins and the active community - all reasons that make me really
 happy to have made the decision to go with Nuxt.
 
 On a more personal note, I learned a lot during the course of this project. It
-was a period of massive evolution, where I had to do things I’d never done
+was a period of massive evolution, where I had to do things I'd never done
 before.
 
 There are of course, some things I would have done differently, if I was

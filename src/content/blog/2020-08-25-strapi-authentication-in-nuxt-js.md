@@ -111,7 +111,7 @@ We've used the `--quickstart` flag that installs Strapi with default settings.
 It also tells Strapi to use SQLite as the database engine and automatically run
 our application.
 
-> In our installation, we used the default database, SQLite, because it doesn’t
+> In our installation, we used the default database, SQLite, because it doesn't
 > require a dedicated database server. Instead, the database is just a single
 > file. For the sake of convenience, we'll be using it in this tutorial, but the
 > steps in this guide also apply to different database engines.
@@ -464,7 +464,7 @@ This is what we have so far:
 
 ## Notification Component
 
-Let’s create a Notification component to give feedback to the user.
+Let's create a Notification component to give feedback to the user.
 
 If everything goes as expected it should display a success message. Otherwise,
 an error message should be displayed.

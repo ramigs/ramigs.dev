@@ -10,7 +10,7 @@ tags:
 TIL how to rollback when working in a trunk based development model.
 
 > "A source-control branching model, where developers collaborate on code in a
-> single branch called ‘trunk’ (main or master, in Git nomenclature), resist any
+> single branch called ‘trunk' (main or master, in Git nomenclature), resist any
 > pressure to create other long-lived development branches by employing
 > documented techniques. They therefore avoid merge hell, do not break the
 > build, and live happily ever after." - _[Trunk Based

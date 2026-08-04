@@ -16,16 +16,16 @@ tags:
 In this article, we'll be using a Jamstack approach to build a Repository
 Catalogue.
 
-First, we’ll populate a [FaunaDB](https://fauna.com/) database with a set of
-repos. For each repo, we’ll store its [GitHub](https://github.com/) URL, the
-project’s name, logo, and main color.
+First, we'll populate a [FaunaDB](https://fauna.com/) database with a set of
+repos. For each repo, we'll store its [GitHub](https://github.com/) URL, the
+project's name, logo, and main color.
 
-Then, at build time, we’ll use [Nuxt.js](https://nuxtjs.org/) to fetch the repo
+Then, at build time, we'll use [Nuxt.js](https://nuxtjs.org/) to fetch the repo
 data from FaunaDB, and use it to pre-render the Repo Catalogue app.
 
-Finally, we’ll retrieve some highly dynamic repo info (such as number of stars
-and forks) from the GitHub API, and with the help of [Vue’s](https://vuejs.org/)
-awesome client-side hydration features, display it in each repo’s page.
+Finally, we'll retrieve some highly dynamic repo info (such as number of stars
+and forks) from the GitHub API, and with the help of [Vue's](https://vuejs.org/)
+awesome client-side hydration features, display it in each repo's page.
 
 Check out the working demo [here](https://elegant-hopper-28219e.netlify.app/).
 
@@ -47,8 +47,8 @@ the key that gives us the major benefit of a Single Page Application (no reloads
 needed to display asynchronously requested data), while also getting the speed
 of a statically loaded site.
 
-> "It’s usually a good idea to load as much data at build time as possible to
-> improve page performance. But if the data isn’t needed by all clients, or too
+> "It's usually a good idea to load as much data at build time as possible to
+> improve page performance. But if the data isn't needed by all clients, or too
 > big to be sent to the client all at once, we can split things up and switch to
 > on-demand loading on the client. This is the case for user-specific data,
 > pagination, or any data that changes rather frequently and might be outdated by
@@ -65,12 +65,12 @@ identify two categories of data:
 2. Data that changes frequently (e.g., repository number of stars and forks)
 
 The former, is in our _control_ and therefore well-suited to be stored in a
-Fauna’s database. Moreover, it can then serve as a data source for any client
+Fauna's database. Moreover, it can then serve as a data source for any client
 app we decide to build.
 
-The latter comes from a third-party source and changes often, so it’s not a good
-candidate for database storage. It’s preferable to fetch it dynamically only
-when it’s needed, making sure we’re always getting the current data.
+The latter comes from a third-party source and changes often, so it's not a good
+candidate for database storage. It's preferable to fetch it dynamically only
+when it's needed, making sure we're always getting the current data.
 
 One important consideration to make, is that this does not imply that FaunaDB is
 only appropriate for static data. Quite the contrary, FaunaDB is great for
@@ -89,8 +89,8 @@ This data categorization may then lead us to question:
   HTML and static assets to our site's visitors? Does that mean we are bound to
   fully static pages?”
 
-In fact, we’ll see that by combining a Jamstack approach in the build step with
-client-side hydration, we’ll be able to enliven our static pages with highly
+In fact, we'll see that by combining a Jamstack approach in the build step with
+client-side hydration, we'll be able to enliven our static pages with highly
 dynamic data.
 
 At the end, you'll be able to take this example, adapt and apply it to your
@@ -166,7 +166,7 @@ could be doing this step in a different way of your choice.
 
 ## Pre-requisites
 
-Before we move on, I’d like to mention that although not mandatory, a working
+Before we move on, I'd like to mention that although not mandatory, a working
 knowledge of the following technologies is beneficial:
 
 - JavaScript
@@ -308,7 +308,7 @@ on the left sidebar:
 
 ![Fauna GraphQL Playground](../../assets/img/articles/2020-07-14-fauna-graphql-playground.png)
 
-Then click the "Import Schema" button, which opens your browser’s file upload,
+Then click the "Import Schema" button, which opens your browser's file upload,
 and select the `schema.gql` file:
 
 FaunaDB automatically created the necessary collection for the `Repo` entity.
@@ -328,7 +328,7 @@ a relational database that stores data in the JSON format.
 
 > "A Collection is a categorized group of data. Each piece of data takes the
 > form of a Document. A Document is a “single, changeable record within a FaunaDB
-> database,” according to Fauna’s documentation. You can think of Collections as
+> database,” according to Fauna's documentation. You can think of Collections as
 > a traditional database table and a Document as a row." - _[Bryan Robinson](https://www.smashingmagazine.com/2019/10/bookmarking-application-faunadb-netlify-11ty/)_
 
 There are four ways of interacting with Fauna data:
@@ -340,7 +340,7 @@ There are four ways of interacting with Fauna data:
   [Apollo](https://www.apollographql.com/client/))
 
 Normally, after using a GraphQL schema to generate the collections and indexes -
-as we did, you would use the GraphQL endpoint that’s automatically provided. For
+as we did, you would use the GraphQL endpoint that's automatically provided. For
 learning purposes, I decided to try out a different approach and go with FQL.
 Although this is not the official way to interact with the data, it also
 simplifies our schema, avoiding the need for GraphQL mutations to define write
@@ -637,7 +637,7 @@ generate: {
 }
 ```
 
-It's quite some code. So, let’s review the different steps of the snippet:
+It's quite some code. So, let's review the different steps of the snippet:
 
 - Import the `faunadb` driver from `node_modules`
 - Import the `slugify` package from `node_modules`
@@ -853,7 +853,7 @@ included in the app's bundle:
 npm run generate
 ```
 
-And we’re done! 🎉
+And we're done! 🎉
 
 ![Nuxt.js detail page](../../assets/img/articles/2020-07-14-fauna-nuxt-detail-page.png)
 

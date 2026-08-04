@@ -47,7 +47,7 @@ Also, as far as I know, there's no better way of solidifying knowledge about a
 topic than to present and explain it to others. It kind of forces us to find out
 exactly what we know and establish clear mental models about it.
 
->"When you face problems that you’ve solved in the past, you don’t always
+>"When you face problems that you've solved in the past, you don't always
 >remember exactly what the solution was. When you are blogging frequently, you
 >can always search through your blog and find the answer." - *[Paweł
 >Dąbrowski](https://buttercms.com/blog/building-your-personal-brand-with-your-developer-blog)*
@@ -241,7 +241,7 @@ to write our own implementations.
 ### Headless CMSs as editor-friendly UIs
 
 While it's easy to picture developers editing text files locally and pushing
-them to GitHub through the command-line, what about content editors who aren’t
+them to GitHub through the command-line, what about content editors who aren't
 developers and might not be familiar with Git and Markdown? For non-technical
 users, such workflows may not be the best solution at all.
 

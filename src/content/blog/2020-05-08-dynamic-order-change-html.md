@@ -132,7 +132,7 @@ media query list, matching a specified media query string.
 We can then check whether our variable `mobile` matches with the current state
 of the document.
 
-So let’s define a function that conditionally sets **Element A** or **Element
+So let's define a function that conditionally sets **Element A** or **Element
 B** as first child of the parent element:
 
 ```javascript

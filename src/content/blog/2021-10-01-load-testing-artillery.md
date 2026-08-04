@@ -202,4 +202,4 @@ Some great resources that helped us along the way:
 - [Load testing using AWS & Artillery - João Tiago (20m talk + 10m Q&A) [2020.05 DevOps Lisbon]](https://www.youtube.com/watch?v=jZSgg9pmw2g)
 - [Performance Tests with Artillery - Rafaela Azevedo](https://azevedorafaela.com/2019/06/27/performance-tests-with-artillery/)
 - [Automating performance and load tests with Artillery + Keptn - Francesco Lentini](https://www.youtube.com/watch?v=j1Spkw0faq0)
-- [Load testing a web application’s serverless backend - James Beswick](https://aws.amazon.com/blogs/compute/load-testing-a-web-applications-serverless-backend/)
+- [Load testing a web application's serverless backend - James Beswick](https://aws.amazon.com/blogs/compute/load-testing-a-web-applications-serverless-backend/)

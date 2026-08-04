@@ -84,17 +84,33 @@ export default defineConfig({
   ],
   vite: {
     plugins: [
-      checker({
-        enableBuild: false,
-        typescript: true,
-        vueTsc: true,
-        eslint: {
-          lintCommand: 'eslint .',
-        },
-        stylelint: {
-          lintCommand: 'stylelint "**/*.{css,vue,astro}"',
-        },
-      }),
+      // Dev-only live linting/type-checking feedback — `astro check` and
+      // `vue-tsc --noEmit` are the real gates in the `build` script, run as
+      // separate steps. `enableBuild: false` alone doesn't fully keep this
+      // plugin out of `astro check`/`astro build`: those commands appear to
+      // boot an internal Vite instance too, which still loads this plugin
+      // and runs its own standalone TypeScript check — one that doesn't yet
+      // see Astro's generated virtual module types (e.g. `astro:content`)
+      // in a cold cache (no local `.astro`/`node_modules/.vite`, exactly
+      // Netlify's fresh-clone state), producing false-positive errors that
+      // print but don't fail the build. Only registering the plugin at all
+      // during `astro dev` avoids this at the source, rather than trying to
+      // further tune `enableBuild`.
+      ...(process.argv[2] === 'dev'
+        ? [
+            checker({
+              enableBuild: false,
+              typescript: true,
+              vueTsc: true,
+              eslint: {
+                lintCommand: 'eslint .',
+              },
+              stylelint: {
+                lintCommand: 'stylelint "**/*.{css,vue,astro}"',
+              },
+            }),
+          ]
+        : []),
     ],
   },
 });

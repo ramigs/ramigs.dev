@@ -1,43 +1,76 @@
-# Astro Starter Kit: Minimal
+# ramigs.dev
 
-```sh
-pnpm create astro@latest -- --template minimal
-```
+Personal website and blog, built with [Astro](https://astro.build).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+🔗 [ramigs.dev](https://ramigs.dev)
 
-## 🚀 Project Structure
+## Tech stack
 
-Inside of your Astro project, you'll see the following folders and files:
+- [Astro](https://astro.build) 7
+- [Vue](https://vuejs.org) (islands only, e.g. the color mode toggle)
+- TypeScript
+- Markdown content collections for blog posts
+- [Expressive Code](https://expressive-code.com) for syntax-highlighted code blocks
+- pnpm
+
+## Project structure
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+src/
+├── assets/       # fonts, icons, images
+├── components/   # Astro + Vue components
+├── content/blog/ # blog posts (Markdown)
+├── layouts/      # page layout
+├── pages/        # routes
+└── styles/       # design tokens, reset, base, and global styles
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Getting started
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Requires the Node version in `.nvmrc` and pnpm.
 
-Any static assets, like images, can be placed in the `public/` directory.
+```sh
+pnpm install
+pnpm dev
+```
 
-## 🧞 Commands
+The dev server runs at `http://localhost:4321`.
 
-All commands are run from the root of the project, from a terminal:
+## Scripts
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `pnpm install`         | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+| Command             | Action                               |
+| :------------------ | :----------------------------------- |
+| `pnpm dev`          | Start the local dev server           |
+| `pnpm build`        | Type-check and build for production  |
+| `pnpm preview`      | Preview the production build locally |
+| `pnpm check`        | Run Astro and Vue type checking      |
+| `pnpm lint`         | Lint JS/TS/Vue/Astro and CSS         |
+| `pnpm lint:fix`     | Lint and auto-fix                    |
+| `pnpm format`       | Format the codebase with Prettier    |
+| `pnpm format:check` | Check formatting without writing     |
 
-## 👀 Want to learn more?
+## Writing a blog post
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Posts live in `src/content/blog/` as Markdown files named `YYYY-MM-DD-slug.md`. The date prefix is stripped to form the URL slug — a holdover from the site's previous Eleventy incarnation, kept for URL parity. The frontmatter `slug` field, if present in older posts, is not used.
+
+Frontmatter schema (see `src/content.config.ts`):
+
+```yaml
+date: 2026-01-01
+title: Post title
+description: Short description
+tags: [tag-one, tag-two]
+canonical: https://example.com/original-post # optional, for cross-posted content
+```
+
+## Design tokens
+
+`src/styles/tokens.css` defines the design system's colors, spacing, and other primitives. The dev-only `/style-guide` route is a live reference for browsing them.
+
+## License
+
+MIT — see [LICENSE](./LICENSE).
+
+---
+
+For AI-agent-specific workflow notes (dev server management, lint/check judgment calls, design token maintenance), see [AGENTS.md](./AGENTS.md).

@@ -1,3 +1,9 @@
+## Project
+
+`ramigs.dev` — personal website + tech blog.
+
+The actual project is a personal site + blog built on Astro 7 with a Vue island (color mode toggle), Markdown content collections for ~90 blog posts (migrated from an old Eleventy site, with legacy filename-based slugs), a custom design token system with dev-only style guide, and IBM Plex fonts served locally. No CI config or netlify.toml — deploy looks like it's Netlify via dashboard config (inferred from a comment in astro.config.mjs).
+
 ## Development
 
 When starting the dev server, use background mode:
@@ -23,6 +29,14 @@ Run `pnpm lint` / `pnpm format:check` / `pnpm check` after substantive code chan
 `tokens.css`'s dark-mode values are also duplicated across two rule blocks — the explicit `[data-color-mode='dark']` block and the `@media (prefers-color-scheme: dark)` fallback block (for before an explicit choice is made). CSS custom properties can't be shared/mixed-in across selectors, so this duplication is structural, not accidental — both blocks are commented to point at each other, but when changing a dark-mode token value, check both.
 
 Whenever a new icon gets vendored into `src/assets/icons/tabler/`, add it to the `icons` array in `style-guide.astro`'s Icons section too — it should stay a complete reference of every icon actually in use on the site, not just some of them.
+
+## TODO / future work
+
+Known future work with a clear trigger — not open design questions, just work waiting on an external condition.
+
+- **Refactor color tokens to use `light-dark()`** once it reaches Baseline "Widely Available" status (expected 2026-11-13). Would collapse the explicit `[data-color-mode='light']`/`[data-color-mode='dark']` duplicated variable blocks in `tokens.css` into single declarations, e.g. `--color-text: light-dark(#1a1a1a, #eaeaea);` — works with the manual toggle too, since it reads computed `color-scheme` rather than the media query directly.
+- **`eslint-plugin-jsx-a11y` peer-dependency mismatch with ESLint 10** — its declared peer range doesn't include ESLint 10, though it's confirmed functionally working via direct testing (a deliberate-violation test file correctly triggered all expected rules). Revisit once the package publishes a release with an updated peer range covering ESLint 10 — check via `pnpm why eslint-plugin-jsx-a11y`, then bump and re-verify with the same kind of test. Scoped to this package only — `eslint-plugin-vuejs-accessibility` already supports ESLint 10.
+- **Manual VoiceOver screen reader testing** — declined at launch, not permanently ruled out. Revisit if VoiceOver familiarity improves enough to make it practical in one sitting, or if real accessibility feedback surfaces. Automated coverage (axe-core, 0 violations) and structural work (semantic HTML, `<main>` landmark, `aria-label`s) already stand regardless — this is specifically about the one layer neither of those can verify.
 
 ## Documentation
 

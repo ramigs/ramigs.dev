@@ -13,6 +13,10 @@ const posts = (await getCollection('blog')).sort(
 );
 const recentPosts = posts.slice(0, RECENT_POSTS_COUNT);
 
+const migrationPost = posts.find(
+  (post) => post.id === '100-posts-migrating-to-astro',
+);
+
 // Same links as Footer.astro's social row, minus RSS — that already has its
 // own dedicated spot next to "Recent Posts" below, no need for a second one.
 const socialLinks = [
@@ -30,6 +34,17 @@ const socialLinks = [
   title="ramigs.dev"
   description="Rami Shashati — frontend engineer specializing in Vue, Nuxt, and TypeScript, building secure, PCI-compliant checkout flows for fintech payments."
 >
+  {
+    migrationPost && (
+      <div class="notice">
+        <p>
+          This website has undergone a major migration. You can read about it in{' '}
+          <a href={`/blog/${migrationPost.id}/`}>{migrationPost.data.title}</a>.
+        </p>
+      </div>
+    )
+  }
+
   <section class="intro">
     <h1 class="visually-hidden">Rami Shashati — Frontend Engineer</h1>
     <p>
@@ -134,6 +149,14 @@ const socialLinks = [
   .social-links .icon {
     width: var(--space-lg);
     height: var(--space-lg);
+  }
+
+  .notice {
+    margin-block-end: var(--space-xl);
+    border-inline-start: 3px solid var(--color-accent);
+    background: var(--color-background-subtle);
+    border-radius: var(--radius);
+    padding: var(--space-md) var(--space-lg);
   }
 
   .recent-posts {

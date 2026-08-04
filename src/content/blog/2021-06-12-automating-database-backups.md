@@ -219,6 +219,6 @@ The next features I'd like to implement:
   starting point.
 
 Feel free to share any comment or suggestion by opening a PR on [this
-article](https://github.com/ramigs/ramigs.dev/blob/master/src/site/posts/2021-06-12-automating-database-backups.md).
+article](https://github.com/ramigs/ramigs.dev/blob/main/src/content/blog/2021-06-12-automating-database-backups.md).
 
 

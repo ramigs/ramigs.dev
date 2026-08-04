@@ -1,0 +1,99 @@
+:root {
+  /* Color primitives */
+  --color-gray-50: #f7f7f7;
+  --color-gray-100: #eaeaea;
+  --color-gray-200: #d8d8d8;
+  --color-gray-300: #dcdcdc;
+  --color-gray-400: #8a8a8a;
+  --color-gray-600: #4d4d4d;
+  --color-gray-700: #3d3d3d;
+  --color-gray-800: #262626;
+  --color-gray-900: #171717;
+  --color-white: #fff;
+  --color-gold: #f8c013;
+  --color-gold-dark-mode: #fad24a;
+  --color-gold-text-safe: #8a6200;
+
+  /* Spacing (scaled 1.125x alongside the type scale below, to stay proportional) */
+  --space-xs: 0.2813rem;
+  --space-sm: 0.5625rem;
+  --space-md: 1.125rem;
+  --space-lg: 1.6875rem;
+  --space-xl: 2.25rem;
+  --space-2xl: 3.375rem;
+  --space-3xl: 4.5rem;
+
+  /* Typography */
+  --font-body: var(--font-ibm-plex-sans);
+  --font-weight-heading: 600;
+  --font-size-small: 1rem;
+  --font-size-body: 1.125rem;
+  --font-size-h4: clamp(1.25rem, 1.208rem + 0.208vw, 1.375rem);
+  --font-size-h3: clamp(1.375rem, 1.271rem + 0.521vw, 1.6875rem);
+  --font-size-h2: clamp(1.6875rem, 1.542rem + 0.729vw, 2.125rem);
+  --font-size-h1: clamp(2rem, 1.729rem + 1.354vw, 2.8125rem);
+  --line-height-body: 1.5;
+  --line-height-heading: 1.2;
+
+  /* Layout */
+  --content-max-width: 60rem;
+  --header-max-width: 100rem;
+
+  /* Focus ring — shared by the global :focus-visible rule and any custom
+  focus indicator needed for a visually-hidden control (native focus can't
+  render visibly on a 1px clipped element, so the visible wrapper needs its
+  own copy of this same style). */
+  --focus-ring: 2px solid var(--color-accent);
+  --focus-ring-offset: 2px;
+
+  /* Corner radius — the site's one small-rounding convention (distinct from
+  ScrollUpButton's 50%, which makes a circular button, not a rounded box). */
+  --radius: 4px;
+}
+
+/* Semantic color tokens — light (default, and explicit override) */
+:root,
+[data-color-mode='light'] {
+  color-scheme: light;
+
+  --color-background: var(--color-gray-50);
+  --color-background-subtle: var(--color-gray-100);
+  --color-text: var(--color-gray-900);
+  --color-text-muted: var(--color-gray-600);
+  --color-border: var(--color-gray-200);
+  --color-accent: var(--color-gold);
+  --color-accent-text: var(--color-gold-text-safe);
+}
+
+/* Semantic color tokens — dark
+   KEEP IN SYNC with the @media fallback block below — CSS custom properties
+   can't be shared/mixed-in across selectors, so these values are necessarily
+   duplicated. Any change here must be mirrored there too, and vice versa. */
+[data-color-mode='dark'] {
+  color-scheme: dark;
+
+  --color-background: var(--color-gray-900);
+  --color-background-subtle: var(--color-gray-800);
+  --color-text: var(--color-white);
+  --color-text-muted: var(--color-gray-300);
+  --color-border: var(--color-gray-700);
+  --color-accent: var(--color-gold-dark-mode);
+  --color-accent-text: var(--color-gold-dark-mode);
+}
+
+/* No manual override yet — follow system preference.
+   Only applies while nothing's been explicitly chosen via the toggle.
+   KEEP IN SYNC with the [data-color-mode='dark'] block above — see note there. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-color-mode='light']) {
+    color-scheme: dark;
+
+    --color-background: var(--color-gray-900);
+    --color-background-subtle: var(--color-gray-800);
+    --color-text: var(--color-white);
+    --color-text-muted: var(--color-gray-300);
+    --color-border: var(--color-gray-700);
+    --color-accent: var(--color-gold-dark-mode);
+    --color-accent-text: var(--color-gold-dark-mode);
+  }
+}

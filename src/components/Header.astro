@@ -1,0 +1,152 @@
+---
+import ColorModeToggle from './ColorModeToggle.vue';
+
+const { pathname } = Astro.url;
+
+const navLinks = [
+  { href: '/blog/', label: 'Blog' },
+  { href: '/about/', label: 'About' },
+];
+
+function isActive(href: string) {
+  return pathname === href || pathname.startsWith(href);
+}
+---
+
+<div id="header-sentinel" aria-hidden="true"></div>
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <div class="brand-nav">
+      <a href="/" class="wordmark">
+        <span class="wordmark-primary">ramigs</span><span
+          class="wordmark-accent">dev</span
+        >
+      </a>
+      <nav aria-label="Primary">
+        <ul role="list">
+          {
+            navLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="nav-link"
+                  aria-current={isActive(link.href) ? 'page' : undefined}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+    <ColorModeToggle client:load />
+  </div>
+</header>
+
+<script>
+  // Sticky-header background swap: an IntersectionObserver on a 0-height
+  // sentinel just above the header is the standard way to detect when a
+  // `position: sticky` element has actually become "stuck" — cheaper and
+  // jank-free compared to a scroll event listener.
+  const sentinel = document.getElementById('header-sentinel');
+  const header = document.getElementById('site-header');
+
+  if (sentinel && header) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        header.classList.toggle('is-scrolled', !entry.isIntersecting);
+      },
+      { rootMargin: '-1px 0px 0px 0px' },
+    );
+    observer.observe(sentinel);
+  }
+</script>
+
+<style>
+  #header-sentinel {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    pointer-events: none;
+  }
+
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--color-background);
+    transition:
+      background-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .site-header.is-scrolled {
+    background-color: var(--color-background-subtle);
+    box-shadow: 0 1px 3px rgb(0 0 0 / 2%);
+  }
+
+  .header-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm) var(--space-lg);
+    max-width: var(--header-max-width);
+    margin-inline: auto;
+    padding: var(--space-md) var(--space-xl);
+    font-size: var(--font-size-h4);
+  }
+
+  @media (width <= 640px) {
+    .header-inner {
+      padding-inline: var(--space-lg);
+    }
+  }
+
+  .brand-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-lg);
+    min-width: 0;
+  }
+
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-lg);
+    padding: 0;
+  }
+
+  .wordmark {
+    font-weight: var(--font-weight-heading);
+    text-decoration: none;
+  }
+
+  .wordmark-primary {
+    color: var(--color-text);
+  }
+
+  .wordmark-accent {
+    color: var(--color-accent-text);
+  }
+
+  .nav-link {
+    color: var(--color-text-muted);
+    text-decoration: none;
+  }
+
+  .nav-link:hover {
+    color: var(--color-text);
+  }
+
+  .nav-link[aria-current='page'] {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-underline-offset: var(--space-xs);
+  }
+</style>

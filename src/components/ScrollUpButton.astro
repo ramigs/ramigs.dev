@@ -1,0 +1,125 @@
+---
+import ChevronUpIcon from '../assets/icons/tabler/chevron-up.svg';
+---
+
+<div id="scroll-up-sentinel" aria-hidden="true"></div>
+<button hidden type="button" class="scroll-up" aria-label="Scroll to top">
+  <ChevronUpIcon class="icon" aria-hidden="true" />
+</button>
+
+<script>
+  // Fades/slides the button in and out, keeping it out of the tab order
+  // while hidden — restoring the `hidden` attribute only once the fade-out
+  // transition actually finishes, not immediately on scroll.
+  function transitionHiddenElement(
+    element: HTMLElement,
+    transitionProperty: string,
+    transitionClass: string,
+  ) {
+    const onTransitionEnd = (event: TransitionEvent) => {
+      if (
+        event.target === element &&
+        event.propertyName === transitionProperty
+      ) {
+        element.setAttribute('hidden', 'true');
+        element.removeEventListener('transitionend', onTransitionEnd);
+      }
+    };
+
+    return {
+      show() {
+        element.removeEventListener('transitionend', onTransitionEnd);
+        element.removeAttribute('hidden');
+        // Force a reflow so removing `hidden` is registered before adding
+        // the class below — otherwise the browser collapses both changes
+        // into one frame and the transition never plays.
+        void element.offsetHeight;
+        element.classList.add(transitionClass);
+      },
+      hide() {
+        element.addEventListener('transitionend', onTransitionEnd);
+        element.classList.remove(transitionClass);
+      },
+    };
+  }
+
+  const button = document.querySelector<HTMLButtonElement>('.scroll-up');
+  const sentinel = document.getElementById('scroll-up-sentinel');
+
+  if (button && sentinel) {
+    button.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    const buttonVisibility = transitionHiddenElement(
+      button,
+      'opacity',
+      'active',
+    );
+
+    // Page-agnostic (no dependency on any specific page's content, e.g.
+    // `.post-content`): the sentinel sits one viewport-height down from the
+    // very top of the page. Show the button once scrolled far enough that
+    // the sentinel has passed above the viewport; hide it again once
+    // scrolled back up near the top. On a page shorter than one viewport,
+    // the sentinel is simply never reachable, so the button never shows —
+    // no separate "is this page long enough" check needed.
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        buttonVisibility.hide();
+      } else if (entry.boundingClientRect.top < 0) {
+        buttonVisibility.show();
+      } else {
+        buttonVisibility.hide();
+      }
+    });
+
+    observer.observe(sentinel);
+  }
+</script>
+
+<style>
+  #scroll-up-sentinel {
+    position: absolute;
+    top: 100vh;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+  }
+
+  .scroll-up {
+    position: fixed;
+    right: var(--space-lg);
+    bottom: var(--space-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    color: var(--color-accent-text);
+    cursor: pointer;
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      background-color 0.15s ease;
+  }
+
+  .scroll-up:hover {
+    background-color: var(--color-background-subtle);
+  }
+
+  .scroll-up:not(.active) {
+    transform: translateY(var(--space-xs));
+    opacity: 0;
+  }
+
+  .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+</style>

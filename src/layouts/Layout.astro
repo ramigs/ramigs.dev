@@ -1,0 +1,132 @@
+---
+import { Font } from 'astro:assets';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ScrollUpButton from '../components/ScrollUpButton.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonicalURL?: string;
+  noindex?: boolean;
+  ogType?: 'website' | 'article';
+  publishedTime?: Date;
+}
+
+const {
+  title,
+  description,
+  canonicalURL,
+  noindex,
+  ogType = 'website',
+  publishedTime,
+} = Astro.props;
+
+const resolvedCanonicalURL =
+  canonicalURL ?? new URL(Astro.url.pathname, Astro.site).toString();
+
+// og:url is deliberately always self-referencing (unlike the canonical
+// override above) — if this page's own URL gets shared, the preview card
+// should represent this page, not silently point elsewhere.
+const ogURL = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImageURL = new URL('/social-card.png', Astro.site).toString();
+---
+
+<html lang="en">
+  <head>
+    <script is:inline>
+      // Flash-of-wrong-color-mode prevention: must run before first paint.
+      // If nothing is stored, do nothing — the CSS prefers-color-scheme
+      // fallback in tokens.css already handles that case correctly.
+      const storedColorMode = localStorage.getItem('color-mode');
+      if (storedColorMode) {
+        document.documentElement.setAttribute(
+          'data-color-mode',
+          storedColorMode,
+        );
+      }
+    </script>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    {description && <meta name="description" content={description} />}
+    {
+      noindex ? (
+        <meta name="robots" content="noindex" />
+      ) : (
+        <link rel="canonical" href={resolvedCanonicalURL} />
+      )
+    }
+    <title>{title}</title>
+
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={ogURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="ramigs.dev" />
+    {
+      ogType === 'article' && publishedTime && (
+        <meta
+          property="article:published_time"
+          content={publishedTime.toISOString()}
+        />
+      )
+    }
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <Font cssVariable="--font-ibm-plex-sans" preload />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <Header />
+    <ScrollUpButton />
+    <main id="main-content" class="page-content" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .skip-link {
+    position: absolute;
+    top: -3rem;
+    left: var(--space-lg);
+    z-index: 100;
+    padding: var(--space-sm) var(--space-md);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    text-decoration: none;
+  }
+
+  .skip-link:focus-visible {
+    top: var(--space-sm);
+  }
+
+  .page-content {
+    width: 100%;
+    max-width: var(--content-max-width);
+    margin-inline: auto;
+    padding: var(--space-lg);
+    padding-block-start: var(--space-2xl);
+  }
+
+  @media (width <= 640px) {
+    .page-content {
+      padding-block-start: var(--space-md);
+    }
+  }
+</style>

@@ -1,54 +1,58 @@
 {
-  "name": "ramigs",
-  "version": "1.0.0",
-  "description": "ramigs' personal website and tech-blog",
-  "author": "ramigs <ramigs@gmail.com>",
+  "name": "ramigs.dev",
+  "type": "module",
+  "version": "0.0.1",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/ramigs/ramigs.dev"
   },
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
-    "dev": "gulp dev",
-    "build": "gulp build",
-    "clean": "rm -rf dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "astro dev --open",
+    "build": "astro check && vue-tsc --noEmit && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check && vue-tsc --noEmit",
+    "lint": "eslint . && stylelint '**/*.{css,vue,astro}'",
+    "lint:fix": "eslint . --fix && stylelint '**/*.{css,vue,astro}' --fix",
+    "lint:css": "stylelint '**/*.{css,vue,astro}'",
+    "lint:css:fix": "stylelint '**/*.{css,vue,astro}' --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
-  "browserslist": [
-    "> 1%",
-    "ie >= 8",
-    "edge >= 15",
-    "ie_mob >= 10",
-    "ff >= 45",
-    "chrome >= 45",
-    "safari >= 7",
-    "opera >= 23",
-    "ios >= 6",
-    "android >= 4",
-    "bb >= 10"
-  ],
-  "keywords": [
-    "ramigs",
-    "eleventy",
-    "netlify",
-    "gulp",
-    "webpack"
-  ],
+  "dependencies": {
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/vue": "^7.0.1",
+    "astro": "^7.1.4",
+    "astro-expressive-code": "^0.44.1",
+    "vue": "^3.5.40"
+  },
+  "packageManager": "pnpm@10.20.0+sha512.cf9998222162dd85864d0a8102e7892e7ba4ceadebbf5a31f9c2fce48dfce317a9c53b9f6464d1ef9042cba2e02ae02a9f7c143a2b438cd93c91840f0192b9dd",
   "devDependencies": {
-    "@11ty/eleventy": "^0.7.1",
-    "@fortawesome/fontawesome-free": "^5.14.0",
-    "autoprefixer": "^9.8.6",
-    "browser-sync": "^2.26.12",
-    "cssnano": "^4.1.10",
-    "glob": "^7.1.6",
-    "gulp": "^4.0.2",
-    "gulp-eslint": "^5.0.0",
-    "gulp-postcss": "^8.0.0",
-    "gulp-rename": "^1.4.0",
-    "gulp-sass": "^4.1.0",
-    "luxon": "^1.25.0",
-    "webpack": "^4.44.1",
-    "webpack-stream": "^5.2.1"
-  },
-  "dependencies": {}
+    "@astrojs/check": "^0.9.10",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.8.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-astro": "^3.0.1",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-vue": "^10.10.0",
+    "eslint-plugin-vuejs-accessibility": "^2.5.0",
+    "globals": "^17.8.0",
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^0.14.1",
+    "sharp": "^0.35.3",
+    "stylelint": "^17.14.1",
+    "stylelint-config-astro": "^2.0.0",
+    "stylelint-config-recommended-vue": "^1.6.1",
+    "stylelint-config-standard": "^40.0.0",
+    "typescript": "6.0.3",
+    "typescript-eslint": "^8.65.0",
+    "vite-plugin-checker": "^0.14.5",
+    "vue-tsc": "^3.3.8",
+    "zod": "^4.4.3"
+  }
 }

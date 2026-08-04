@@ -1,0 +1,63 @@
+---
+date: 2026-07-26
+title: "[TIL] git worktree"
+description: "How git worktree lets you check out multiple branches at once, and why it's not just a manual folder copy"
+tags:
+  - til
+  - git
+---
+
+TIL about `git worktree`.
+
+It's funny how a tool you use every single day can still surprise you. Git has
+so many commands tucked away that never come up in the day-to-day `add`,
+`commit`, `push`, `pull` loop, and you only stumble onto them when you hit the
+exact problem they were built for. In my case, that problem was wanting to work
+on two branches of the same project, side by side, without stashing or juggling
+a second clone.
+
+## The problem
+
+Say I'm on `main` and need to try out a migration on a separate branch, without
+losing my current working directory. The instinct is to just copy the folder:
+
+```bash
+cp -r ramigs.dev ramigs.dev-migration
+cd ramigs.dev-migration
+git checkout -b migration
+```
+
+That works, but it's not quite right.
+
+## Enter `git worktree`
+
+`git worktree add <path> -b <branch-name>` is a single git command that does
+this for you. A few things that make it different from copying the folder
+yourself:
+
+- It creates the new folder and checks out the new branch in one step — no
+  manual `cp` then `git checkout`.
+- The new folder does **not** duplicate `.git` — it's a lightweight linked
+  working tree that shares the same object database/history with the original
+  repo. Only a small `.git` file (a pointer) lives in the new folder, not the
+  whole history again.
+- Things git doesn't track — `node_modules`, `dist` — won't be copied either, so
+  you'd run `npm install` fresh there.
+- Git prevents the same branch from being checked out in two worktrees at once,
+  so `main` in one folder and `migration` in another can coexist safely with no
+  conflicts.
+
+So the command would look something like:
+
+```bash
+git worktree add ../ramigs.dev-migration -b migration
+```
+
+Run from the original repo, and that's the entire setup step. Two folders, two
+branches, one shared history, no copy-pasting required.
+
+## The takeaway
+
+I've been using git for almost a decade and still found a command I didn't
+even know I needed, and how useful it can be. That's the fun part of tools
+like this — they're deep enough that you never really stop learning them.

@@ -1,0 +1,237 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import RssIcon from '../../assets/icons/tabler/rss.svg';
+
+const posts = await getCollection('blog');
+
+const postsByYear = new Map<number, typeof posts>();
+for (const post of posts) {
+  const year = post.data.date.getFullYear();
+  const yearPosts = postsByYear.get(year) ?? [];
+  yearPosts.push(post);
+  postsByYear.set(year, yearPosts);
+}
+
+const years = [...postsByYear.keys()].sort((a, b) => b - a);
+for (const yearPosts of postsByYear.values()) {
+  yearPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+}
+---
+
+<Layout
+  title="Blog | ramigs.dev"
+  description="Frontend engineering, AI-assisted development, and the tools I use day to day — from quick TILs to longer deep dives."
+>
+  <h1>
+    Blog
+    <a href="/rss.xml" class="rss-link" aria-label="RSS feed">
+      <RssIcon class="icon" aria-hidden="true" />
+    </a>
+  </h1>
+  <div class="blog-page">
+    <div class="page-controls">
+      <nav class="year-nav" aria-label="Jump to year">
+        <ul role="list">
+          {
+            years.map((year) => (
+              <li>
+                <a href={`#${year}`}>{year}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <div
+        class="type-filter"
+        role="radiogroup"
+        aria-label="Filter by post type"
+      >
+        <label>
+          <input
+            type="radio"
+            name="post-type"
+            value="all"
+            checked
+            class="visually-hidden"
+          />
+          All
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="post-type"
+            value="til"
+            class="visually-hidden"
+          />
+          TIL
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="post-type"
+            value="articles"
+            class="visually-hidden"
+          />
+          Articles
+        </label>
+      </div>
+    </div>
+    {
+      years.map((year) => (
+        <section class="year-group" id={String(year)}>
+          <h2>
+            {year}
+            <span class="year-count">
+              {postsByYear.get(year)!.length}{' '}
+              {postsByYear.get(year)!.length === 1 ? 'post' : 'posts'}
+            </span>
+          </h2>
+          <ul role="list">
+            {postsByYear.get(year)!.map((post) => {
+              const isTil = post.data.tags.includes('til');
+              return (
+                <li data-type={isTil ? 'til' : 'articles'}>
+                  <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+                  <time
+                    class="post-date"
+                    datetime={post.data.date.toISOString()}
+                  >
+                    {post.data.date.toLocaleDateString('en-US', {
+                      month: 'long',
+                      day: 'numeric',
+                    })}
+                  </time>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+</Layout>
+
+<style>
+  h1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .rss-link {
+    display: inline-flex;
+    color: var(--color-text-muted);
+  }
+
+  .rss-link:hover {
+    color: var(--color-text);
+  }
+
+  .rss-link .icon {
+    width: var(--space-lg);
+    height: var(--space-lg);
+  }
+
+  .page-controls {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-block-start: var(--space-md);
+  }
+
+  .year-nav ul,
+  .type-filter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-sm) var(--space-md);
+  }
+
+  .year-nav ul {
+    padding-inline-start: 0;
+  }
+
+  .type-filter label {
+    color: var(--color-text-muted);
+    cursor: pointer;
+  }
+
+  .type-filter label:hover {
+    color: var(--color-text);
+  }
+
+  .type-filter label:has(:checked) {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-underline-offset: var(--space-xs);
+  }
+
+  .type-filter label:has(:focus-visible) {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .year-group {
+    margin-block-start: var(--space-2xl);
+  }
+
+  .year-group ul {
+    padding-inline-start: 0;
+  }
+
+  /* Purely CSS-driven filtering, no JS: hide entries whose `data-type` doesn't
+     match the checked radio, then hide any year section left with no visible
+     entries at all — the `all` state has no rules here, so nothing is ever
+     hidden by default. */
+  .blog-page:has(input[value='til']:checked) li[data-type='articles'] {
+    display: none;
+  }
+
+  .blog-page:has(input[value='articles']:checked) li[data-type='til'] {
+    display: none;
+  }
+
+  .blog-page:has(input[value='til']:checked)
+    .year-group:not(:has(li[data-type='til'])) {
+    display: none;
+  }
+
+  .blog-page:has(input[value='articles']:checked)
+    .year-group:not(:has(li[data-type='articles'])) {
+    display: none;
+  }
+
+  .year-group h2 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-xs) var(--space-lg);
+    padding-block-end: var(--space-sm);
+    border-block-end: 1px solid var(--color-border);
+  }
+
+  .year-count {
+    flex-shrink: 0;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+    font-weight: normal;
+  }
+
+  .year-group li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-xs) var(--space-lg);
+    padding-block: var(--space-sm);
+  }
+
+  .post-date {
+    flex-shrink: 0;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+  }
+</style>

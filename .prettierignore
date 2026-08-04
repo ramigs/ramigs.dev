@@ -1,0 +1,26 @@
+dist/
+.astro/
+node_modules/
+pnpm-lock.yaml
+
+# Migrated blog post content — preserved as migrated (images were verified
+# byte-for-byte via SHA-256; frontmatter has known, deliberate deviations
+# from the original source, e.g. the dropped vestigial `slug` field), not
+# further reformatted by Prettier.
+#
+# Complete past years/months are safe to wildcard (no future post will
+# ever be dated in a period that's already over). The current, still-open
+# month can't use a wildcard the same way — that would also match and
+# freeze posts written later this month, defeating the point — so those
+# are listed explicitly instead. Maintenance: once a month/year closes,
+# collapse it into its own wildcard line and drop the explicit listing
+# for whatever's left open.
+src/content/blog/2019-*.md
+src/content/blog/2020-*.md
+src/content/blog/2021-*.md
+src/content/blog/2022-*.md
+src/content/blog/2023-*.md
+src/content/blog/2024-*.md
+src/content/blog/2025-*.md
+src/content/blog/2026-07-*.md
+src/content/blog/2026-08-02-css-cascade-layers.md

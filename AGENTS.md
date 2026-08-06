@@ -30,6 +30,10 @@ Run `pnpm lint` / `pnpm format:check` / `pnpm check` after substantive code chan
 
 Whenever a new icon gets vendored into `src/assets/icons/tabler/`, add it to the `icons` array in `style-guide.astro`'s Icons section too — it should stay a complete reference of every icon actually in use on the site, not just some of them.
 
+## Content
+
+When writing new blog posts, titles should use sentence case, not title case — capitalize only the first word (and proper nouns), not every word.
+
 ## TODO / future work
 
 Known future work with a clear trigger — not open design questions, just work waiting on an external condition.

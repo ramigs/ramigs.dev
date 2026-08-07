@@ -43,45 +43,39 @@ import ChevronUpIcon from '../assets/icons/tabler/chevron-up.svg';
     };
   }
 
-  // Re-run on every `astro:page-load` (not just once): this script's module
-  // only executes once ever, but the button/sentinel elements themselves
-  // get replaced on every view-transition navigation, so the click handler
-  // and observer must be re-attached to the new elements each time.
-  document.addEventListener('astro:page-load', () => {
-    const button = document.querySelector<HTMLButtonElement>('.scroll-up');
-    const sentinel = document.getElementById('scroll-up-sentinel');
+  const button = document.querySelector<HTMLButtonElement>('.scroll-up');
+  const sentinel = document.getElementById('scroll-up-sentinel');
 
-    if (button && sentinel) {
-      button.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+  if (button && sentinel) {
+    button.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
-      const buttonVisibility = transitionHiddenElement(
-        button,
-        'opacity',
-        'active',
-      );
+    const buttonVisibility = transitionHiddenElement(
+      button,
+      'opacity',
+      'active',
+    );
 
-      // Page-agnostic (no dependency on any specific page's content, e.g.
-      // `.post-content`): the sentinel sits one viewport-height down from
-      // the very top of the page. Show the button once scrolled far enough
-      // that the sentinel has passed above the viewport; hide it again once
-      // scrolled back up near the top. On a page shorter than one
-      // viewport, the sentinel is simply never reachable, so the button
-      // never shows — no separate "is this page long enough" check needed.
-      const observer = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) {
-          buttonVisibility.hide();
-        } else if (entry.boundingClientRect.top < 0) {
-          buttonVisibility.show();
-        } else {
-          buttonVisibility.hide();
-        }
-      });
+    // Page-agnostic (no dependency on any specific page's content, e.g.
+    // `.post-content`): the sentinel sits one viewport-height down from the
+    // very top of the page. Show the button once scrolled far enough that
+    // the sentinel has passed above the viewport; hide it again once
+    // scrolled back up near the top. On a page shorter than one viewport,
+    // the sentinel is simply never reachable, so the button never shows —
+    // no separate "is this page long enough" check needed.
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        buttonVisibility.hide();
+      } else if (entry.boundingClientRect.top < 0) {
+        buttonVisibility.show();
+      } else {
+        buttonVisibility.hide();
+      }
+    });
 
-      observer.observe(sentinel);
-    }
-  });
+    observer.observe(sentinel);
+  }
 </script>
 
 <style>

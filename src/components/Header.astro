@@ -40,11 +40,7 @@ function isActive(href: string) {
         </ul>
       </nav>
     </div>
-    <ColorModeToggle
-      client:load
-      transition:persist
-      transition:name="color-mode-toggle"
-    />
+    <ColorModeToggle client:load />
   </div>
 </header>
 
@@ -53,25 +49,18 @@ function isActive(href: string) {
   // sentinel just above the header is the standard way to detect when a
   // `position: sticky` element has actually become "stuck" — cheaper and
   // jank-free compared to a scroll event listener.
-  //
-  // Re-run on every `astro:page-load` (not just once): this script's module
-  // only executes once ever, but the header/sentinel elements themselves
-  // get replaced on every view-transition navigation, so the observer must
-  // be re-attached to the new elements each time.
-  document.addEventListener('astro:page-load', () => {
-    const sentinel = document.getElementById('header-sentinel');
-    const header = document.getElementById('site-header');
+  const sentinel = document.getElementById('header-sentinel');
+  const header = document.getElementById('site-header');
 
-    if (sentinel && header) {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          header.classList.toggle('is-scrolled', !entry.isIntersecting);
-        },
-        { rootMargin: '-1px 0px 0px 0px' },
-      );
-      observer.observe(sentinel);
-    }
-  });
+  if (sentinel && header) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        header.classList.toggle('is-scrolled', !entry.isIntersecting);
+      },
+      { rootMargin: '-1px 0px 0px 0px' },
+    );
+    observer.observe(sentinel);
+  }
 </script>
 
 <style>

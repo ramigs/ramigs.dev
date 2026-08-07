@@ -1,7 +1,7 @@
 ---
 date: 2026-07-24
 
-title: "[TIL] The 9 Pillars of AI-Assisted Software Development"
+title: "[TIL] The 9 pillars of AI-assisted software development"
 description: "A breakdown of the 8 pillars of AI-assisted software development, centered around optimizing your core dev workflow."
 tags:
   - til
@@ -18,12 +18,12 @@ supporting pillars**, all centered around one core concept: **Workflow**.
 
 Here is a quick breakdown of how these components work together:
 
-## The Core: Workflow
+## The core: Workflow
 
 At the center of it all is your **Workflow**. The 8 supporting pillars exist to
 enable, automate, and streamline how you plan, write, test, and ship code.
 
-## The 8 Supporting Pillars
+## The 8 supporting pillars
 
 1. **Tools (IDEs, CLIs):** The interfaces you interact with daily (VS Code,
    terminal CLI tools) where AI capabilities live.
@@ -43,7 +43,7 @@ enable, automate, and streamline how you plan, write, test, and ship code.
 8. **MCP Servers (Model Context Protocol):** Standardized protocol layers
    connecting LLMs to external data sources, databases, and APIs.
 
-## 💡 Key Takeaway
+## 💡 Key takeaway
 
 If you want to maximize developer productivity with AI, **don't focus solely on
 the models**. Look at the whole ecosystem—from memory and environment setups to

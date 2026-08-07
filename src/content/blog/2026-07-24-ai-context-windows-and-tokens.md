@@ -30,7 +30,7 @@ Every piece of data takes up space on the same limited track:
 Every single item listed above consumes tokens. Once that total hits the hard
 limit, the model has to adapt.
 
-## What Happens When the Window Fills Up?
+## What happens when the window fills up?
 
 When your session runs out of token budget, the system usually handles it in one
 of two ways:
@@ -40,7 +40,7 @@ of two ways:
 2. **Compact & Summarize:** The system takes early messages and creates a
    condensed summary to preserve essential facts using far fewer tokens.
 
-## The Big Takeaway
+## The big takeaway
 
 **Limits are strictly about tokens, not files or messages.** Keep your context
 clean to ensure the model holds onto the information that actually matters!

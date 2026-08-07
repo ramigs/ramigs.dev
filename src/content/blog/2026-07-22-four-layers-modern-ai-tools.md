@@ -1,7 +1,7 @@
 ---
 date: 2026-07-22
 
-title: "[TIL] The 4 Layers of Modern AI Tools (Prompt, Context, Harness, Loop)"
+title: "[TIL] The 4 layers of modern AI tools (Prompt, Context, Harness, Loop)"
 description: "Understanding how AI tools work from a developer's perspective: the four layers of Prompt, Context, Harness, and Loop engineering"
 tags:
   - til
@@ -18,7 +18,7 @@ Prompt Engineering is only layer one.
 Today I learned that understanding how modern AI tools work comes down to four
 distinct layers:
 
-## 1. Prompt Engineering
+## 1. Prompt engineering
 
 _What I tell the model._
 
@@ -26,7 +26,7 @@ This is the foundation: crafting clear system instructions, setting explicit
 boundaries, formatting outputs, and providing few-shot examples. It governs the
 immediate reasoning and output of the model.
 
-## 2. Context Engineering
+## 2. Context engineering
 
 _What the model "knows" at each step._
 
@@ -36,7 +36,7 @@ prompt—via Retrieval-Augmented Generation (RAG), search outputs, memory stores
 or trimmed conversation histories—without exceeding token limits or causing
 "lost in the middle" phenomena.
 
-## 3. Harness Engineering
+## 3. Harness engineering
 
 _The environment, mechanisms, and controls with which the agent operates._
 
@@ -45,7 +45,7 @@ manages API retries, handles tool integration (calling functions or web tools),
 enforces structured output schemas, and manages fallback behavior if the model
 hallucinates or fails.
 
-## 4. Loop Engineering
+## 4. Loop engineering
 
 _How the system self-corrects and iterates._
 
@@ -54,7 +54,7 @@ iterative feedback loop. It gives the model the ability to run trial-and-error
 workflows—evaluating its own work, using tool feedback, and revising its steps
 until it meets the final goal.
 
-## The Takeaway
+## The takeaway
 
 | **Layer**   | **Focus Area**                                           |
 | ----------- | -------------------------------------------------------- |

@@ -1,7 +1,7 @@
 ---
 date: 2026-07-23
 
-title: '[TIL] Prompting Techniques (How AI Models Actually "Think")'
+title: '[TIL] Prompting techniques (how AI models actually "think")'
 description: "A quick guide to the 5 core AI prompting techniques and how they help LLMs solve complex tasks."
 tags:
   - til

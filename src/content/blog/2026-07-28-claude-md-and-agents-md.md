@@ -1,7 +1,7 @@
 ---
 date: 2026-07-28
 
-title: "CLAUDE.md and AGENTS.md: Correct the System, Not the Output"
+title: "CLAUDE.md and AGENTS.md: correct the system, not the output"
 description: "Why CLAUDE.md and AGENTS.md exist, what actually belongs in them, progressive disclosure, and how to keep them in sync across different AI coding tools."
 tags:
   - ai

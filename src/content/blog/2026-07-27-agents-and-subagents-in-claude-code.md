@@ -1,7 +1,7 @@
 ---
 date: 2026-07-27
 
-title: "How Agents and Subagents Work in Claude Code"
+title: "How agents and subagents work in Claude Code"
 description: "Breaking down what an 'agent' actually is in Claude Code: harness vs agent vs model, built-in vs custom agents, and how subagents delegate with isolated context."
 tags:
   - ai

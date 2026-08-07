@@ -1,6 +1,6 @@
 ---
 date: 2026-08-04
-title: '100 Posts, a New Stack: Migrating ramigs.dev to Astro'
+title: '100 posts, a new stack: migrating ramigs.dev to Astro'
 description: 'Reflecting on 100 posts and a full rebuild of ramigs.dev — from Eleventy to Astro, what changed, and what stayed the same.'
 tags:
   - astro

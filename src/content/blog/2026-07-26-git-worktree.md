@@ -56,6 +56,54 @@ git worktree add ../ramigs.dev-migration -b migration
 Run from the original repo, and that's the entire setup step. Two folders, two
 branches, one shared history, no copy-pasting required.
 
+## Cleaning up with `git worktree remove`
+
+Once the migration branch was merged into `main` — or if I'd decided to
+abandon it instead — my instinct was to just `rm -rf` the folder, same as I
+would with a manual copy. That mostly works, but it
+leaves git confused: the original repo still has an entry under
+`.git/worktrees/` pointing at a directory that no longer exists, and git won't
+let you delete the branch that folder had checked out until that reference is
+cleared.
+
+`git worktree remove <path>` is the proper way to tear it down:
+
+```bash
+git worktree remove ../ramigs.dev-migration
+```
+
+This removes both the working directory and the administrative metadata in
+one step, so the original repo has no dangling references left behind. If the
+worktree has uncommitted changes, git refuses to remove it unless you pass
+`--force` — a small safety net against losing work you forgot about.
+
+`git worktree list` is worth running before and after, just to see what
+worktrees are currently registered. And if you ever do end up manually
+deleting a worktree folder instead of using `remove`, `git worktree prune`
+cleans up the stale metadata afterwards.
+
+Doing the setup with `git worktree add` and skipping the matching
+`git worktree remove` is the same mistake as the `cp -r` approach from
+earlier — it looks done, but it leaves git's bookkeeping out of sync with
+what's actually on disk.
+
+## Worktrees for AI agents
+
+Worktrees aren't just a convenience for a human juggling two branches, they're
+a good fit for AI coding agents too. An agent working in the same checkout
+you're using is one accidental `git
+checkout` away from yanking the branch out from under you, or clobbering
+uncommitted changes it didn't know were "yours". Give it its own worktree
+instead, and it gets a real working directory and its own checked-out branch,
+isolated from whatever you're doing in the original, but still sharing the
+same object database, so nothing has to be cloned or synced separately.
+
+That isolation is what makes it interesting for running multiple agents
+side by side — each on its own branch, in its own worktree, unable to step on
+each other. It's the kind of building block that matters if you're setting
+agents to iterate somewhat independently, which ties into **Loop
+engineering**, something I want to dig into more in the near future.
+
 ## The takeaway
 
 I've been using git for almost a decade and still found a command I didn't

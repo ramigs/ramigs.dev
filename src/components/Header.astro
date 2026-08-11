@@ -19,7 +19,7 @@ function isActive(href: string) {
     <div class="brand-nav">
       <a href="/" class="wordmark">
         <span class="wordmark-primary">ramigs</span><span
-          class="wordmark-accent">dev</span
+          class="wordmark-accent">de<span class="wordmark-v">v</span></span
         >
       </a>
       <nav aria-label="Primary">
@@ -132,6 +132,19 @@ function isActive(href: string) {
 
   .wordmark-accent {
     color: var(--color-accent-text);
+  }
+
+  .wordmark-v {
+    display: inline-block;
+    transition:
+      transform 0.4s ease,
+      color 0.4s ease;
+  }
+
+  .wordmark:hover .wordmark-v,
+  .wordmark:focus-visible .wordmark-v {
+    transform: rotate(-90deg);
+    color: color-mix(in srgb, var(--color-accent) 60%, transparent);
   }
 
   .nav-link {

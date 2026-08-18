@@ -2,7 +2,6 @@
 date: 2020-08-25
 title: Strapi Authentication in Nuxt.js
 description: This is a step-by-step guide on how to implement Strapi-based authentication in a Nuxt.js app.
-canonical: "https://strapi.io/blog/strapi-authentication-in-nuxt-js"
 tags:
   - strapi
   - nuxtjs

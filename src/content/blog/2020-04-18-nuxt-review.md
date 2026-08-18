@@ -1,6 +1,6 @@
 ---
 date: 2020-04-18
-title: Three months of Nuxt.js in Production - A Restrospective
+title: Three months of Nuxt.js in Production - A Retrospective
 description: My experience with Nuxt.js in a continuous delivery production setting
 tags:
   - nuxtjs

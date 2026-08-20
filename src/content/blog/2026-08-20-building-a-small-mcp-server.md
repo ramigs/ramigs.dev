@@ -8,11 +8,11 @@ tags:
   - node
 ---
 
-After writing about [what MCP actually is](/blog/what-is-mcp/), the obvious
-next step was building one. [`payments-toolkit-mcp`][repo] is a small server
-that exposes payment-data validation as MCP tools: Luhn checksum validation,
-card network detection, and IBAN validation. It also exposes a static
-resource listing supported card networks and their prefix ranges.
+After writing about [what MCP actually is](/blog/what-is-mcp/), the obvious next
+step was building one. [`payments-toolkit-mcp`][repo] is a small MCP server that
+exposes payment-data validation as MCP tools: Luhn checksum validation, card
+network detection, and IBAN validation. It also exposes a static resource
+listing supported card networks and their prefix ranges.
 
 [repo]: https://github.com/ramigs/payments-toolkit-mcp
 
@@ -71,10 +71,9 @@ server.registerTool(
 );
 ```
 
-The model reads `description` to decide when to call the tool at all, which
-makes it earn its keep more than a typical docstring would. The schema is
-worth the same care: `cardNumberSchema` enforces digits-only and a sane
-length range, which means malformed input never reaches `isValidLuhn` in the
+The model reads `description` to decide whether to call the tool. The input
+schema does its own filtering: `cardNumberSchema` enforces digits-only and
+a sane length range, so malformed input never reaches `isValidLuhn` in the
 first place.
 
 The two-shape response (`content` and `structuredContent`) surprised me
@@ -122,14 +121,14 @@ rather than a separate concept to learn.
 
 ## The gotcha: stdout is not yours
 
-This is the one mistake the [README][repo] specifically calls out, and it's
-the kind of thing you'd only discover by hitting it: over the stdio
-transport, stdout is the JSON-RPC wire. A stray `console.log` doesn't just
-clutter logs; it injects malformed data into the protocol stream and breaks
-the client's parser. Every bit of debug output in this server goes through
-`console.error` instead, since stderr is left alone. It's a one-line rule,
-but it explains why MCP server boilerplate almost always reaches for a
-logger or `console.error` by convention rather than `console.log`.
+This is the one mistake the [README][repo] specifically calls out, and it's the
+kind of thing you'd only discover by hitting it: over the stdio transport,
+stdout is the JSON-RPC wire. A stray `console.log` doesn't just clutter logs; it
+injects malformed data into the protocol stream and breaks the client's parser.
+Every bit of debug output in this server goes through `console.error` instead,
+since stderr is left alone. This explains why MCP server boilerplate almost
+always reaches for a logger or `console.error` by convention rather than
+`console.log`.
 
 ## Inspecting and connecting
 
@@ -143,7 +142,23 @@ single command:
 claude mcp add payments-toolkit-mcp -- node /path/to/payments-toolkit-mcp/dist/index.js
 ```
 
-`/mcp` inside a session then confirms the connection and lists what got
-discovered: the three tools and the resource, showing up exactly as
-registered, with no extra glue code needed on the client side beyond that
-one command.
+`/mcp` inside a session then confirms the connection: seeing
+`payments-toolkit-mcp · ✔ connected` means the handshake worked and the
+tools were discovered. That registration defaults to local scope, tied to
+the project directory `claude mcp add` was run from, so a different project
+needs its own `claude mcp add` (or `--scope user` to make the server
+available everywhere).
+
+## Next steps
+
+Two things this server doesn't cover yet, left for a follow-up:
+
+- Swap `StdioServerTransport` for `StreamableHTTPServerTransport`. Stdio
+  only works because Claude Code spawns the server itself and owns the
+  subprocess; a server meant to be shared across multiple clients needs to
+  run over HTTP instead.
+- Add a prompt. Tools and resources are two of MCP's three primitives; a
+  prompt is the third, a reusable template the server hands the client
+  instead of the client writing it per integration. A
+  `validate-payment-details` prompt that checks card number, expiry, and
+  CVV together would round out the toolkit.

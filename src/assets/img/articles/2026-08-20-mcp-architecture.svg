@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 880 568" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="mcp-arch-title mcp-arch-desc">
+      <title id="mcp-arch-title">Model Context Protocol architecture</title>
+      <desc id="mcp-arch-desc">Diagram showing an AI model's MCP clients connecting one-to-one to MCP servers over stdio or Streamable HTTP, each server exposing tools, resources, and prompts to reach an external database or the GitHub API.</desc>
+      <defs>
+  <style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap');</style>
+        <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#4d4d4d"/></marker>
+        <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#f8c013"/></marker>
+        <marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2e5aa8"/></marker>
+      </defs>
+
+      <rect width="100%" height="100%" fill="#f7f7f7"/>
+
+      <!-- Zone: MCP Host (drawn before arrows and nodes) -->
+      <rect x="48" y="64" width="280" height="408" rx="8"
+            fill="rgba(23,23,23,0.02)" stroke="rgba(23,23,23,0.10)" stroke-width="0.8"/>
+      <rect x="64" y="68" width="88" height="12" rx="2" fill="#f7f7f7"/>
+      <text x="108" y="77" fill="rgba(23,23,23,0.40)" font-size="7" font-family="'IBM Plex Mono', monospace"
+            text-anchor="middle" letter-spacing="0.14em">MCP HOST</text>
+
+      <!-- Arrows (drawn before nodes) -->
+      <!-- LLM -> Client 1 -->
+      <line x1="152" y1="160" x2="152" y2="232" stroke="#4d4d4d" stroke-width="1.2"
+            marker-end="url(#arrow)"/>
+      <!-- LLM -> Client 2 (routed right of Client 1 to avoid passing behind it; enters
+           below the HTTP/SSE attach point at y=424 so the two connectors don't share
+           a point on Client 2's right edge) -->
+      <path d="M 264,160 V 432 Q 264,440 256,440 H 240" fill="none" stroke="#4d4d4d" stroke-width="1.2"
+            marker-end="url(#arrow)"/>
+      <!-- Client 1 -> Database server (transport) -->
+      <line x1="240" y1="264" x2="368" y2="264" stroke="#2e5aa8" stroke-width="1.2"
+            marker-end="url(#arrow-link)"/>
+      <!-- Client 2 -> GitHub server (transport) -->
+      <line x1="240" y1="424" x2="368" y2="424" stroke="#2e5aa8" stroke-width="1.2"
+            marker-end="url(#arrow-link)"/>
+      <!-- Database server -> PostgreSQL -->
+      <line x1="600" y1="264" x2="640" y2="264" stroke="#4d4d4d" stroke-width="1.2" marker-end="url(#arrow)"/>
+      <!-- GitHub server -> GitHub API -->
+      <line x1="600" y1="424" x2="640" y2="424" stroke="#4d4d4d" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+      <!-- Arrow labels -->
+      <rect x="284" y="244" width="40" height="12" rx="2" fill="#f7f7f7"/>
+      <text x="304" y="253" fill="#2e5aa8" font-size="8" font-family="'IBM Plex Mono', monospace" text-anchor="middle" letter-spacing="0.08em">STDIO</text>
+
+      <rect x="284" y="404" width="40" height="12" rx="2" fill="#f7f7f7"/>
+      <text x="304" y="413" fill="#2e5aa8" font-size="8" font-family="'IBM Plex Mono', monospace" text-anchor="middle" letter-spacing="0.08em">HTTP</text>
+
+      <!-- Node: LLM (focal) -->
+      <rect x="64" y="96" width="232" height="64" rx="6" fill="#f7f7f7"/>
+      <rect x="64" y="96" width="232" height="64" rx="6" fill="rgba(248,192,19,0.08)" stroke="#f8c013" stroke-width="1"/>
+      <rect x="72" y="104" width="28" height="12" rx="2" fill="transparent" stroke="rgba(248,192,19,0.40)" stroke-width="0.8"/>
+      <text x="86" y="113" fill="#8a6200" font-size="7" font-family="'IBM Plex Mono', monospace" text-anchor="middle" letter-spacing="0.08em">AI</text>
+      <text x="180" y="132" fill="#171717" font-size="12" font-weight="600" font-family="'IBM Plex Sans', sans-serif" text-anchor="middle">LLM</text>
+      <text x="180" y="148" fill="#4d4d4d" font-size="9" font-family="'IBM Plex Mono', monospace" text-anchor="middle">AI model</text>
+
+      <!-- Node: MCP Client 1 (backend) -->
+      <rect x="64" y="232" width="176" height="64" rx="6" fill="#f7f7f7"/>
+      <rect x="64" y="232" width="176" height="64" rx="6" fill="#ffffff" stroke="#171717" stroke-width="1"/>
+      <rect x="72" y="240" width="32" height="12" rx="2" fill="transparent" stroke="rgba(23,23,23,0.40)" stroke-width="0.8"/>
+      <text x="88" y="249" fill="#171717" font-size="7" font-family="'IBM Plex Mono', monospace" text-anchor="middle" letter-spacing="0.08em">MCP</text>
+      <text x="152" y="268" fill="#171717" font-size="12" font-weight="600" font-family="'IBM Plex Sans', sans-serif" text-anchor="middle">MCP Client 1</text>
+      <text x="152" y="284" fill="#4d4d4d" font-size="9" font-family="'IBM Plex Mono', monospace" text-anchor="middle">→ database server</text>
+
+      <!-- Node: MCP Client 2 (backend) -->
+      <rect x="64" y="392" width="176" height="64" rx="6" fill="#f7f7f7"/>
+      <rect x="64" y="392" width="176" height="64" rx="6" fill="#ffffff" stroke="#171717" stroke-width="1"/>
+      <rect x="72" y="400" width="32" height="12" rx="2" fill="transparent" stroke="rgba(23,23,23,0.40)" stroke-width="0.8"/>
+      <text x="88" y="409" fill="#171717" font-size="7" font-family="'IBM Plex Mono', monospace" text-anchor="middle" letter-spacing="0.08em">MCP</text>
+      <text x="152" y="428" fill="#171717" font-size="12" font-weight="600" font-family="'IBM Plex Sans', sans-serif" text-anchor="middle">MCP Client 2</text>
+      <text x="152" y="444" fill="#4d4d4d" font-size="9" font-family="'IBM Plex Mono', monospace" text-anchor="middle">→ GitHub server</text>
+
+      <!-- Node: Database server (store) -->
+      <rect x="368" y="232" width="232" height="64" rx="6" fill="#f7f7f7"/>
+      <rect x="368" y="232" width="232" height="64" rx="6" fill="rgba(23,23,23,0.05)" stroke="#4d4d4d" stroke-width="1"/>
+      <rect x="376" y="240" width="32" height="12" rx="2" fill="transparent" stroke="rgba(77,77,77,0.40)" stroke-width="0.8"/>
+      <text x="392" y="249" fill="#4d4d4d" font-size="7" font-family="'IBM Plex Mono', monospace" text-anchor="middle" letter-spacing="0.08em">MCP</text>
+      <text x="484" y="268" fill="#171717" font-size="12" font-weight="600" font-family="'IBM Plex Sans', sans-serif" text-anchor="middle">Database server</text>
+      <text x="484" y="284" fill="#4d4d4d" font-size="9" font-family="'IBM Plex Mono', monospace" text-anchor="middle">tools · resources · prompts</text>
+
+      <!-- Node: GitHub server (store) -->
+      <rect x="368" y="392" width="232" height="64" rx="6" fill="#f7f7f7"/>
+      <rect x="368" y="392" width="232" height="64" rx="6" fill="rgba(23,23,23,0.05)" stroke="#4d4d4d" stroke-width="1"/>
+      <rect x="376" y="400" width="32" height="12" rx="2" fill="transparent" stroke="rgba(77,77,77,0.40)" stroke-width="0.8"/>
+      <text x="392" y="409" fill="#4d4d4d" font-size="7" font-family="'IBM Plex Mono', monospace" text-anchor="middle" letter-spacing="0.08em">MCP</text>
+      <text x="484" y="428" fill="#171717" font-size="12" font-weight="600" font-family="'IBM Plex Sans', sans-serif" text-anchor="middle">GitHub server</text>
+      <text x="484" y="444" fill="#4d4d4d" font-size="9" font-family="'IBM Plex Mono', monospace" text-anchor="middle">tools · resources · prompts</text>
+
+      <!-- Node: PostgreSQL (external) -->
+      <rect x="640" y="232" width="176" height="64" rx="6" fill="#f7f7f7"/>
+      <rect x="640" y="232" width="176" height="64" rx="6" fill="rgba(23,23,23,0.03)" stroke="rgba(23,23,23,0.30)" stroke-width="1"/>
+      <rect x="648" y="240" width="28" height="12" rx="2" fill="transparent" stroke="rgba(23,23,23,0.22)" stroke-width="0.8"/>
+      <text x="662" y="249" fill="#8a8a8a" font-size="7" font-family="'IBM Plex Mono', monospace" text-anchor="middle" letter-spacing="0.08em">DB</text>
+      <text x="728" y="268" fill="#171717" font-size="12" font-weight="600" font-family="'IBM Plex Sans', sans-serif" text-anchor="middle">PostgreSQL</text>
+      <text x="728" y="284" fill="#4d4d4d" font-size="9" font-family="'IBM Plex Mono', monospace" text-anchor="middle">database</text>
+
+      <!-- Node: GitHub API (external) -->
+      <rect x="640" y="392" width="176" height="64" rx="6" fill="#f7f7f7"/>
+      <rect x="640" y="392" width="176" height="64" rx="6" fill="rgba(23,23,23,0.03)" stroke="rgba(23,23,23,0.30)" stroke-width="1"/>
+      <rect x="648" y="400" width="28" height="12" rx="2" fill="transparent" stroke="rgba(23,23,23,0.22)" stroke-width="0.8"/>
+      <text x="662" y="409" fill="#8a8a8a" font-size="7" font-family="'IBM Plex Mono', monospace" text-anchor="middle" letter-spacing="0.08em">API</text>
+      <text x="728" y="428" fill="#171717" font-size="12" font-weight="600" font-family="'IBM Plex Sans', sans-serif" text-anchor="middle">GitHub API</text>
+      <text x="728" y="444" fill="#4d4d4d" font-size="9" font-family="'IBM Plex Mono', monospace" text-anchor="middle">cloud service</text>
+
+      <!-- Legend strip -->
+      <line x1="48" y1="504" x2="832" y2="504" stroke="rgba(23,23,23,0.10)" stroke-width="0.8"/>
+      <text x="48" y="520" fill="#4d4d4d" font-size="8" font-family="'IBM Plex Mono', monospace" letter-spacing="0.18em">LEGEND</text>
+
+      <rect x="48" y="536" width="14" height="10" rx="2" fill="rgba(248,192,19,0.08)" stroke="#f8c013" stroke-width="1"/>
+      <text x="68" y="544" fill="#4d4d4d" font-size="8.5" font-family="'IBM Plex Sans', sans-serif">AI model</text>
+
+      <rect x="160" y="536" width="14" height="10" rx="2" fill="#ffffff" stroke="#171717" stroke-width="1"/>
+      <text x="180" y="544" fill="#4d4d4d" font-size="8.5" font-family="'IBM Plex Sans', sans-serif">Client</text>
+
+      <rect x="256" y="536" width="14" height="10" rx="2" fill="rgba(23,23,23,0.05)" stroke="#4d4d4d" stroke-width="1"/>
+      <text x="276" y="544" fill="#4d4d4d" font-size="8.5" font-family="'IBM Plex Sans', sans-serif">Server</text>
+
+      <rect x="352" y="536" width="14" height="10" rx="2" fill="rgba(23,23,23,0.03)" stroke="rgba(23,23,23,0.30)" stroke-width="1"/>
+      <text x="372" y="544" fill="#4d4d4d" font-size="8.5" font-family="'IBM Plex Sans', sans-serif">External system</text>
+
+      <line x1="508" y1="541" x2="536" y2="541" stroke="#2e5aa8" stroke-width="1.2" marker-end="url(#arrow-link)"/>
+      <text x="544" y="544" fill="#4d4d4d" font-size="8.5" font-family="'IBM Plex Sans', sans-serif">MCP transport</text>
+
+      <line x1="668" y1="541" x2="696" y2="541" stroke="#4d4d4d" stroke-width="1.2" marker-end="url(#arrow)"/>
+      <text x="704" y="544" fill="#4d4d4d" font-size="8.5" font-family="'IBM Plex Sans', sans-serif">Internal call</text>
+    </svg>

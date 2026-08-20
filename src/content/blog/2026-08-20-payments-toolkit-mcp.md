@@ -1,7 +1,7 @@
 ---
 date: 2026-08-20
 title: 'Building a small MCP server to learn the protocol hands-on'
-description: 'Notes from payments-toolkit-mcp, a minimal MCP server I built to learn the protocol — tool/resource registration, the dual content/structuredContent response shape, and the stdout gotcha that trips up every stdio server.'
+description: 'Notes from payments-toolkit-mcp, a minimal MCP server I built to learn the protocol: tool/resource registration, the dual content/structuredContent response shape, and the stdout gotcha that trips up every stdio server.'
 tags:
   - mcp
   - typescript
@@ -10,17 +10,17 @@ tags:
 
 After writing about [what MCP actually is](/blog/what-is-mcp/), the obvious
 next step was building one. [`payments-toolkit-mcp`][repo] is a small server
-that exposes a few payment-data validation utilities — Luhn checksum
-validation, card network detection, IBAN validation — as MCP tools, plus one
-static resource.
+that exposes payment-data validation as MCP tools: Luhn checksum validation,
+card network detection, and IBAN validation. It also exposes a static
+resource listing supported card networks and their prefix ranges.
 
 [repo]: https://github.com/ramigs/payments-toolkit-mcp
 
 ## Composition, not configuration
 
 The whole server is built from the official `@modelcontextprotocol/sdk`, and
-`src/index.ts` is just composition — create a server, register each
-capability, connect a transport:
+`src/index.ts` is just composition. It creates a server, registers each
+capability, and connects a transport:
 
 ```ts
 const server = new McpServer({
@@ -38,7 +38,7 @@ await server.connect(transport);
 ```
 
 Each tool lives in its own file under `src/tools/`, and each one only knows
-how to register itself onto a server it's handed — it doesn't own the
+how to register itself onto a server it's handed. It doesn't own the
 server or the transport. The validation logic itself (`isValidLuhn`, the IBAN
 mod-97 check, the IIN/BIN prefix table) lives in `src/lib/`, completely
 unaware that MCP exists. That split made the MCP-specific code trivial to
@@ -71,16 +71,16 @@ server.registerTool(
 );
 ```
 
-The `description` isn't documentation for humans — it's what the model reads
-to decide when to call the tool at all, so it earns its keep more than a
-typical docstring would. The schema is worth the same care: `cardNumberSchema`
-enforces digits-only and a sane length range, which means malformed input
-never reaches `isValidLuhn` in the first place.
+The model reads `description` to decide when to call the tool at all, which
+makes it earn its keep more than a typical docstring would. The schema is
+worth the same care: `cardNumberSchema` enforces digits-only and a sane
+length range, which means malformed input never reaches `isValidLuhn` in the
+first place.
 
 The two-shape response (`content` and `structuredContent`) surprised me
-initially. `content` is the older, universal shape — a list of blocks a
+initially. `content` is the older, universal shape: a list of blocks a
 client can render regardless of what it understands. `structuredContent` is
-the newer, typed one — matched against `outputSchema` so a client can consume
+the newer, typed one, matched against `outputSchema` so a client can consume
 it programmatically instead of parsing text. Returning both is redundant on
 paper, but it's what keeps the tool usable by clients that only implement one
 side.
@@ -89,7 +89,7 @@ side.
 
 Tools are actions; resources are just data a client can fetch by URI. The one
 resource here, `card_networks`, is a static JSON table of card networks and
-their prefix ranges — the same table `detect_card_type` matches against
+their prefix ranges. It's the same table `detect_card_type` matches against
 internally, exposed separately so a client can read it directly instead of
 inferring it from tool calls:
 
@@ -116,7 +116,7 @@ server.registerResource(
 ```
 
 Custom URI scheme (`payments-toolkit://...`), a MIME type, and a handler that
-returns `contents` — structurally almost identical to a tool registration,
+returns `contents`. It's structurally almost identical to a tool registration,
 which made resources feel like a small addition once tools already clicked
 rather than a separate concept to learn.
 
@@ -125,7 +125,7 @@ rather than a separate concept to learn.
 This is the one mistake the [README][repo] specifically calls out, and it's
 the kind of thing you'd only discover by hitting it: over the stdio
 transport, stdout is the JSON-RPC wire. A stray `console.log` doesn't just
-clutter logs — it injects malformed data into the protocol stream and breaks
+clutter logs; it injects malformed data into the protocol stream and breaks
 the client's parser. Every bit of debug output in this server goes through
 `console.error` instead, since stderr is left alone. It's a one-line rule,
 but it explains why MCP server boilerplate almost always reaches for a
@@ -134,15 +134,16 @@ logger or `console.error` by convention rather than `console.log`.
 ## Inspecting and connecting
 
 `@modelcontextprotocol/inspector` gives a local web UI to call tools and read
-resources directly, without wiring up a client first — useful for confirming
-schemas and responses actually round-trip before pointing a real host at the
-server. Once that works, connecting it to Claude Code is a single command:
+resources directly, without wiring up a client first. That's useful for
+confirming schemas and responses actually round-trip before pointing a real
+host at the server. Once that works, connecting it to Claude Code is a
+single command:
 
 ```bash
 claude mcp add payments-toolkit-mcp -- node /path/to/payments-toolkit-mcp/dist/index.js
 ```
 
 `/mcp` inside a session then confirms the connection and lists what got
-discovered — which, after reading the protocol docs, was the satisfying part:
-watching the three tools and the resource show up exactly as registered,
-with no extra glue code needed on the client side beyond that one command.
+discovered: the three tools and the resource, showing up exactly as
+registered, with no extra glue code needed on the client side beyond that
+one command.

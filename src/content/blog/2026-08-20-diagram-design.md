@@ -1,7 +1,7 @@
 ---
 date: 2026-08-20
 title: '[TIL] diagram-design'
-description: 'diagram-design: an agent skill that generates on-brand editorial diagrams as self-contained HTML/SVG, using your own site colors and typography instead of generic rounded boxes'
+description: 'diagram-design: an agent plugin that generates on-brand editorial diagrams as self-contained HTML/SVG, using your own site colors and typography instead of generic rounded boxes'
 tags:
   - til
   - ai

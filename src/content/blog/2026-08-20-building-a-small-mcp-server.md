@@ -119,6 +119,41 @@ returns `contents`. It's structurally almost identical to a tool registration,
 which made resources feel like a small addition once tools already clicked
 rather than a separate concept to learn.
 
+## Prompts are the user-invoked primitive
+
+Tools and resources cover two of MCP's three primitives. The third is a
+prompt: a reusable template the server hands the client instead of the
+client writing it per integration. The one prompt here, `check_payment_details`,
+takes optional `cardNumber`/`iban` arguments and returns a message telling the
+model which tools to call and how to format the summary. The server never
+calls the tools itself, it just hands back text:
+
+```ts
+server.registerPrompt(
+  'check_payment_details',
+  {
+    title: 'Check Payment Details',
+    description:
+      'Validates a card number and/or IBAN using the available tools and ' +
+      'reports the results in a standard summary format.',
+    argsSchema: {
+      cardNumber: z.string().optional().describe('Card number to validate'),
+      iban: z.string().optional().describe('IBAN to validate'),
+    },
+  },
+  ({ cardNumber, iban }) => ({
+    messages: [{ role: 'user', content: { type: 'text', text: /* ... */ } }],
+  }),
+);
+```
+
+`argsSchema` is a flat shape of strings only, not arbitrary Zod like a tool's
+`inputSchema`. The MCP spec has clients render prompt arguments as plain text
+fields. That restriction lines up with how prompts get invoked: not chosen by
+the model like a tool, but triggered explicitly by the user, surfaced as a
+slash command in Claude Code
+(`/mcp__payments-toolkit-mcp__check_payment_details`).
+
 ## The gotcha: stdout is not yours
 
 This is the one mistake the [README][repo] specifically calls out, and it's the
@@ -149,16 +184,36 @@ the project directory `claude mcp add` was run from, so a different project
 needs its own `claude mcp add` (or `--scope user` to make the server
 available everywhere).
 
-## Next steps
+## Adding the HTTP transport
 
-Two things this server doesn't cover yet, left for a follow-up:
+Stdio only works because Claude Code spawns the server itself and owns the
+subprocess. A server meant to be shared across multiple clients needs to run
+over HTTP instead, via `StreamableHTTPServerTransport`. Supporting both meant
+splitting `index.ts`: tool/resource registration moved into a
+`createServer()` factory, and each transport got its own module, picked at
+startup by a `--http` flag.
 
-- Swap `StdioServerTransport` for `StreamableHTTPServerTransport`. Stdio
-  only works because Claude Code spawns the server itself and owns the
-  subprocess; a server meant to be shared across multiple clients needs to
-  run over HTTP instead.
-- Add a prompt. Tools and resources are two of MCP's three primitives; a
-  prompt is the third, a reusable template the server hands the client
-  instead of the client writing it per integration. A
-  `validate-payment-details` prompt that checks card number, expiry, and
-  CVV together would round out the toolkit.
+The part that isn't obvious going in: an `McpServer` can only be
+`connect()`-ed to one transport, so serving multiple HTTP clients from one
+long-running process means a fresh `McpServer` + `StreamableHTTPServerTransport`
+pair per session, created on the `initialize` request and keyed by the
+`Mcp-Session-Id` header on every request after that:
+
+```ts
+if (!transport) {
+  if (!isInitializeRequest(req.body)) {
+    res.status(400).json({/* ... */});
+    return;
+  }
+  transport = new StreamableHTTPServerTransport({
+    sessionIdGenerator: () => randomUUID(),
+    onsessioninitialized: (newSessionId) => {
+      transports.set(newSessionId, transport!);
+    },
+  });
+  const server = createServer();
+  await server.connect(transport);
+}
+```
+
+Requests without a session ID that aren't `initialize` get a 400.

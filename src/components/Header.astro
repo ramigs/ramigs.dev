@@ -1,4 +1,5 @@
 ---
+import SiteSearch from './SiteSearch.vue';
 import ColorModeToggle from './ColorModeToggle.vue';
 
 const { pathname } = Astro.url;
@@ -40,7 +41,10 @@ function isActive(href: string) {
         </ul>
       </nav>
     </div>
-    <ColorModeToggle client:load />
+    <div class="header-actions">
+      <SiteSearch client:load />
+      <ColorModeToggle client:load />
+    </div>
   </div>
 </header>
 
@@ -111,6 +115,12 @@ function isActive(href: string) {
     align-items: center;
     gap: var(--space-lg);
     min-width: 0;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
   }
 
   nav ul {

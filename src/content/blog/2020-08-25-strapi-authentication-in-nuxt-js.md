@@ -322,7 +322,7 @@ removed the from the local storage when the user logs out.
 
 Create a file `./components/Navbar.vue` with the following code:
 
-```html
+```vue
 <template>
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
@@ -424,7 +424,7 @@ clicked.
 
 Edit `./layouts/default.vue` and replace its content with the following:
 
-```html
+```vue
 <template>
   <div>
     <Navbar />
@@ -447,7 +447,7 @@ export default {
 
 Edit `./pages/index.vue` and replace its content with the following:
 
-```html
+```vue
 <template>
   <section class="section">
     <div class="container">
@@ -470,7 +470,7 @@ an error message should be displayed.
 
 Create a file `./components/Notification.vue` and paste into it the code below:
 
-```html
+```vue
 <template>
   <div :class="`is-${type}`" class="notification">
     {{ message }}
@@ -499,7 +499,7 @@ export default {
 
 Create a file `./pages/register.vue` and paste into it the code below:
 
-```html
+```vue
 <template>
   <section class="section">
     <div class="container">
@@ -686,7 +686,7 @@ Let's fix that.
 
 Create a file `./pages/login.vue` and paste into it the code below:
 
-```html
+```vue
 <template>
   <section class="section">
     <div class="container">
@@ -806,7 +806,7 @@ Time for the user profile page.
 
 Create a file `./pages/profile.vue` with the following code:
 
-```html
+```vue
 <template>
   <section class="section">
     <div class="container">
@@ -879,7 +879,7 @@ This will be achieved with the following workflow:
 
 Create a file `./pages/forgot-password.vue`:
 
-```html
+```vue
 <template>
   <section class="section">
     <div class="container">
@@ -974,7 +974,7 @@ successfully reset the user password.
 Let's now create the page that will allow the user to define a new password.
 Create a file `./pages/reset-password.vue` and paste the following code into it:
 
-```html
+```vue
 <template>
   <section class="section">
     <div class="container">

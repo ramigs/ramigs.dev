@@ -12,7 +12,7 @@ tags:
 TIL about the Vue modifier `.number` on `v-model`, which can be used to parse
 the value of an `<input>` element as `number` (instead of as `string`):
 
-```html
+```vue
 <input v-model.number="searchFilters.amount" />
 ```
 

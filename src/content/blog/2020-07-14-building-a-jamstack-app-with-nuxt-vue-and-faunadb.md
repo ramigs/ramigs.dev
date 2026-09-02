@@ -838,7 +838,7 @@ mounted() {
 
 Under the Hero `<section>`, create a container to display the dynamic data:
 
-```html
+```vue
 <div class="container" :style="{ paddingTop: '2rem' }">
   <p><span class="is-size-5">Description:</span> {{ repoData.description }}</p>
   <p><span class="is-size-5">Stars:</span> {{ repoData.stargazers_count }}</p>

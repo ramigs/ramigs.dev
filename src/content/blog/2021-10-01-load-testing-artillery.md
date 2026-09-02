@@ -94,8 +94,8 @@ scenarios:
       - post:
           url: "/users/login"
           json:
-            username: {% raw %}"{{ $processEnvironment.VIRTUSER_USERNAME }}"{% endraw %}
-            password: {% raw %}"{{ $processEnvironment.VIRTUSER_PASSWORD }}"{% endraw %}
+            username: "{{ $processEnvironment.VIRTUSER_USERNAME }}"
+            password: "{{ $processEnvironment.VIRTUSER_PASSWORD }}"
 
       - post:
           beforeRequest: ensureSessionCookieSet

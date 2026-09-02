@@ -29,11 +29,9 @@ Edit your default layout (probably `_includes/layouts/base.njk`), adding the
 following inside the `<head>` tag:
 
 ```html
-{% raw %}
 {% if canonical %}
   <link rel="canonical" href="{{ canonical }}" />
 {% endif %}
-{% endraw %}
 ```
 
 Basically, we're conditionally adding the `<link>` tag, depending on whether a

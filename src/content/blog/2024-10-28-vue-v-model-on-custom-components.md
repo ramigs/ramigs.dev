@@ -20,7 +20,7 @@ the parent component but we want the child component to be able to update it.
 
 We would do something like this in the parent component:
 
-```js
+```vue
 const selectedColor = ref('yellow')
 
 <ChildComponent v-model="selectedColor" />

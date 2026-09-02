@@ -9,20 +9,20 @@ tags:
 Let's say we have the following string union type to define all the possible
 values of a status:
 
-```js
+```ts
 type Status = "Completed" | "Pending" | "Canceled";
 ```
 
 We also have another string union type to define all the possible colors of a
 badge component:
 
-```js
+```ts
 type BadgeColor = "green" | "yellow" | "red";
 ```
 
 We have the following object to map statuses with badge colors:
 
-```js
+```ts
 const statusColors = {
   Completed: "green",
   Pending: "yellow",
@@ -39,7 +39,7 @@ How can we achieve that?
 We can annotate the object as follows combining an index signature with the
 JavaScript `in` operator:
 
-```js
+```ts
 const statusColors: { [key in Status]: BadgeColor } = {
   Completed: "green",
   Pending: "yellow",

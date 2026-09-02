@@ -16,7 +16,7 @@ Let's take a look at an example to make this clearer.
 
 Let's say we want to create a type to represent dictionary objects such as:
 
-```js
+```ts
 const dictionary = {
   hello: "olá",
   goodbye: "adeus",
@@ -28,7 +28,7 @@ property value are of type `string`.
 
 We can use the `Record<Keys, Type>` utility type, like so:
 
-```js
+```ts
 type MyDictionary = Record<string, string>;
 
 const dictionary: MyDictionary = {};
@@ -37,7 +37,7 @@ const dictionary: MyDictionary = {};
 Now, if we try to set something like the following, TypeScript will signal an
 error and stop us:
 
-```js
+```ts
 // Type 'number' is not assignable to type 'string'.
 dictionary.one = 1;
 ```
@@ -45,7 +45,7 @@ dictionary.one = 1;
 The `Record<Keys, Type>` utility type is a name alias for [index
 signatures](https://www.typescriptlang.org/docs/handbook/2/objects.html#index-signatures):
 
-```js
+```ts
 type MyDictionary = { [k: string]: string };
 ```
 

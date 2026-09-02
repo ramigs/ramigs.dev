@@ -23,7 +23,7 @@ How can we achieve that?
 The following is one way to do it. First, we set a base type **without** type
 and list of exercises:
 
-```js
+```ts
 type WorkoutPlanBase = {
   id: number
   workoutName: string
@@ -36,7 +36,7 @@ Then, we define our workout plan type using an intersection (to _extend_ from
 the base type) and a **discriminated union** (where we use the literal type for
 `workoutType` to specify the respective two possible types for `exercises`):
 
-```js
+```ts
 type WorkoutPlan = WorkoutPlanBase &
   (
     | { workoutType: "strength", exercises: StrengthTrainingExercise[] }

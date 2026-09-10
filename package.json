@@ -27,7 +27,7 @@
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
     "@astrojs/vue": "^7.0.1",
-    "astro": "^7.1.4",
+    "astro": "^7.2.8",
     "astro-expressive-code": "^0.44.1",
     "fuse.js": "^7.5.0",
     "vue": "^3.5.40"

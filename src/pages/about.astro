@@ -31,6 +31,13 @@ const toolsAndTech = [
   { category: 'Build & Deploy', items: ['Docker', 'GitHub Actions'] },
   { category: 'AI Tools', items: ['Claude Code', 'GitHub Copilot'] },
 ];
+
+const certifications = [
+  {
+    name: 'Official Vue.js Certification (Mid-Level)',
+    url: 'https://certificates.dev/vuejs/certificates/a2b7d7df-6036-4fe9-9094-0a4d14431aa7',
+  },
+];
 ---
 
 <Layout
@@ -81,6 +88,19 @@ const toolsAndTech = [
     </ul>
   </section>
 
+  <section class="certifications">
+    <h2>Certifications</h2>
+    <ul role="list">
+      {
+        certifications.map((cert) => (
+          <li>
+            <a href={cert.url}>{cert.name}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
   <section class="contact">
     <h2>Contact</h2>
     <p>
@@ -105,7 +125,8 @@ const toolsAndTech = [
   }
 
   .projects ul,
-  .tools ul {
+  .tools ul,
+  .certifications ul {
     padding-inline-start: 0;
     margin-block-start: var(--space-md);
   }

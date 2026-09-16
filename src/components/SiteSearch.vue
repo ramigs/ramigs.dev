@@ -15,6 +15,8 @@ interface SearchDoc {
 
 type LoadState = 'idle' | 'loading' | 'ready' | 'error';
 
+defineOptions({ inheritAttrs: false });
+
 const FUSE_OPTIONS: IFuseOptions<SearchDoc> = {
   // ignoreLocation is essential for body matches — the default bounded
   // search only looks near the start of a field.

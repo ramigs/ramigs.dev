@@ -1,7 +1,7 @@
 ---
 date: 2026-09-16
-title: 'What I learned building my first end-to-end AI app'
-description: 'A top-level walkthrough of payments-toolkit, a three-repo learning project spanning an MCP server, a Google ADK agent, and a Vue frontend, plus the protocols (MCP, AG-UI, MCP Apps) that connect them.'
+title: 'A validation assistant built on MCP, AG-UI, and MCP Apps'
+description: 'A top-level walkthrough of payments-toolkit, a three-repo project spanning an MCP server, a Google ADK agent, and a Vue frontend, plus the protocols (MCP, AG-UI, MCP Apps) that connect them.'
 tags:
   - ai
   - agents

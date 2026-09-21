@@ -9,7 +9,7 @@ import type { APIContext } from 'astro';
 function absolutizeUrls(html: string, site: string) {
   return html.replace(
     /((?:src|href)=")\/(?!\/)/g,
-    (_match, prefix) => `${prefix}${site}/`
+    (_match, prefix) => `${prefix}${site}/`,
   );
 }
 
@@ -36,13 +36,13 @@ export async function GET(context: APIContext) {
           link: `/blog/${post.id}/`,
           content: absolutizeUrls(html, site),
         };
-      })
+      }),
   );
 
   return rss({
     title: 'ramigs.dev',
     description:
-      'Frontend engineering, AI-assisted development, and the tools I use day to day — from quick TILs to longer deep dives.',
+      'Software engineering, AI-assisted development, and the tools I use day to day — from quick TILs to longer deep dives.',
     site: context.site!,
     items,
   });
